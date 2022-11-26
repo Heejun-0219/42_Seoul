@@ -54,44 +54,27 @@ B_SRCS	= 	ft_lstadd_back_bonus.c\
 M_OBJS	=	$(SRCS:.c=.o)
 B_OBJS	=	$(B_SRCS:.c=.o)
 
-ifdef WITH_BONUS
-	OBJS = $(B_OBJS) $(M_OBJS)
-else
-	OBJS = $(M_OBJS)
-endif
-
 %.o		:	%.c
 			$(CC) $(CFLAGS) -c $< -o $@ -I$(INC)
 
 .PHONY	:	all
-all		:	
-			@if [ -e "$(NAME)" ] && ar -t $(NAME) | grep -q "ft_lstnew_bonus.o"; then\
-				echo "rm -f $(B_OBJS)";\
-				rm -f $(B_OBJS);\
-				echo "ar -d $(NAME) $(B_OBJS)";\
-				ar -d $(NAME) $(B_OBJS);\
-			fi
-			@make $(NAME)													
+all		:	$(NAME)
+
+$(NAME)	:	$(M_OBJS)													
+			$(AR) $(ARFLAGS) $@ $< $?
 
 .PHONY	:	bonus
-bonus 	:	
-			@if [ -e "$(NAME)" ] && ! ar -t $(NAME) | grep -q "ft_lstnew_bonus.o"; then\
-				make $(NAME);\
-				echo "$(CC) $(CFLAGS) -c $(B_SRCS) -I$(INC)";\
-				$(CC) $(CFLAGS) -c $(B_SRCS) -I$(INC);\
-				echo "$(AR) $(ARFLAGS) $(NAME) $(B_OBJS)";\
-				$(AR) $(ARFLAGS) $(NAME) $(B_OBJS);\
-			else\
-				make WITH_BONUS=1 $(NAME);\
-			fi
-
-$(NAME)	:	$(OBJS)													
-			$(AR) $(ARFLAGS) $(NAME) $?
+B_DUM	=	.bonus_dummy
+bonus 	:	$(B_DUM)
+$(B_DUM):	$(B_OBJS)
+			$(AR) $(ARFLAGS) $@ $< $?
+			@touch $(B_DUM)
 
 .PHONY	:	clean
 clean	:
 			rm -f $(M_OBJS) 
 			rm -f $(B_OBJS)
+			@rm -f $(B_DUM)
 
 .PHONY	:	fclean
 fclean	:	clean
