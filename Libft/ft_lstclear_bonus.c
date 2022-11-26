@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:52:36 by heejunki          #+#    #+#             */
-/*   Updated: 2022/11/19 17:52:18 by heejunki         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:38:29 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	{
 		tmp = *lst;
 		*lst = (*lst)->next;
-		del(tmp->content);
-		free(tmp);
+		ft_lstdelone(tmp, del);
 	}
 }

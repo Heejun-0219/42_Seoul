@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:52:32 by heejunki          #+#    #+#             */
-/*   Updated: 2022/11/19 19:50:04 by heejunki         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:35:31 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ char	*ft_strjoin(char const	*s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 int		get_count(char const *s, char c);
-char	*ft_strdup5(char *str, int str_len);
+char	*ft_strndup(char *str, size_t str_len);
+char	**null_free(char **res);
 int		count_strlen(char *str, char c, int str_in);
 char	*ft_itoa(int n);
 int		integer_len(int n);

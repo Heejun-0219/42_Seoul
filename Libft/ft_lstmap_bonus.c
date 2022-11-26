@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:11:04 by heejunki          #+#    #+#             */
-/*   Updated: 2022/11/25 21:18:21 by heejunki         ###   ########.fr       */
+/*   Updated: 2022/11/27 00:55:51 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*start;
 	t_list	*new;
 	t_list	*p;
+	void	*new_content;
 
 	p = NULL;
 	start = lst;
 	while (lst)
 	{
-		new = ft_lstnew(f(lst->content));
+		new_content = f(lst->content);
+		new = ft_lstnew(new_content);
 		if (!new)
 		{
-			ft_lstdelone(new, del);
+			del(new_content);
+			ft_lstclear(&p, del);
 			return (NULL);
 		}
 		ft_lstadd_back(&p, new);

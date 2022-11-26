@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 13:37:17 by heejunki          #+#    #+#             */
-/*   Updated: 2022/11/19 21:24:54 by heejunki         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:35:49 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	count_strlen(char *str, char c, int str_in)
 	return (len);
 }
 
-char	*ft_strdup5(char *str, int str_len)
+char	*ft_strndup(char *str, size_t str_len)
 {
 	char	*newsrc;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	newsrc = (char *) malloc (sizeof (char) * (str_len + 1));
-	if (str_len == 0 || !newsrc)
+	if (!newsrc)
 		return (0);
 	while (i < str_len)
 	{
@@ -67,17 +67,18 @@ int	get_count(char const *s, char c)
 	return (count);
 }
 
-int	null_check(char **res, int res_in)
+char	**null_free(char **res)
 {
-	if (!res[res_in])
+	size_t	j;
+
+	j = 0;
+	while (res[j])
 	{
-		while (res_in)
-		{
-			free(res[res_in--]);
-		}
-		return (1);
+		free(res[j]);
+		j++;
 	}
-	return (0);
+	free(res);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -85,7 +86,7 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 	int		str_in;
 	int		res_in;
-	int		total_in;
+	int		flag;
 	int		count;
 
 	count = get_count((char *)s, c);
@@ -99,12 +100,12 @@ char	**ft_split(char const *s, char c)
 	{
 		while (s[str_in] == c)
 			str_in++;
-		total_in = count_strlen((char *)s, c, str_in);
-		result[res_in] = ft_strdup5((char *)s + str_in, total_in);
-		if (null_check(result, res_in))
-			break ;
-		str_in += total_in;
-		res_in++;
+		flag = str_in;
+		while (s[str_in] != c && s[str_in])
+			str_in++;
+		result[res_in] = ft_strndup((char *)s + flag, str_in - flag);
+		if (result[res_in++] == 0)
+			return (null_free(result));
 	}
 	return (result);
 }
