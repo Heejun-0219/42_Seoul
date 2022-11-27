@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/25 22:19:54 by heejunki          #+#    #+#              #
-#    Updated: 2022/11/26 00:00:34 by heejunki         ###   ########.fr        #
+#    Created: 2022/11/27 06:34:00 by heejunki          #+#    #+#              #
+#    Updated: 2022/11/27 06:34:01 by heejunki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,18 +38,14 @@ OBJS	=	$(SRCS:.c=.o)
 			$(CC) $(CFLAGS) -c $< -o $@ -I$(INC)
 
 .PHONY	:	all
-all		:	
-			@if [ -e "$(NAME)" ] && ar -t $(NAME); then\
-				rm -f $(NAME);\
-			fi
-			@make $(NAME)
+all		:	$(NAME)
 
-$(NAME)	:	$(OBJS)
-			$(AR) $(ARFLAGS) $(NAME) $?
+$(NAME)	:	$(OBJS)													
+			$(AR) $(ARFLAGS) $@ $< $?
 
 .PHONY	:	clean
 clean	:
-			rm -f $(OBJS) 
+			rm -f $(OBJS)
 
 .PHONY	:	fclean
 fclean	:	clean
