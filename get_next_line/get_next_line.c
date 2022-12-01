@@ -21,7 +21,7 @@ char	*fd_read_line(int fd, char *p)
 	if (!buffer)
 		return (NULL);
 	check_end = 1;
-	while (!ft_strrchr(p, '\n') && check_end == 1)
+	while (!ft_strrchr(p, '\n') && check_end != 0)
 	{
 		check_end = read(fd, buffer, BUFFER_SIZE);
 		if (check_end == -1)
@@ -50,18 +50,36 @@ char	*fd_get_line(char *p)
 	if (!tmp)
 		return (NULL);
 	len = 0;
-	while (p[len] && p[len] != '\n')
+	while (*p && *p != '\n')
 	{
-		tmp[len] = p[len];
-		len++;
+		tmp[len++] = *(p++);
 	}
-	if (p[len] == '\n')
+	if (*p == '\n')
 	{
-		tmp[len] = p[len];
-		len++;
+		tmp[len++] = *(p++);
 	}
 	tmp[len] = '\0';
 	return (tmp);
+}
+
+char	*fd_save_line(char p)
+{
+	char	*tmp;
+	int		index;
+
+	if(*p)
+		return (NULL);
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(p) + 1));
+	if (!tmp)
+		return (NULL);
+	index = 0;
+	while (*p)
+	{
+		tmp[index++] = *(p++);
+	}
+	tmp[index] = '\0';
+	free(p);
+	return (tmp);	
 }
 
 char	*get_next_line(int fd)
@@ -75,5 +93,6 @@ char	*get_next_line(int fd)
 	if (!p)
 		return (NULL);
 	buffer = fd_get_line(p);
+	p = fd_save_line(p);
 	return (buffer);
 }
