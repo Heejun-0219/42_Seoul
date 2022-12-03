@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:19:34 by heejunki          #+#    #+#             */
-/*   Updated: 2022/12/01 14:19:37 by heejunki         ###   ########.fr       */
+/*   Updated: 2022/12/03 13:24:02 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,20 @@ char	*fd_read_line(int fd, char *p)
 	if (!buffer)
 		return (NULL);
 	check_end = 1;
-	while (!ft_strrchr(p, '\n') && check_end != 0)
+	while (!ft_strchr(p, '\n') && check_end != 0)
 	{
 		check_end = read(fd, buffer, BUFFER_SIZE);
 		if (check_end == -1)
 		{
 			free(buffer);
+			free(p);
 			return (NULL);
 		}
-		buffer[check_end] = '\n';
+		buffer[check_end] = '\0';
 		p = ft_strjoin(p, buffer);
 	}
 	free(buffer);
-	return (buffer);
+	return (p);
 }
 
 char	*fd_get_line(char *p)
@@ -50,36 +51,46 @@ char	*fd_get_line(char *p)
 	if (!tmp)
 		return (NULL);
 	len = 0;
-	while (*p && *p != '\n')
+	while (p[len] && p[len] != '\n')
 	{
-		tmp[len++] = *(p++);
+		tmp[len] = p[len];
+		len++;
 	}
-	if (*p == '\n')
+	if (p[len] == '\n')
 	{
-		tmp[len++] = *(p++);
+		tmp[len] = p[len];
+		len++;
 	}
 	tmp[len] = '\0';
 	return (tmp);
 }
 
-char	*fd_save_line(char p)
+char	*fd_save_line(char *p)
 {
 	char	*tmp;
 	int		index;
+	int		i;
 
-	if(*p)
+	index = 0;
+	while (p[index] && p[index] != '\n')
+		index++;
+	if (!p[index])
+	{
+		free(p);
 		return (NULL);
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(p) + 1));
+	}
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(p) - index + 1));
 	if (!tmp)
 		return (NULL);
-	index = 0;
-	while (*p)
+	index++;
+	i = 0;
+	while (p[index])
 	{
-		tmp[index++] = *(p++);
+		tmp[i++] = p[index++];
 	}
-	tmp[index] = '\0';
+	tmp[i] = '\0';
 	free(p);
-	return (tmp);	
+	return (tmp);
 }
 
 char	*get_next_line(int fd)
