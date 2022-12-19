@@ -6,104 +6,122 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:19:34 by heejunki          #+#    #+#             */
-/*   Updated: 2022/12/05 14:45:53 by heejunki         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:13:19 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*fd_read_line(int fd, char *p)
+ssize_t	ft_read(int fd, char **backup)
 {
-	char	*buffer;
-	ssize_t	check_end;
+	char	*buf;
+	char	*tmp;
+	ssize_t	read_size;
 
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
-	check_end = 1;
-	while (!ft_strchr(p, '\n') && check_end != 0)
+	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buf)
+		return (-1);
+	read_size = read(fd, buf, BUFFER_SIZE);
+	if (read_size == -1)
 	{
-		check_end = read(fd, buffer, BUFFER_SIZE);
-		if (check_end == -1)
-		{
-			free(buffer);
-			free(p);
-			return (NULL);
-		}
-		buffer[check_end] = '\0';
-		p = ft_strjoin(p, buffer);
+		free(buf);
+		return (-1);
 	}
-	free(buffer);
-	return (p);
+	buf[read_size] = '\0';
+	tmp = *backup;
+	*backup = ft_strjoin(*backup, buf);
+	free(tmp);
+	free(buf);
+	if (!(*backup))
+		return (-1);
+	return (read_size);
 }
 
-char	*fd_get_line(char *p)
+char	*eof(char **backup)
 {
-	char	*tmp;
-	int		len;
+	char	*str;
 
-	if (!*p)
-		return (NULL);
-	len = 0;
-	while (p[len] && p[len] != '\n')
-		len++;
-	tmp = (char *)malloc(sizeof(char) * (len + 2));
-	if (!tmp)
-		return (NULL);
-	len = 0;
-	while (p[len] && p[len] != '\n')
+	if (ft_strlen(*backup) == 0)
 	{
-		tmp[len] = p[len];
-		len++;
+		free(*backup);
+		*backup = 0;
+		return (0);
 	}
-	if (p[len] == '\n')
+	else
 	{
-		tmp[len] = p[len];
-		len++;
+		str = *backup;
+		*backup = 0;
+		return (str);
 	}
-	tmp[len] = '\0';
-	return (tmp);
 }
 
-char	*fd_save_line(char *p)
+char	*ft_getline(char *tmp)
+{
+	char	*str;
+	size_t	len;
+	size_t	i;
+
+	len = 0;
+	i = -1;
+	while (tmp[len] != '\n')
+		len++;
+	if (tmp[len] == '\n')
+		len++;
+	if (len == 0)
+		return (0);
+	str = malloc((len + 1) * sizeof(char));
+	if (!str)
+	{
+		free(tmp);
+		return (0);
+	}
+	while (++i < len)
+		str[i] = tmp[i];
+	str[i] = '\0';
+	return (str);
+}
+
+char	*return_line(char **backup)
 {
 	char	*tmp;
-	int		index;
-	int		i;
+	char	*str;
 
-	index = 0;
-	while (p[index] && p[index] != '\n')
-		index++;
-	if (!p[index])
-	{
-		free(p);
-		return (NULL);
-	}
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(p) - index + 1));
+	tmp = ft_strdup(*backup);
+	free(*backup);
+	*backup = 0;
 	if (!tmp)
-		return (NULL);
-	index++;
-	i = 0;
-	while (p[index])
+		return (0);
+	str = ft_getline(tmp);
+	if (!str)
+		return (0);
+	*backup = ft_strdup(ft_strchr(tmp, '\n') + 1);
+	free(tmp);
+	if (!(*backup))
 	{
-		tmp[i++] = p[index++];
+		free(str);
+		return (0);
 	}
-	tmp[i] = '\0';
-	free(p);
-	return (tmp);
+	return (str);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*p[OPEN_MAX];
-	char		*buffer;
+	static char	*backup[OPEN_MAX];
+	ssize_t		read_size;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	p[fd] = fd_read_line(fd, p[fd]);
-	if (!p[fd])
-		return (NULL);
-	buffer = fd_get_line(p[fd]);
-	p[fd] = fd_save_line(p[fd]);
-	return (buffer);
+		return (0);
+	while (!(ft_strchr(backup[fd], '\n')))
+	{
+		read_size = ft_read(fd, &backup[fd]);
+		if (read_size == -1)
+		{
+			free(backup[fd]);
+			backup[fd] = 0;
+			return (0);
+		}
+		if (read_size == 0)
+			return (eof(&backup[fd]));
+	}
+	return (return_line(&backup[fd]));
 }
