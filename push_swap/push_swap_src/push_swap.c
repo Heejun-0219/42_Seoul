@@ -92,6 +92,8 @@ int main(int ac, char **av)
     //매개변수 문자열 하나 or 문자열 갯수만큼 확인
     if (ac == 2)
         str = ft_split(av[1], ' ');
+    else
+        // 매개변수 문자열 갯수만큼 입력
         
     (void)str;
     //매개변수 ft_isdigit, double, overflow 확인 => Error
