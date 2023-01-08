@@ -1,4 +1,4 @@
-#include "push_swap.c"
+#include "push_swap.h"
 
 void check_digit(char *val)
 {

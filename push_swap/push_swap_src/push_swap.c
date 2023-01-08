@@ -32,10 +32,9 @@ int main(int ac, char **av)
     size = param_check(str);
 
     a = (int *)malloc(sizeof(int) * size);
-    printf("%d", size);
     insert_stack(a, str);// 에러반응 함수 안으로 exit 
 
-    while (*a)
+    while (size-- > 0)
     {
         printf(" %d", *(a++));
     }

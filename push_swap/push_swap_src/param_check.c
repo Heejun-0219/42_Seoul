@@ -1,4 +1,4 @@
-#include "push_swap.c"
+#include "push_swap.h"
 
 void    Exit() // 문자열 free하고 종료하기 
 {
