@@ -16,7 +16,8 @@ CC		= 	cc
 CFLAGS	= 	-Wall -Wextra -Werror
 
 INC		= 	push_swap_src/push_swap.h
-SRCS	= 	push_swap_src/push_swap.c
+SRCS	= 	push_swap_src/push_swap.c\
+			push_swap_src/overflow_check.c
 
 .PHONY	:	all
 all		:	$(NAME)
