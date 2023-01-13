@@ -24,7 +24,7 @@ SRCS	= 	push_swap_src/push_swap.c\
 .PHONY	:	all
 all		:	$(NAME)
 $(NAME)	:	
-			@$(MAKE) -C libft/ re											
+			@$(MAKE) -C libft/ re bonus
 			$(CC) $(CFLAGS) -o $@ $(SRCS) -L libft/ -lft -I $(INC)
 
 .PHONY	:	clean

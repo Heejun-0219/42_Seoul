@@ -1,43 +1,52 @@
 #include <stdio.h>
 #include "push_swap.h"
 
-void insert_stack(int *stack, char **val)
+void insert_stack(t_list **stack, char **val)
 {
     int i;
+    t_list  *tmp;
 
     i = 0;
+    tmp = NULL;
     while (val[i])
     {
-        stack[i] = ft_atoi(val[i]);
+        tmp = ft_lstnew(ft_atoi(val[i]));
+        ft_lstadd_back(stack, tmp);
         i++;
+    }
+}
+
+// printf value
+void ft_lstprint(t_list *val){
+    while (val)
+    {
+        printf("%d ", val->content);
+        val = val->next;
     }
 }
 
 int main(int ac, char **av)
 {
-    int     *a;
+    t_list     *a;
+    t_list     *b = NULL;
     int     size;
-    char    **str;
-    //int     *b;
+    char    **parameter;
 
     if (ac < 2)
         Exit();
     //매개변수 문자열 하나 or 문자열 갯수만큼 확인
     if (ac == 2)
-        str = ft_split(av[1], ' ');
+        parameter = ft_split(av[1], ' ');
     else
-        str = ++av;
+        parameter = ++av;
         // 매개변수 문자열 갯수만큼 입력
     //매개변수 ft_isdigit, double, overflow 확인 => Error
-    size = param_check(str);
+    size = param_check(parameter);
+    insert_stack(&a, parameter);// 에러반응 함수 안으로 exit 
 
-    a = (int *)malloc(sizeof(int) * size);
-    insert_stack(a, str);// 에러반응 함수 안으로 exit 
-
-    while (size-- > 0)
-    {
-        printf(" %d", *(a++));
-    }
+    (void)size;
+    (void)*b;
+    ft_lstprint(a);
     
     return (0);
 }

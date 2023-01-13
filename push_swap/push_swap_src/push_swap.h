@@ -2,6 +2,9 @@
 # define PUSH_SWAP_H
 # include "../Libft/libft.h"
 
+void insert_stack(t_list **stack, char **val);
+int main(int ac, char **av);
+
 void    Exit();
 long	overflow_check(const char *str);
 int 	check_over(long num, const char c, int minus);
