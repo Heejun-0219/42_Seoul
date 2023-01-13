@@ -4,7 +4,7 @@ CC		= 	cc
 CFLAGS	= 	-Wall -Wextra -Werror
 
 AR		= 	ar
-ARFLAGS	= 	-crus
+ARFLAGS	= 	-lurcus
 
 INC		= 	libft.h
 SRCS	= 	ft_atoi.c\
@@ -67,7 +67,7 @@ $(NAME)	:	$(M_OBJS)
 B_DUM	=	.bonus_dummy
 bonus 	:	$(B_DUM)
 $(B_DUM):	$(B_OBJS)
-			$(AR) $(ARFLAGS) $@ $< $?
+			$(AR) $(ARFLAGS) $(NAME) $< $?
 			@touch $(B_DUM)
 
 .PHONY	:	clean

@@ -28,7 +28,7 @@ void ft_lstprint(t_list *val){
 int main(int ac, char **av)
 {
     t_list     *a;
-    t_list     *b = NULL;
+    t_list     *b;
     int     size;
     char    **parameter;
 
@@ -42,6 +42,9 @@ int main(int ac, char **av)
         // 매개변수 문자열 갯수만큼 입력
     //매개변수 ft_isdigit, double, overflow 확인 => Error
     size = param_check(parameter);
+
+    a = NULL;
+    b = NULL;
     insert_stack(&a, parameter);// 에러반응 함수 안으로 exit 
 
     (void)size;
