@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:53:19 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/14 14:56:12 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:58:41 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,8 @@ int	main(int ac, char **av)
 	else
 		parameter = ++av;
 	size = param_check(parameter);
-
 	a = NULL;
 	b = NULL;
 	insert_stack(&a, parameter);
-
-	(void)size;
-	(void)*b;
-	ft_lstprint(a);
 	return (0);
 }

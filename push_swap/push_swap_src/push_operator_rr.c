@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:50:31 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/14 14:56:10 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:58:07 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,5 @@ void	rrr(t_list **a, t_list **b)
 	last->next = *b;
 	pre_last->next = NULL;
 	*b = last;
-	ft_putstr_fd("rrr\n", 1); 
+	ft_putstr_fd("rrr\n", 1);
 }

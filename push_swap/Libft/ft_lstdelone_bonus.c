@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:44:54 by heejunki          #+#    #+#             */
-/*   Updated: 2022/11/25 23:38:12 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:36:46 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
 	const int	*val = &lst->content;
+
 	del((void *)val);
 	free(lst);
 }
