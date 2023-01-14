@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_operator_s.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/14 14:50:10 by heejunki          #+#    #+#             */
+/*   Updated: 2023/01/14 14:56:11 by heejunki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void    sa(t_list **a)
+void	sa(t_list **a)
 {
-    t_list	*top;
+	t_list	*top;
 	t_list	*second;
 
 	top = *a;
@@ -10,12 +22,12 @@ void    sa(t_list **a)
 	*a = second;
 	top->next = second->next;
 	second->next = top;
-    ft_putstr_fd("sa\n", 1);
+	ft_putstr_fd("sa\n", 1);
 }
 
-void    sb(t_list **b)
+void	sb(t_list **b)
 {
-    t_list	*top;
+	t_list	*top;
 	t_list	*second;
 
 	top = *b;
@@ -23,12 +35,12 @@ void    sb(t_list **b)
 	*b = second;
 	top->next = second->next;
 	second->next = top;
-    ft_putstr_fd("sb\n", 1);
+	ft_putstr_fd("sb\n", 1);
 }
 
-void    ss(t_list **a, t_list **b)
+void	ss(t_list **a, t_list **b)
 {
-    t_list	*top;
+	t_list	*top;
 	t_list	*second;
 
 	top = *a;
@@ -36,12 +48,12 @@ void    ss(t_list **a, t_list **b)
 	*a = second;
 	top->next = second->next;
 	second->next = top;
-    top = NULL;
-    second = NULL;
-    top = *b;
+	top = NULL;
+	second = NULL;
+	top = *b;
 	second = top->next;
 	*b = second;
 	top->next = second->next;
 	second->next = top;
-    ft_putstr_fd("ss\n", 1);
+	ft_putstr_fd("ss\n", 1);
 }

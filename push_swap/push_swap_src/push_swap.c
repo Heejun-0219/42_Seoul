@@ -1,93 +1,64 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/14 14:53:19 by heejunki          #+#    #+#             */
+/*   Updated: 2023/01/14 14:56:12 by heejunki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-void insert_stack(t_list **stack, char **val)
-{
-    int i;
-    t_list  *tmp;
-
-    i = 0;
-    tmp = NULL;
-    while (val[i])
-    {
-        tmp = ft_lstnew(ft_atoi(val[i]));
-        ft_lstadd_back(stack, tmp);
-        i++;
-    }
-}
-
+#include <stdio.h>
 // printf value
-void ft_lstprint(t_list *val){
-    while (val)
-    {
-        printf("%d ", val->content);
-        val = val->next;
-    }
-    printf("\n\n");
+void	ft_lstprint(t_list *val)
+{
+	while (val)
+	{
+		printf("%d ", val->content);
+		val = val->next;
+	}
+	printf("\n\n");
 }
 
-int main(int ac, char **av)
+void	insert_stack(t_list **stack, char **val)
 {
-    t_list     *a;
-    t_list     *b;
-    int     size;
-    char    **parameter;
+	int		i;
+	t_list	*tmp;
 
-    if (ac < 2)
-        Exit();
-    //매개변수 문자열 하나 or 문자열 갯수만큼 확인
-    if (ac == 2)
-        parameter = ft_split(av[1], ' ');
-    else
-        parameter = ++av;
-        // 매개변수 문자열 갯수만큼 입력
-    //매개변수 ft_isdigit, double, overflow 확인 => Error
-    size = param_check(parameter);
+	i = 0;
+	tmp = NULL;
+	while (val[i])
+	{
+		tmp = ft_lstnew(ft_atoi(val[i]));
+		ft_lstadd_back(stack, tmp);
+		i++;
+	}
+}
 
-    a = NULL;
-    b = NULL;
-    insert_stack(&a, parameter);// 에러반응 함수 안으로 exit 
+int	main(int ac, char **av)
+{
+	t_list	*a;
+	t_list	*b;
+	int		size;
+	char	**parameter;
 
-    (void)size;
-    (void)*b;
-    ft_lstprint(a);
+	if (ac < 2)
+		eexit();
+	if (ac == 2)
+		parameter = ft_split(av[1], ' ');
+	else
+		parameter = ++av;
+	size = param_check(parameter);
 
-    sa(&a);
-    ft_lstprint(a);
+	a = NULL;
+	b = NULL;
+	insert_stack(&a, parameter);
 
-    pb(&a, &b);
-    pb(&a, &b);
-    ft_lstprint(a);
-    ft_lstprint(b);
-
-    sb(&b);
-    ft_lstprint(b);
-
-    ss(&a, &b);
-    ft_lstprint(a);
-    ft_lstprint(b); 
-
-    pa(&a, &b);
-    ft_lstprint(a);
-    ft_lstprint(b); 
-    pb(&a, &b);
-
-    ra(&a);
-    rb(&b);
-    ft_lstprint(a);
-    ft_lstprint(b); 
-
-    rr(&a, &b);
-    ft_lstprint(a);
-    ft_lstprint(b); 
-
-    rra(&a);
-    rrb(&b);
-    ft_lstprint(a);
-    ft_lstprint(b); 
-
-    rrr(&a, &b);
-    ft_lstprint(a);
-    ft_lstprint(b); 
-    return (0);
+	(void)size;
+	(void)*b;
+	ft_lstprint(a);
+	return (0);
 }

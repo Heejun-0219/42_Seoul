@@ -1,49 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   param_utilts.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/14 14:52:24 by heejunki          #+#    #+#             */
+/*   Updated: 2023/01/14 14:56:06 by heejunki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void check_digit(char *val)
+void	check_digit(char *val)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (val[i] == '-')
-        i++;
-    while (val[i])
-    {
-        if(!ft_isdigit(val[i]))
-            Exit();
-        i++;
-    }
+	i = 0;
+	if (val[i] == '-')
+		i++;
+	while (val[i])
+	{
+		if (!ft_isdigit(val[i]))
+			eexit();
+		i++;
+	}
 }
 
-void check_overlap(char **val)
+void	check_overlap(char **val)
 {
-    char    **tmp;
+	char	**tmp;
 
-    tmp = val;
-    while (*(++tmp))
-    {
-        if (!ft_strcmp(*val, *tmp))
-            Exit();
-    }
+	tmp = val;
+	while (*(++tmp))
+	{
+		if (!ft_strcmp(*val, *tmp))
+			eexit();
+	}
 }
 
-int check_double_zero(char *val)
+int	check_double_zero(char *val)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (val[i] == '+' || val[i] == '-')
-        i++;
-    while (val[i] && val[i] == '0')
-        i++;
-    if (val[i] != '\0')
-        return (0);
-    return (1);
+	i = 0;
+	if (val[i] == '+' || val[i] == '-')
+		i++;
+	while (val[i] && val[i] == '0')
+		i++;
+	if (val[i] != '\0')
+		return (0);
+	return (1);
 }
 
-void check_overflow(char *val)
+void	check_overflow(char *val)
 {
-    const long num = overflow_check(val);
-    if (num > INT_MAX || num < INT_MIN)
-        Exit();
+	const long	num = overflow_check(val);
+
+	if (num > INT_MAX || num < INT_MIN)
+		eexit();
 }
