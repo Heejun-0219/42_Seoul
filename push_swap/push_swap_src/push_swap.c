@@ -23,6 +23,7 @@ void ft_lstprint(t_list *val){
         printf("%d ", val->content);
         val = val->next;
     }
+    printf("\n\n");
 }
 
 int main(int ac, char **av)
@@ -50,6 +51,43 @@ int main(int ac, char **av)
     (void)size;
     (void)*b;
     ft_lstprint(a);
-    
+
+    sa(&a);
+    ft_lstprint(a);
+
+    pb(&a, &b);
+    pb(&a, &b);
+    ft_lstprint(a);
+    ft_lstprint(b);
+
+    sb(&b);
+    ft_lstprint(b);
+
+    ss(&a, &b);
+    ft_lstprint(a);
+    ft_lstprint(b); 
+
+    pa(&a, &b);
+    ft_lstprint(a);
+    ft_lstprint(b); 
+    pb(&a, &b);
+
+    ra(&a);
+    rb(&b);
+    ft_lstprint(a);
+    ft_lstprint(b); 
+
+    rr(&a, &b);
+    ft_lstprint(a);
+    ft_lstprint(b); 
+
+    rra(&a);
+    rrb(&b);
+    ft_lstprint(a);
+    ft_lstprint(b); 
+
+    rrr(&a, &b);
+    ft_lstprint(a);
+    ft_lstprint(b); 
     return (0);
 }

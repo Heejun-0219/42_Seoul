@@ -6,10 +6,10 @@ void    pa(t_list **a, t_list **b)
 
     if (!*b)
         return ;
-    tmp = *a;
-    *a = (*a)->next;
-    tmp->next = *b;
-    *b = tmp;
+    tmp = *b;
+    *b = (*b)->next;
+    tmp->next = *a;
+    *a = tmp;
     ft_putstr_fd("pa\n", 1);
 }
 
@@ -19,9 +19,9 @@ void    pb(t_list **a, t_list **b)
 
     if (!*a)
         return ;
-    tmp = *b;
-    *b = (*b)->next;
-    tmp->next = *a;
-    *a = tmp;
+    tmp = *a;
+    *a = (*a)->next;
+    tmp->next = *b;
+    *b = tmp;
     ft_putstr_fd("pb\n", 1); 
 }

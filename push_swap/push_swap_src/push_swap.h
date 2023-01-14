@@ -17,4 +17,15 @@ int		ft_strcmp(const char *str, const char *str2);
 
 int    param_check(char **av);
 
+void    ss(t_list **a, t_list **b);
+void    sb(t_list **b);
+void    sa(t_list **a);
+void    pb(t_list **a, t_list **b);
+void    pa(t_list **a, t_list **b);
+void    rr(t_list **a, t_list **b);
+void    rb(t_list **b);
+void    ra(t_list **a);
+void    rra(t_list **a);
+void    rrb(t_list **b);
+void    rrr(t_list **a, t_list **b);
 #endif

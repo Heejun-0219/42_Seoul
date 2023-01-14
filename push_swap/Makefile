@@ -19,7 +19,11 @@ INC		= 	push_swap_src/push_swap.h
 SRCS	= 	push_swap_src/push_swap.c\
 			push_swap_src/overflow_check.c\
 			push_swap_src/param_check.c\
-			push_swap_src/param_utilts.c
+			push_swap_src/param_utilts.c\
+			push_swap_src/push_operator_s.c\
+			push_swap_src/push_operator_p.c\
+			push_swap_src/push_operator_r.c\
+			push_swap_src/push_operator_rr.c
 
 .PHONY	:	all
 all		:	$(NAME)
