@@ -6,12 +6,12 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:08:30 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/18 23:55:49 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/19 00:49:00 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 void	ft_lst_order(t_list **stack)
 {
 	t_list	*tmp;
@@ -26,7 +26,7 @@ void	ft_lst_order(t_list **stack)
 		tmp = tmp->next;
 		ttmp = ttmp->next;
 	}
-	eexit();
+	exit(0);
 }
 
 void	ft_lst_inverted(t_list **stack)
