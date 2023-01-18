@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:49:01 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/19 00:00:46 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/19 02:18:21 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		param_check(char **av);
 
 void	ft_lst_order(t_list **stack);
 void	ft_lst_inverted(t_list **stack);
+void	three_size_sorting(t_list **a);
+void	five_size_sorting(t_list **a);
 
 void	ss(t_list **a, t_list **b);
 void	sb(t_list **b);
