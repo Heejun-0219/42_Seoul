@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:49:01 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/18 23:37:25 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:45:05 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		main(int ac, char **av);
 
 void	eexit(void);
 long	overflow_check(const char *str);
-int		check_over(long num, const char c, int minus);
 
 void	check_overflow(char *val);
 int		check_double_zero(char *val);
