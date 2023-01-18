@@ -6,7 +6,7 @@
 #    By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/27 06:34:00 by heejunki          #+#    #+#              #
-#    Updated: 2022/11/27 06:34:01 by heejunki         ###   ########.fr        #
+#    Updated: 2023/01/18 23:35:58 by heejunki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS	= 	push_swap_src/push_swap.c\
 			push_swap_src/push_operator_s.c\
 			push_swap_src/push_operator_p.c\
 			push_swap_src/push_operator_r.c\
-			push_swap_src/push_operator_rr.c
+			push_swap_src/push_operator_rr.c\
+			push_swap_src/pre_check_stack.c
 
 .PHONY	:	all
 all		:	$(NAME)

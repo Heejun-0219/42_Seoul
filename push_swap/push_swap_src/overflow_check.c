@@ -6,22 +6,11 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:47:54 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/14 14:56:08 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:00:19 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	check_over(long num, const char c, int minus)
-{
-	if (num > INT_MAX / 10 || (num == INT_MAX / 10 && c - '0' > 7))
-	{
-		if (minus == 1)
-			return (-1);
-		return (0);
-	}
-	return (1);
-}
 
 long	overflow_check(const char *str)
 {

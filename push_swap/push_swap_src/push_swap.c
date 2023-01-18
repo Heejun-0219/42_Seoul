@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:53:19 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/14 14:58:41 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:36:51 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	insert_stack(t_list **stack, char **val)
 		ft_lstadd_back(stack, tmp);
 		i++;
 	}
+	ft_lst_order(stack);
+	ft_lst_inverted(stack);
 }
 
 int	main(int ac, char **av)
@@ -52,6 +54,8 @@ int	main(int ac, char **av)
 	else
 		parameter = ++av;
 	size = param_check(parameter);
+	if (size == 2)
+		return (0);
 	a = NULL;
 	b = NULL;
 	insert_stack(&a, parameter);

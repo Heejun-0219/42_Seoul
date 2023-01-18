@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:37:53 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/14 14:56:05 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:59:59 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	eexit(void)
 {
 	ft_putstr_fd("Error\n", 1);
-	eexit(1);
+	exit(1);
 }
 
 int	ft_strcmp(const char *str, const char *str2)

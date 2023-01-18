@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:49:01 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/14 14:56:13 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:37:25 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	check_digit(char *val);
 int		ft_strcmp(const char *str, const char *str2);
 
 int		param_check(char **av);
+
+void	ft_lst_order(t_list **stack);
+void	ft_lst_inverted(t_list **stack);
 
 void	ss(t_list **a, t_list **b);
 void	sb(t_list **b);
