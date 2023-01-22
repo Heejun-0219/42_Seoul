@@ -19,7 +19,27 @@ int *list_data_copy(t_list *a, int size)
     return (data);
 }
 
+int *return_lis(int *data, int *step, int size, int max)
+{
+    int *lis;
+    int i;
 
+    lis = (int *)malloc(sizeof(int) * max);
+    if (!lis)
+        exit(-1);
+    i = size - 1;
+    while (i >= 0)
+    {
+        if (step[i] == max)
+        {
+            lis[max - 1] = data[i];
+            max--;
+        }
+        i--;
+    }
+    free(step);
+    return (lis);
+}
 
 int *count_lis(int *data, int size, int *max)
 {
@@ -52,15 +72,5 @@ int *count_lis(int *data, int size, int *max)
     while (i < size)
         if (*max < step[i++])
             *max = step[i - 1];
-    printf("LIS: ");
-    i = size - 1;
-    while (i >= 0) {
-        if (step[i] == *max) {
-            printf("%d ", data[i]);
-            (*max)--;
-        }
-        i--;
-    }
-    printf("\n");
-    return 0;
+    return (return_lis(data, step, size, *max));
 }

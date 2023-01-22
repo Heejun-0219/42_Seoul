@@ -42,7 +42,10 @@ void	sorting(t_list **a, t_list **b, int size)
 	data_copy = list_data_copy(*a, size);
 	max = 1;
 	lis = count_lis(data_copy, size, &max);
-	(void)lis;
+	for (int i = 0; i < max; i++){
+		printf("%d ", lis[i]);
+	}
+	printf("\n");
 	(void)b;
 }
 
