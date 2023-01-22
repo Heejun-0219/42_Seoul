@@ -2,7 +2,12 @@
 
 int *return_lis(t_list *a, int *step, int size, int max)
 {
+    int *lis;
 
+    lis = (int *)malloc(sizeof(int) * max);
+    if (!lis)
+        exit(-1);
+    
 }
 
 int *count_lis(t_list *a, int size, int *max)
