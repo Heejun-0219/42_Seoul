@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-#include <stdio.h>
-
 int *list_data_copy(t_list *a, int size)
 {
     int *data;
@@ -41,21 +39,11 @@ int *return_lis(int *data, int *step, int size, int max)
     return (lis);
 }
 
-int *count_lis(int *data, int size, int *max)
+void    find_step(int *data, int *step, int size)
 {
-    int *step;
     int i;
     int j;
 
-    step = (int *)malloc(sizeof(int) * size);
-    if (!step)
-        exit(-1); // 리스트 프리
-    i = 0;
-    while (i < size)
-    {
-        step[i] = 1;
-        i++;
-    }
     i = 1;
     while (i < size)
     {
@@ -68,6 +56,20 @@ int *count_lis(int *data, int size, int *max)
         }
         i++;
     }
+}
+
+int *count_lis(int *data, int size, int *max)
+{
+    int *step;
+    int i;
+
+    step = (int *)malloc(sizeof(int) * size);
+    if (!step)
+        exit(-1);
+    i = 0;
+    while (i < size)
+        step[i++] = 1;
+    find_step(data, step, size);
     i = 0;
     while (i < size)
         if (*max < step[i++])
