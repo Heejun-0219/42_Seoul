@@ -49,8 +49,23 @@ int pos_to_a(t_list **a,int a_size, t_list **b, int b_size)
 {
     int *b_data_distance;
     int *b_data_sector;
+    t_list  *tmp;
+    int i;
 
-
+    b_data_distance = (int *)malloc(sizeof(int) * b_size);
+    b_data_sector = (int *)malloc(sizeof(int) * b_size);
+    if (!b_data_distance || !b_data_sector)
+        exit(-1);
+    i = 0;
+    tmp = b;
+    while (i < b_size)
+    {
+        b_data_distance[i] = find_distance(i, b_size);
+        b_data_sector[i] = find_sector(*a, a_size, tmp->content);
+        tmp = tmp->next;
+        i++;
+    }
+    
 }
 
 void    move_to_a(t_list **a, t_list **b)

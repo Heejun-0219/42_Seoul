@@ -38,8 +38,11 @@ int     *return_lis(int *data, int *step, int size, int max);
 void    find_step(int *data, int *step, int size);
 int     *count_lis(int *data, int size, int *max);
 
-int     pos_to_b(t_list *a, int *lis, int max);
+void    move_to_a(t_list **a, t_list **b);
+int     pos_to_a(t_list **a,int a_size, t_list **b, int b_size);
 void    move_to_b(t_list **a, t_list **b, int *lis, int max);
+int     pos_to_b(t_list *a, int *lis, int max);
+int     find_distance(int index, int size);
 
 void	ss(t_list **a, t_list **b);
 void	sb(t_list **b);
