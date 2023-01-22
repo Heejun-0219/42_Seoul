@@ -36,12 +36,14 @@ void	sorting(t_list **a, t_list **b, int size)
 	}
 	else if (size == 5)
 	{
-		five_size_sorting(a);
+		//five_size_sorting(a);
 		return ;
 	}
 	data_copy = list_data_copy(*a, size);
 	max = 1;
-	lis = count_lis(*a, size, &max);
+	lis = count_lis(data_copy, size, &max);
+	(void)lis;
+	(void)b;
 }
 
 void	insert_stack(t_list **stack, char **val)
@@ -82,7 +84,7 @@ int	main(int ac, char **av)
 	b = NULL;
 	insert_stack(&a, parameter);
 	sorting(&a, &b, size);
-	//ft_lstprint(a);
+	ft_lstprint(a);
 	//delete
 	return (0);
 }

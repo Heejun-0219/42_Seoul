@@ -43,5 +43,5 @@ void	three_size_sorting(t_list **a)
 
 void	five_size_sorting(t_list **a)
 {
-	
+	(void)a;	
 }
