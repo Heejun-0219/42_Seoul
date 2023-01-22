@@ -26,6 +26,7 @@ void	ft_lstprint(t_list *val)
 void	sorting(t_list **a, t_list **b, int size)
 {
 	int	*lis;
+	int *data_copy;
 	int	max;
 
 	if (size == 3)
@@ -38,6 +39,8 @@ void	sorting(t_list **a, t_list **b, int size)
 		five_size_sorting(a);
 		return ;
 	}
+	data_copy = list_data_copy(*a, size);
+	max = 1;
 	lis = count_lis(*a, size, &max);
 }
 

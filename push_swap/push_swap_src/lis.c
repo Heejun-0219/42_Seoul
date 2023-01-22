@@ -1,6 +1,22 @@
 #include "push_swap.h"
 
-int *return_lis(t_list *a, int *step, int size, int max)
+int *list_data_copy(t_list *a, int size)
+{
+    int *data;
+    int i;
+
+    data = (int *)malloc(sizeof(int) * size);
+    if (!data)
+        exit(-1);
+    while (a != NULL)
+    {
+        data[i++] = a->content;
+        a = a->next;
+    }
+    return (data);
+}
+
+int *return_lis(int *data, int *step, int size, int max)
 {
     int *lis;
 
@@ -10,40 +26,25 @@ int *return_lis(t_list *a, int *step, int size, int max)
     
 }
 
-int *count_lis(t_list *a, int size, int *max)
+int *count_lis(int *data, int size, int *max)
 {
     int *step;
     int i;
     int j;
-    t_list *tmp;
-    t_list *start;
 
     step = (int *)malloc(sizeof(int) * size);
     if (!step)
-        exit(-1);
+        exit(-1); // 리스트 프리
     i = 0;
-    while (i < size)
-        step[i++] = 1;
-    i = 0;
-    start = a;
     while (i < size)
     {
-        j = i;
-        tmp = a;
-        while (j < size)
-        {
-            if (a->content < tmp->content && step[i] == step[j])
-            {
-                step[j]++;
-                if (step[j] > *max)
-                    *max = step[j];
-            }
-            tmp = tmp->next;
-            j++;
-        }
-        a = a->next;
+        step[i] = 1;
         i++;
     }
-    a = start;
-    return (return_lis(a, step, size, *max));   
+    i = 1;
+    while (i < size)
+    {
+        j = 0;
+    }
+     
 }
