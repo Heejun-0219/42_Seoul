@@ -34,6 +34,7 @@ void	three_size_sorting(t_list **a);
 void	five_size_sorting(t_list **a);
 
 int *count_lis(t_list *a, int size, int *max);
+int *return_lis(t_list *a, int *step, int size, int max);
 
 void	ss(t_list **a, t_list **b);
 void	sb(t_list **b);
