@@ -50,11 +50,8 @@ int *count_lis(int *data, int size, int *max)
     }
     i = 0;
     while (i < size)
-    {
-        if (*max < step[i])
-            *max = step[i];
-        i++;
-    }
+        if (*max < step[i++])
+            *max = step[i - 1];
     printf("LIS: ");
     i = size - 1;
     while (i >= 0) {
