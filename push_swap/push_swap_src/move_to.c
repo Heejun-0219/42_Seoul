@@ -65,7 +65,7 @@ int pos_to_a(t_list **a,int a_size, t_list **b, int b_size)
         tmp = tmp->next;
         i++;
     }
-    
+    //최적 위치 찾기
 }
 
 void    move_to_a(t_list **a, t_list **b)
