@@ -33,6 +33,8 @@ void	ft_lst_inverted(t_list **stack);
 void	three_size_sorting(t_list **a);
 void	five_size_sorting(t_list **a);
 
+int *count_lis(t_list *a, int size, int *max);
+
 void	ss(t_list **a, t_list **b);
 void	sb(t_list **b);
 void	sa(t_list **a);

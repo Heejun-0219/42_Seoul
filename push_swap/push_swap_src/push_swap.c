@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 #include <stdio.h>
-// printf value
+// printf value 삭제 필수 
 void	ft_lstprint(t_list *val)
 {
 	while (val)
@@ -25,6 +25,9 @@ void	ft_lstprint(t_list *val)
 
 void	sorting(t_list **a, t_list **b, int size)
 {
+	int	*lis;
+	int	max;
+
 	if (size == 3)
 	{
 		three_size_sorting(a);
@@ -35,6 +38,7 @@ void	sorting(t_list **a, t_list **b, int size)
 		five_size_sorting(a);
 		return ;
 	}
+	lis = count_lis(*a, size, &max);
 }
 
 void	insert_stack(t_list **stack, char **val)
