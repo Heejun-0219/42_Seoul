@@ -43,7 +43,7 @@ void	sorting(t_list **a, t_list **b, int size)
 	max = 1;
 	lis = count_lis(data_copy, size, &max);
 	move_to_b(a, b, lis, max);
-	(void)b;
+	move_to_a(a, b);
 }
 
 void	insert_stack(t_list **stack, char **val)
