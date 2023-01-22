@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-int find_pos(t_list *a, int *lis, int max)
+int pos_to_b(t_list *a, int *lis, int max)
 {
     int pos;
     int i;
@@ -35,7 +35,7 @@ void    move_to_b(t_list **a, t_list **b, int *lis, int max)
     a_size = ft_lstsize(*a);
     while (a_size > max)
     {
-        count_mov = find_pos(*a, lis, max);
+        count_mov = pos_to_b(*a, lis, max);
         if (count_mov == -1)
             eexit();
         while (count_mov-- > 0)
@@ -45,12 +45,25 @@ void    move_to_b(t_list **a, t_list **b, int *lis, int max)
     }    
 }
 
+int pos_to_a(t_list **a,int a_size, t_list **b, int b_size)
+{
+    int *b_data_distance;
+    int *b_data_sector;
+
+
+}
+
 void    move_to_a(t_list **a, t_list **b)
 {
+    int count_mov;
+    int a_size;
+    int b_size;
 
+    a_size = ft_lstsize(*a);
+    b_size = ft_lstsize(*b);
     while (*b != NULL)
     {
-        /* code */
+       count_mov = pos_to_a(a, a_size, b, b_size); 
     }
     
 }

@@ -38,7 +38,7 @@ int     *return_lis(int *data, int *step, int size, int max);
 void    find_step(int *data, int *step, int size);
 int     *count_lis(int *data, int size, int *max);
 
-int     find_pos(t_list *a, int *lis, int max);
+int     pos_to_b(t_list *a, int *lis, int max);
 void    move_to_b(t_list **a, t_list **b, int *lis, int max);
 
 void	ss(t_list **a, t_list **b);
