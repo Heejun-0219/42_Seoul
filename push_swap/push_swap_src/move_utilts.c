@@ -1,19 +1,12 @@
 #include "push_swap.h"
 
-int find_distance(int index, int size)
-{
-    if (index > size / 2)
-        index -= size;
-    return (index);
-}
-
 int return_val(int *max_or_min_pos, int a_size, int content)
 {
-	if (cont > max_n_min[0])
-		return (max_n_min[2]);
-	if (cont < max_n_min[1])
-		return (max_n_min[3]);
-	return (size + 1);
+	if (content > max_or_min_pos[0])
+		return (max_or_min_pos[2]);
+	if (content < max_or_min_pos[1])
+		return (max_or_min_pos[3]);
+	return (a_size + 1);
 }
 
 int max_val(int distance, int sector)

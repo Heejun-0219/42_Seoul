@@ -93,6 +93,10 @@ int pos_to_a(t_list **a,int a_size, t_list **b, int b_size)
         i++;
     }
     i = find_best_pos_move(b_data_distance, b_data_sector, b_size);
+    i = ra_rra_move_to_a(b_data_distance[i], b_data_sector[i], a, b);
+    free(b_data_distance);
+    free(b_data_sector);
+    return (i);
 }
 
 void    move_to_a(t_list **a, t_list **b)
