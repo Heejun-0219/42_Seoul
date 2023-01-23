@@ -12,6 +12,32 @@
 
 #include "push_swap.h"
 
+void	rotate_to_start(t_list **a, int a_size)
+{
+	int	i;
+	int start;
+	int	pos;
+	t_list *tmp;
+
+	i = 0;
+	pos = 0;
+	tmp = *a;
+	start = tmp->content;
+	while (i < a_size)
+	{	
+		if (start > tmp->content)
+		{
+			start = tmp->content;
+			pos = i;
+		} 
+		tmp = tmp->next;
+		i++;
+	}
+	tmp = NULL;
+	pos = find_distance(pos, a_size);
+	ra_rra_move_to_a(0, pos, a, &tmp);
+}
+
 void	three_size_sorting(t_list **a)
 {
 	int		i;
@@ -41,7 +67,14 @@ void	three_size_sorting(t_list **a)
 	}
 }
 
-void	five_size_sorting(t_list **a)
+void	five_size_sorting(t_list **a, t_list **b)
 {
-	(void)a;	
+	int	i;
+
+	i = 2;
+	while (i-- > 0)
+		pb(a, b);
+	three_size_sorting(a);
+	move_to_a(a, b);
+	rotate_to_start(a, ft_lstsize(*a));	
 }

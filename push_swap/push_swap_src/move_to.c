@@ -84,7 +84,7 @@ int pos_to_a(t_list **a,int a_size, t_list **b, int b_size)
     if (!b_data_distance || !b_data_sector)
         exit(-1);
     i = 0;
-    tmp = b;
+    tmp = *b;
     while (i < b_size)
     {
         b_data_distance[i] = find_distance(i, b_size);
@@ -110,6 +110,18 @@ void    move_to_a(t_list **a, t_list **b)
     while (*b != NULL)
     {
        count_mov = pos_to_a(a, a_size, b, b_size); 
-    }
-    
+       while (count_mov > 0)
+       {
+            rb(b);
+            count_mov--;
+       }
+       while (count_mov < 0)
+       {
+            rrb(b);
+            count_mov++;
+       }      
+       pa(a, b);
+       a_size++;
+       b_size--;
+    }   
 }

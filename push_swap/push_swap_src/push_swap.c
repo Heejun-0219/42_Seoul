@@ -36,7 +36,7 @@ void	sorting(t_list **a, t_list **b, int size)
 	}
 	else if (size == 5)
 	{
-		//five_size_sorting(a);
+		five_size_sorting(a, b);
 		return ;
 	}
 	data_copy = list_data_copy(*a, size);
@@ -44,6 +44,9 @@ void	sorting(t_list **a, t_list **b, int size)
 	lis = count_lis(data_copy, size, &max);
 	move_to_b(a, b, lis, max);
 	move_to_a(a, b);
+	rotate_to_start(a, size);
+	free(data_copy);
+	free(lis);
 }
 
 void	insert_stack(t_list **stack, char **val)

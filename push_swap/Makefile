@@ -28,8 +28,8 @@ SRCS	= 	push_swap_src/push_swap.c\
 			push_swap_src/default_size_sorting.c\
 			push_swap_src/lis.c\
 			push_swap_src/move_to.c\
-			push_swap_src/move_to_utilts.c\
-			push_swap_src/move_to_utilts_two.c
+			push_swap_src/move_utilts.c\
+			push_swap_src/move_utilts_two.c
 
 .PHONY	:	all
 all		:	$(NAME)

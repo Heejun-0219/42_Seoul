@@ -31,12 +31,13 @@ int		param_check(char **av);
 void	ft_lst_order(t_list **stack);
 void	ft_lst_inverted(t_list **stack);
 void	three_size_sorting(t_list **a);
-void	five_size_sorting(t_list **a);
+void	five_size_sorting(t_list **a, t_list **b);
 
 int     *list_data_copy(t_list *a, int size);
 int     *return_lis(int *data, int *step, int size, int max);
 void    find_step(int *data, int *step, int size);
 int     *count_lis(int *data, int size, int *max);
+void	rotate_to_start(t_list **a, int a_size);
 
 void    move_to_a(t_list **a, t_list **b);
 int     pos_to_a(t_list **a,int a_size, t_list **b, int b_size);
@@ -49,6 +50,7 @@ int     mix_val(int distance, int sector);
 int     find_sector(t_list *a, int a_size, int content);
 int     find_distance(int index, int size);
 int     find_best_pos_move(int *distanc, int *sedctor, int b_size);
+int     ra_rra_move_to_a(int distance, int sector, t_list **a, t_list **b);
 
 void	ss(t_list **a, t_list **b);
 void	sb(t_list **b);
