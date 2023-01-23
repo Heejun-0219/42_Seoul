@@ -49,18 +49,27 @@ int find_best_pos_move(int *distance, int *sector, int b_size)
 {
     int *tmp;
     int i;
+    int pos;
 
     tmp = (int *)malloc(sizeof(int) * b_size);
     if (!tmp)
         exit(-1);
     i = 0;
+    pos = 0;
     while (i < b_size)
     {
         if ((distance[i] > 0 && sector[i] > 0) ||
             (distance[i] < 0 && sector[i] < 0))
             tmp[i] = max_val(distance[i], sector[i]);
+        else
+        {
+            tmp[i] = mix_val(distance[i], sector[i]);
+        }
+        if (tmp[i] < tmp[pos])
+            pos = i;
+        i++;
     }
-    
+    return (pos);    
 }
 
 int pos_to_a(t_list **a,int a_size, t_list **b, int b_size)

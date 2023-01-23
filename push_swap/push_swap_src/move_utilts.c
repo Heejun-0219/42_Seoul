@@ -28,6 +28,13 @@ int max_val(int distance, int sector)
     return (sector);
 }
 
+int mix_val(int distance, int sector)
+{
+    if (distance > 0)
+        return (distance - sector);
+    return (sector - distance);
+}
+
 int max_or_min(t_list *a, int a_size, int content)
 {
     int max_or_min_pos[5];

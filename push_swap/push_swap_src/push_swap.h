@@ -45,10 +45,10 @@ int     pos_to_b(t_list *a, int *lis, int max);
 int     return_val(int *max_or_min_pos, int a_size, int content);
 int     max_or_min(t_list *a, int a_size, int content);
 int     max_val(int distance, int sector);
+int     mix_val(int distance, int sector);
 int     find_sector(t_list *a, int a_size, int content);
 int     find_distance(int index, int size);
 int     find_best_pos_move(int *distanc, int *sedctor, int b_size);
-int     find_best_pos_move(int *distance, int *sector, int b_size);
 
 void	ss(t_list **a, t_list **b);
 void	sb(t_list **b);
