@@ -45,6 +45,24 @@ void    move_to_b(t_list **a, t_list **b, int *lis, int max)
     }    
 }
 
+int find_best_pos_move(int *distance, int *sector, int b_size)
+{
+    int *tmp;
+    int i;
+
+    tmp = (int *)malloc(sizeof(int) * b_size);
+    if (!tmp)
+        exit(-1);
+    i = 0;
+    while (i < b_size)
+    {
+        if ((distance[i] > 0 && sector[i] > 0) ||
+            (distance[i] < 0 && sector[i] < 0))
+            tmp[i] = max_val(distance[i], sector[i]);
+    }
+    
+}
+
 int pos_to_a(t_list **a,int a_size, t_list **b, int b_size)
 {
     int *b_data_distance;
@@ -65,7 +83,7 @@ int pos_to_a(t_list **a,int a_size, t_list **b, int b_size)
         tmp = tmp->next;
         i++;
     }
-    //최적 위치 찾기
+    i = find_best_pos_move(b_data_distance, b_data_sector, b_size);
 }
 
 void    move_to_a(t_list **a, t_list **b)

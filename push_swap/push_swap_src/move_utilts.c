@@ -16,6 +16,18 @@ int return_val(int *max_or_min_pos, int a_size, int content)
 	return (size + 1);
 }
 
+int max_val(int distance, int sector)
+{
+    if (distance < 0)
+    {
+        distance *= -1;
+        sector *= -1;
+    }
+    if (distance > sector)
+        return (distance);
+    return (sector);
+}
+
 int max_or_min(t_list *a, int a_size, int content)
 {
     int max_or_min_pos[5];
