@@ -87,8 +87,5 @@ int	main(int ac, char **av)
 	b = NULL;
 	insert_stack(&a, parameter);
 	sorting(&a, &b, size);
-	ft_lstprint(a);
-	ft_lstprint(b);
-	//delete
 	return (0);
 }
