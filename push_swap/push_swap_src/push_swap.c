@@ -23,6 +23,18 @@ void	ft_lstprint(t_list *val)
 	printf("\n\n");
 }
 
+void list_free(t_list *stack)
+{
+	t_list	*tmp;
+
+	while (stack)
+	{
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
+	}
+}	
+
 void	sorting(t_list **a, t_list **b, int size)
 {
 	int	*lis;
@@ -95,7 +107,10 @@ int	main(int ac, char **av)
 	b = NULL;
 	insert_stack(&a, parameter);
 	sorting(&a, &b, size);
+	ft_lstprint(a);
 	if (ac == 2)
 		free(parameter);
+	list_free(a);
+	list_free(b);
 	return (0);
 }
