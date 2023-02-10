@@ -46,7 +46,6 @@ void	sorting(t_list **a, t_list **b, int size)
 	move_to_a(a, b);
 	rotate_to_start(a, size);
 	ft_lstprint(*a);
-	ft_lstprint(*b);
 	free(data_copy);
 	free(lis);
 }
@@ -96,5 +95,7 @@ int	main(int ac, char **av)
 	b = NULL;
 	insert_stack(&a, parameter);
 	sorting(&a, &b, size);
+	if (ac == 2)
+		free(parameter);
 	return (0);
 }
