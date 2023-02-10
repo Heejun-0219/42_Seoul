@@ -45,6 +45,8 @@ void	sorting(t_list **a, t_list **b, int size)
 	move_to_b(a, b, lis, max);
 	move_to_a(a, b);
 	rotate_to_start(a, size);
+	ft_lstprint(*a);
+	ft_lstprint(*b);
 	free(data_copy);
 	free(lis);
 }
@@ -67,6 +69,12 @@ void	insert_stack(t_list **stack, char **val)
 	tmp = NULL;
 }
 
+
+void	temp()
+{
+	system("leaks push_swap");
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*a;
@@ -74,6 +82,7 @@ int	main(int ac, char **av)
 	int		size;
 	char	**parameter;
 
+	atexit(temp);
 	if (ac < 2)
 		eexit();
 	if (ac == 2)
