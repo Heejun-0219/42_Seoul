@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 01:22:24 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/19 01:33:05 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/11 09:35:01 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	rotate_to_start(t_list **a, int a_size)
 {
-	int	i;
-	int start;
-	int	pos;
-	t_list *tmp;
+	int		i;
+	int		start;
+	int		pos;
+	t_list	*tmp;
 
 	i = 0;
 	pos = 0;
@@ -29,7 +29,7 @@ void	rotate_to_start(t_list **a, int a_size)
 		{
 			start = tmp->content;
 			pos = i;
-		} 
+		}
 		tmp = tmp->next;
 		i++;
 	}
@@ -76,5 +76,5 @@ void	five_size_sorting(t_list **a, t_list **b)
 		pb(a, b);
 	three_size_sorting(a);
 	move_to_a(a, b);
-	rotate_to_start(a, ft_lstsize(*a));	
+	rotate_to_start(a, ft_lstsize(*a));
 }

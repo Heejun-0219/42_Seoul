@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:53:19 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/19 01:22:05 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/11 09:42:46 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_lstprint(t_list *val)
 	printf("\n\n");
 }
 
-void list_free(t_list *stack)
+void	list_free(t_list *stack)
 {
 	t_list	*tmp;
 
@@ -38,7 +38,7 @@ void list_free(t_list *stack)
 void	sorting(t_list **a, t_list **b, int size)
 {
 	int	*lis;
-	int *data_copy;
+	int	*data_copy;
 	int	max;
 
 	if (size == 3)
@@ -80,8 +80,7 @@ void	insert_stack(t_list **stack, char **val)
 	tmp = NULL;
 }
 
-
-void	temp()
+void	temp(void)
 {
 	system("leaks push_swap");
 }
