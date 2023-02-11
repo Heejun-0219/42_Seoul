@@ -31,7 +31,7 @@ void	list_free(t_list *stack)
 	{
 		tmp = stack;
 		stack = stack->next;
-		free(&tmp);
+		free(tmp);
 	}
 }	
 
