@@ -6,20 +6,20 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 09:39:17 by heejunki          #+#    #+#             */
-/*   Updated: 2023/02/11 09:52:43 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/11 10:04:19 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int find_distance(int index, int size)
+int	find_distance(int index, int size)
 {
 	if (index > size / 2)
 		index -= size;
 	return (index);
 }
 
-int ra_rra_move_to_a(int distance, int sector, t_list **a, t_list **b)
+int	ra_rra_move_to_a(int distance, int sector, t_list **a, t_list **b)
 {
 	while (distance > 0 && sector > 0)
 	{
@@ -43,5 +43,5 @@ int ra_rra_move_to_a(int distance, int sector, t_list **a, t_list **b)
 		rra(a);
 		sector++;
 	}
-	return (distance);    
+	return (distance);
 }

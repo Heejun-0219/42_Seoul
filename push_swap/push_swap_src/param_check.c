@@ -6,12 +6,12 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:37:53 by heejunki          #+#    #+#             */
-/*   Updated: 2023/01/19 02:58:24 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/11 10:05:34 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// 리스트 삭제?? 함수로 만들기 ft_lst~
+
 void	eexit(void)
 {
 	ft_putstr_fd("Error\n", 2);
