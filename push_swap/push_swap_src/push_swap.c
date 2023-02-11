@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:53:19 by heejunki          #+#    #+#             */
-/*   Updated: 2023/02/11 09:42:46 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/11 09:47:26 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	list_free(t_list *stack)
 	{
 		tmp = stack;
 		stack = stack->next;
-		free(tmp);
+		free(&tmp);
 	}
 }	
 
