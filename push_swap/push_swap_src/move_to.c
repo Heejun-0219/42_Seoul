@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 09:36:27 by heejunki          #+#    #+#             */
-/*   Updated: 2023/02/11 09:52:35 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/11 10:07:59 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	find_best_pos_move(int *distance, int *sector, int b_size)
 	pos = 0;
 	while (i < b_size)
 	{
-		if ((distance[i] > 0 && sector[i] > 0) ||
-			(distance[i] < 0 && sector[i] < 0))
+		if ((distance[i] > 0 && sector[i] > 0)
+			|| (distance[i] < 0 && sector[i] < 0))
 			tmp[i] = max_val(distance[i], sector[i]);
 		else
 		{
@@ -120,7 +120,7 @@ void	move_to_a(t_list **a, t_list **b)
 	b_size = ft_lstsize(*b);
 	while (*b != NULL)
 	{
-		count_mov = pos_to_a(a, a_size, b, b_size); 
+		count_mov = pos_to_a(a, a_size, b, b_size);
 		while (count_mov > 0)
 		{
 			rb(b);
