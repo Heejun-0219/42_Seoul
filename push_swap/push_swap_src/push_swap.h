@@ -16,6 +16,7 @@
 
 void	insert_stack(t_list **stack, char **val);
 int		main(int ac, char **av);
+void	list_free(t_list **stack);
 
 void	eexit(void);
 long	overflow_check(const char *str);

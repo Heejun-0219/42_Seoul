@@ -23,17 +23,17 @@ void	ft_lstprint(t_list *val)
 	printf("\n\n");
 }
 
-void	list_free(t_list *stack)
+void	list_free(t_list **stack)
 {
 	t_list	*tmp;
 
-	while (stack)
+	while (*stack)
 	{
-		tmp = stack;
-		stack = stack->next;
+		tmp = *stack;
+		*stack = (*stack)->next;
 		free(tmp);
 	}
-}	
+}
 
 void	sorting(t_list **a, t_list **b, int size)
 {
@@ -58,8 +58,8 @@ void	sorting(t_list **a, t_list **b, int size)
 	move_to_a(a, b);
 	rotate_to_start(a, size);
 	ft_lstprint(*a);
-	free(data_copy);
 	free(lis);
+	free(data_copy);
 }
 
 void	insert_stack(t_list **stack, char **val)
@@ -101,8 +101,8 @@ int	main(int ac, char **av)
 	insert_stack(&a, parameter);
 	sorting(&a, &b, size);
 	if (ac == 2)
-		free(parameter);
-	list_free(a);
-	list_free(b);
+		null_free(parameter);
+	list_free(&a);
+	list_free(&b);
 	return (0);
 }

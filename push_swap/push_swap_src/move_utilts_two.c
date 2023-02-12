@@ -24,14 +24,14 @@ int	ra_rra_move_to_a(int distance, int sector, t_list **a, t_list **b)
 	while (distance > 0 && sector > 0)
 	{
 		rr(a, b);
-		a--;
-		b--;
+		distance--;
+		sector--;
 	}
 	while (distance < 0 && sector < 0)
 	{
 		rrr(a, b);
-		a++;
-		b++;
+		distance++;
+		sector++;
 	}
 	while (sector > 0)
 	{

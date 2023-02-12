@@ -38,6 +38,20 @@ int	pos_to_b(t_list *a, int *lis, int max)
 	return (-1);
 }
 
+int	mid_val(int size, t_list *b)
+{
+	int		i;
+
+	if (size < 2)
+		return (INT_MAX);
+	i = 0;
+	while (i < size / 2 - 1)
+	{
+		b = b->next;
+	}
+	return (b->content);
+}
+
 void	move_to_b(t_list **a, t_list **b, int *lis, int max)
 {
 	int	a_size;
@@ -48,7 +62,7 @@ void	move_to_b(t_list **a, t_list **b, int *lis, int max)
 	{
 		count_mov = pos_to_b(*a, lis, max);
 		if (count_mov == -1)
-			eexit();
+			return ;
 		while (count_mov-- > 0)
 			ra(a);
 		pb(a, b);
@@ -64,22 +78,24 @@ int	find_best_pos_move(int *distance, int *sector, int b_size)
 
 	tmp = (int *)malloc(sizeof(int) * b_size);
 	if (!tmp)
-		exit(-1);
+		return (-1);
 	i = 0;
 	pos = 0;
 	while (i < b_size)
 	{
-		if ((distance[i] > 0 && sector[i] > 0)
+		/*if ((distance[i] > 0 && sector[i] > 0)
 			|| (distance[i] < 0 && sector[i] < 0))
 			tmp[i] = max_val(distance[i], sector[i]);
 		else
 		{
 			tmp[i] = mix_val(distance[i], sector[i]);
-		}
+		}*/
+		tmp[i] = max_val(distance[i], sector[i]);
 		if (tmp[i] < tmp[pos])
 			pos = i;
 		i++;
 	}
+	free(tmp);
 	return (pos);
 }
 
@@ -93,7 +109,11 @@ int	pos_to_a(t_list **a, int a_size, t_list **b, int b_size)
 	b_data_distance = (int *)malloc(sizeof(int) * b_size);
 	b_data_sector = (int *)malloc(sizeof(int) * b_size);
 	if (!b_data_distance || !b_data_sector)
+	{
+		list_free(a);
+		list_free(b);
 		exit(-1);
+	}
 	i = 0;
 	tmp = *b;
 	while (i < b_size)
@@ -104,6 +124,11 @@ int	pos_to_a(t_list **a, int a_size, t_list **b, int b_size)
 		i++;
 	}
 	i = find_best_pos_move(b_data_distance, b_data_sector, b_size);
+	if (i == -1)
+	{
+		list_free(a);
+		list_free(b);
+	}
 	i = ra_rra_move_to_a(b_data_distance[i], b_data_sector[i], a, b);
 	free(b_data_distance);
 	free(b_data_sector);

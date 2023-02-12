@@ -28,7 +28,7 @@ int	max_val(int distance, int sector)
 		distance *= -1;
 		sector *= -1;
 	}
-	if (distance > sector)
+	if (distance < sector)
 		return (distance);
 	return (sector);
 }

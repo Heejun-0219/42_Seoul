@@ -45,6 +45,8 @@ void	three_size_sorting(t_list **a)
 	int		x;
 	t_list	*tmp;
 
+	int ssize = ft_lstsize(*a);
+	(void)ssize;
 	tmp = NULL;
 	i = 0;
 	j = 0;
