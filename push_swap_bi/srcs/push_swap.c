@@ -3,20 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/04 12:10:47 by jaewpark         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:06:53 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
-void	temp()
-{
-	system("leaks push_swap");
-}
 int	main(int argc, char **argv)
 {
 	t_pushswap	*t;

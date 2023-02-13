@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lis.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:15:57 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/02 14:59:44 by jaewpark         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:20:36 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	get_index(t_pushswap *t, int *array)
 				error(2);
 		}
 	}
-	t->mid = arr[(t->a->size - 1) / 2]; 
+	t->mid = arr[(t->a->size - 1) / 2];
 }
 
 int	ft_max(int a, int b)

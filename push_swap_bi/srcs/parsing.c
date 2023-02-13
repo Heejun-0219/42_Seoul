@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/04/04 16:37:03 by jaewpark         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:26:06 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	parsing_arg(char **argv, int argc, t_pushswap *t)
 		get_index(t, array);
 		free(array);
 	}
-	if (!t->a->size || !check_sort(t) || is_sort(t, t->a->size) == 1)
+	if (!t->a->size || !check_sort(t) || is_sort(t, t->a->size))
 		exit(0);
 	return (1);
 }
