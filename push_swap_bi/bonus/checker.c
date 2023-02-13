@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:08:38 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 13:03:06 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:25:08 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,19 @@ int	checker(t_pushswap *t, int size)
 	return (is_sort(t, size));
 }
 
-void tmp()
+void	free_all(t_pushswap *t)
 {
-	system("leaks checker");
+	reset_list(t->a);
+	reset_list(t->b);
+	free(t);
 }
+
 int	main(int argc, char *argv[])
 {
 	t_pushswap	*t;
 	int			size;
 	int			result;
 
-	atexit(tmp);
 	if (argc < 2)
 		exit(1);
 	t = (t_pushswap *)malloc(sizeof(t_pushswap));
