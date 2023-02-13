@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaewpark <jaewpark@student.42.fr>          +#+  +:+       +#+         #
+#    By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/01 19:11:09 by jaewpark          #+#    #+#              #
-#    Updated: 2022/04/02 14:21:51 by jaewpark         ###   ########.fr        #
+#    Updated: 2023/02/13 12:05:35 by heejunki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
