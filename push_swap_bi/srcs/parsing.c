@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:26:06 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:44:21 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static int	ft_split(char *argv, t_pushswap *t)
 			add_node(t->a, data);
 		}
 		else if (flag == 0)
-			error(2);
+			remove_stack(2, t);
 		while (*argv != 0 && !is_space(*argv))
 			++argv;
 	}
@@ -104,7 +104,7 @@ int	parsing_arg(char **argv, int argc, t_pushswap *t)
 	while (++i < argc)
 	{
 		if (*argv[i] == '\0' || !ft_split(argv[i], t))
-			error(2);
+			remove_stack(2, t);
 	}
 	if (t->a->size)
 	{

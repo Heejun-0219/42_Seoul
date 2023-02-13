@@ -6,14 +6,13 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:06:52 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:05:13 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:34:16 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <unistd.h>
 # include <stdlib.h>
 # include "push_swap.h"
 # define BUFFER_SIZE 10

@@ -6,11 +6,11 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:07:31 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:05:25 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:43:46 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked.h"
+#include "push_swap.h"
 #include <stdio.h>
 
 void	push_node(t_list *ls, t_node *newNode)

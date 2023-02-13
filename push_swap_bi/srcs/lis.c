@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:15:57 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:20:36 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:43:05 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	get_index(t_pushswap *t, int *array)
 				arr[v.a] = v.c;
 			}
 			if (arr[v.b] == arr[v.a])
-				error(2);
+				remove_stack(2, t);
 		}
 	}
 	t->mid = arr[(t->a->size - 1) / 2];
@@ -39,7 +39,7 @@ void	get_index(t_pushswap *t, int *array)
 
 int	ft_max(int a, int b)
 {
-	if (a >= b)
+	if (a > b)
 		return (a);
 	return (b);
 }
@@ -52,7 +52,7 @@ int	*get_array(t_pushswap *t)
 
 	array = (int *)malloc(sizeof(int) * (t->a->size));
 	if (!array)
-		error(0);
+		remove_stack(0, t);
 	i = 0;
 	cur = t->a->head;
 	while (cur != t->a->tail)
@@ -96,7 +96,7 @@ int	get_lis(t_pushswap *t)
 
 	lis = (int *)malloc(sizeof(int) * (t->a->size));
 	if (!lis)
-		error(0);
+		remove_stack(0, t);
 	array = get_array(t);
 	i = t->a->size - 1;
 	lis[i] = 1;

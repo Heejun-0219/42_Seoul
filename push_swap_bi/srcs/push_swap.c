@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:06:53 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:44:40 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	main(int argc, char **argv)
 	t = (t_pushswap *)malloc(sizeof(t_pushswap));
 	init_pushswap(t);
 	if (!t || !t->a || !t->b)
-		error(0);
+		remove_stack(0, t);
 	if (!parsing_arg(argv, argc, t))
-		error(1);
+		remove_stack(1, t);
 	if (t->a->size <= 5)
 		short_a(t);
 	if (t->a->size > 5)

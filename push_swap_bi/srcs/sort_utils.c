@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:26:10 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:05:31 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:44:53 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ int	**database(t_pushswap *t)
 	t->db_height = t->b->size;
 	array = (int **)malloc(sizeof(int *) * t->b->size);
 	if (!array)
-		error(0);
+		remove_stack(0, t);
 	i = -1;
 	while (++i < t->b->size)
 	{
 		array[i] = (int *)malloc(sizeof(int) * 7);
 		if (!array[i])
-			error(0);
+			remove_stack(0, t);
 	}
 	return (array);
 }
