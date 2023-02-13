@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 09:12:06 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:05:12 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:11:09 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_atoi(const char *str)
 		si = -1;
 	if (*str == '-' || *str == '+')
 		str++;
-	if (*str == 0)
+	if (*str == 0 || !str)
 		error(2);
 	while (*str != 0)
 	{
@@ -88,7 +88,7 @@ static int	ft_split(char *argv, t_pushswap *t)
 			add_node(t->a, data);
 		}
 		else if (flag == 0)
-			error(2);
+			remove_stack(2, t);
 		while (*argv != 0 && !is_space(*argv))
 			++argv;
 	}
@@ -97,14 +97,14 @@ static int	ft_split(char *argv, t_pushswap *t)
 
 int	parsing_arg(char **argv, int argc, t_pushswap *t)
 {
-	int	*array;
 	int	i;
+	int	*array;
 
 	i = 0;
 	while (++i < argc)
 	{
-		if (!ft_split(argv[i], t) || *argv[i] == '\0')
-			error(2);
+		if (*argv[i] == '\0' || !ft_split(argv[i], t))
+			remove_stack(2, t);
 	}
 	if (t->a->size)
 	{

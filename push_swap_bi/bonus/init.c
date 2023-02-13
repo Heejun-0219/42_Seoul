@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:51:40 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:05:09 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:41:06 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,20 @@ int	is_sort(t_pushswap *t, int size)
 	return (1);
 }
 
-void	error(int code)
+void	remove_stack(int sign, t_pushswap *t)
 {
-	if (code == 0)
+	if (t->a->size)
+		reset_list(t->a);
+	if (t->b->size)
+		reset_list(t->b);
+	error(sign);
+}
+
+void	error(int sign)
+{
+	if (sign == 0)
 		write(1, "There was a problem while malloc creating\n", 42);
-	else if (code == 1)
+	else if (sign == 1)
 		write(1, "There was a problem while parsing\n", 35);
 	write(1, "Error\n", 6);
 	exit(1);

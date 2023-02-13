@@ -6,11 +6,11 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:07:31 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:05:10 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:43:46 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked.h"
+#include "push_swap.h"
 #include <stdio.h>
 
 void	push_node(t_list *ls, t_node *newNode)
@@ -70,6 +70,8 @@ void	add_node(t_list *ls, int data)
 		ls->tail = tmp;
 	}
 	ls->size++;
+	tmp = NULL;
+	free(tmp);
 }
 
 t_node	*del_node(t_list *ls)
@@ -94,16 +96,16 @@ void	reset_list(t_list *ls)
 	t_node	*tmp;
 
 	cur = ls->head;
-	while (cur != ls->tail)
+	while (ls->size)
 	{
 		tmp = cur->next;
 		free(cur);
 		cur = tmp;
 		ls->size--;
 	}
-	free(cur);
 	ls->size--;
 	ls->head = NULL;
 	ls->tail = NULL;
 	ls->size = 0;
+	free(ls);
 }

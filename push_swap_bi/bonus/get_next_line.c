@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 19:08:36 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:05:08 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:04:07 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ int	find_nl(char *str)
 
 void	free_all(t_pushswap *t)
 {
+	if (t->a->size)
+		reset_list(t->a);
+	if (t->b->size)
+		reset_list(t->b);
 	free(t);
-	exit(0);
 }
 
 int	one_line(char **str, char **line, int idx)
