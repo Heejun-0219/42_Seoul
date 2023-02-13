@@ -6,11 +6,25 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:57:45 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 13:20:38 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:12:26 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+
+void	list_print(t_list *ls)
+{
+	t_node	*cur;
+
+	cur = ls->head;
+	while (ls->size)
+	{
+		printf("%d ",cur->data);
+		cur = cur->next;
+		ls->size--;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -32,6 +46,7 @@ int	main(int argc, char **argv)
 		a_to_b(t);
 		b_to_a(t);
 	}
+	list_print(t->a);
 	reset_list(t->a);
 	reset_list(t->b);
 	free(t);
