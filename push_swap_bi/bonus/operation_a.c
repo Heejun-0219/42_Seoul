@@ -98,26 +98,24 @@ int	swap(t_pushswap *t, char alpha)
 
 void	call_utils(t_pushswap *t, char *alpha)
 {
-	if (ft_strcmp(alpha, "sa") == 0)
+	if (ft_strcmp(alpha, "sa") == 0 && t->a->size)
 		swap(t, 'a');
-	if (ft_strcmp(alpha, "sb") == 0)
+	if (ft_strcmp(alpha, "sb") == 0 && t->b->size)
 		swap(t, 'b');
-	if (ft_strcmp(alpha, "ra") == 0)
+	if (ft_strcmp(alpha, "ra") == 0 && t->a->size)
 		rotate(t, 'a');
-	if (ft_strcmp(alpha, "rb") == 0)
+	if (ft_strcmp(alpha, "rb") == 0 && t->b->size)
 		rotate(t, 'b');
-	if (ft_strcmp(alpha, "rra") == 0)
+	if (ft_strcmp(alpha, "rra") == 0 && t->a->size)
 		reverse_rotate(t, 'a');
-	if (ft_strcmp(alpha, "rrb") == 0)
+	if (ft_strcmp(alpha, "rrb") == 0 && t->b->size)
 		reverse_rotate(t, 'b');
-	if (ft_strcmp(alpha, "ss") == 0)
-		ss(t);
-	if (ft_strcmp(alpha, "rr") == 0)
+	if (ft_strcmp(alpha, "rr") == 0 && t->a->size&& t->b->size)
 		rr(t);
-	if (ft_strcmp(alpha, "rrr") == 0)
+	if (ft_strcmp(alpha, "rrr") == 0 && t->a->size && t->b->size)
 		rrr(t);
-	if (ft_strcmp(alpha, "pa") == 0)
+	if (ft_strcmp(alpha, "pa") == 0 && t->b->size)
 		push(t, 'a');
-	if (ft_strcmp(alpha, "pb") == 0)
+	if (ft_strcmp(alpha, "pb") == 0 && t->a->size)
 		push(t, 'b');
 }
