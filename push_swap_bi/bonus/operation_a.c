@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 14:08:21 by jaewpark          #+#    #+#             */
-/*   Updated: 2023/02/13 12:05:10 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:10:51 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	call_utils(t_pushswap *t, char *alpha)
 		reverse_rotate(t, 'a');
 	if (ft_strcmp(alpha, "rrb") == 0 && t->b->size)
 		reverse_rotate(t, 'b');
-	if (ft_strcmp(alpha, "rr") == 0 && t->a->size&& t->b->size)
+	if (ft_strcmp(alpha, "rr") == 0 && t->a->size && t->b->size)
 		rr(t);
 	if (ft_strcmp(alpha, "rrr") == 0 && t->a->size && t->b->size)
 		rrr(t);
