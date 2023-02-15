@@ -13,19 +13,6 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void	list_print(t_list *ls)
-{
-	t_node	*cur;
-
-	cur = ls->head;
-	while (ls->size)
-	{
-		printf("%d ",cur->data);
-		cur = cur->next;
-		ls->size--;
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_pushswap	*t;
@@ -46,7 +33,6 @@ int	main(int argc, char **argv)
 		a_to_b(t);
 		b_to_a(t);
 	}
-	list_print(t->a);
 	reset_list(t->a);
 	reset_list(t->b);
 	free(t);
