@@ -68,7 +68,7 @@ static int	keyboard_w_s(t_complete *game, int movement)
 		game->map[j - 1][i] = '0';
 	}
 	printf("Steps Taken: %i\n", game->counter);
-	printf("Collectables Left: %i\n", game->collectables);
+	printf("Collectables Remaining: %i\n", game->collectables);
 	return (1);
 }
 

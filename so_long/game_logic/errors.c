@@ -73,8 +73,11 @@ static void	count_checker(t_complete *game, int height, int width)
 	}
 	if (game->map[height][width] == 'C')
 			game->columncount++;
-	if (game->map[height][width] == 'P')
+	if (game->map[height][width] == 'P'){
+			game->x_axis = width;
+			game->y_axis = height;
 			game->playercount++;
+	}
 	if (game->map[height][width] == 'E')
 			game->exitcount++;
 }
@@ -159,8 +162,6 @@ void if_road(t_complete *game){
 	init_check(game, &check);
 	dfs(game, &check, game->y_axis, game->x_axis);
 	if (!check.vaild || check.columncount > 0){
-		// current player position
-		printf("\n\n%d %d %d %d %d %d %d \n\n", check.count,check.x, check.y, check.columncount, check.vaild, game->x_axis, game->y_axis);
 		printf("\nError\n");
 		printf("No vaild Road in map.\n");
 		exit_point(game);
@@ -172,6 +173,4 @@ void	check_errors(t_complete *game)
 	if_walls(game);
 	character_valid(game);
 	if_road(game);
-	// Remaining errors Left
-
 }
