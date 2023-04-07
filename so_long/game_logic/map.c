@@ -24,7 +24,7 @@ static int	width_of_map(char *string)
 	return (width);
 }
 
-static int	add_line(t_complete *game, char *line)
+static int	add_line(t_game *game, char *line)
 {
 	char	**temporary;
 	int		i;
@@ -47,7 +47,7 @@ static int	add_line(t_complete *game, char *line)
 	return (1);
 }
 
-int	map_reading(t_complete *game, char **argv)
+int	read_map(t_game *game, char **argv)
 {
 	char	*readmap;
 

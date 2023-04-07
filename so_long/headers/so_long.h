@@ -29,7 +29,7 @@ typedef struct t_start
 	int		heightmap;
 	int		widthmap;
 	int		playercount;
-	int		columncount;
+	int		itemcount;
 	int		exitcount;
 	int		x_axis;
 	int		y_axis;
@@ -46,23 +46,27 @@ typedef struct t_start
 	void	*mlxpointer;
 	void	*winpointer;
 
-}	t_complete;
+}	t_game;
 
 typedef struct s_check
 {
 	int	y;
 	int	x;
-	int	columncount;
+	int	itemcount;
 	int	**visited;
 	int vaild;
 	int count; // dfs
 }	t_check;
 
-int		exit_point(t_complete *game);
-int		map_reading(t_complete *game, char **argv);
-int		controls_working(int command, t_complete *game);
-void	adding_in_graphics(t_complete *game);
-void	place_images_in_game(t_complete *game);
-void	check_errors(t_complete *game);
+int		freegame(t_game *game);
+int		read_map(t_game *game, char **argv);
+int		player_control(int command, t_game *game);
+void	map_setting(t_game *game);
+void	input_images(t_game *game);
+void	check_errors(t_game *game);
+void	if_road(t_game *game);
+void	dfs(t_game *game, t_check *check, int y, int x);
+void	init_check(t_game *game, t_check *check);
+int		**visited(t_game *game);
 
 #endif

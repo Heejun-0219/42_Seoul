@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	horizontalwall(t_complete *game)
+static int	horizontalwall(t_game *game)
 {
 	int	width;
 	int	height;
@@ -28,7 +28,7 @@ static int	horizontalwall(t_complete *game)
 	return (1);
 }
 
-static int	verticalwall(t_complete *game)
+static int	verticalwall(t_game *game)
 {
 	int	height;
 	int	width;
@@ -44,7 +44,7 @@ static int	verticalwall(t_complete *game)
 	return (1);
 }
 
-static void	if_walls(t_complete *game)
+static void	if_walls(t_game *game)
 {
 	int	verticalwalls;
 	int	horizontalwalls;
@@ -55,11 +55,11 @@ static void	if_walls(t_complete *game)
 	if (!verticalwalls || !horizontalwalls)
 	{
 		printf("\nThis map is missing the walls\n");
-		exit_point(game);
+		freegame(game);
 	}
 }
 
-static void	count_checker(t_complete *game, int height, int width)
+static void	count_checker(t_game *game, int height, int width)
 {
 	if (game->map[height][width] != '1' &&
 		game->map[height][width] != '0' &&
@@ -69,10 +69,10 @@ static void	count_checker(t_complete *game, int height, int width)
 		game->map[height][width] != '\n')
 	{
 		printf("\nError Here!%c\n", game->map[height][width]);
-		exit_point(game);
+		freegame(game);
 	}
 	if (game->map[height][width] == 'C')
-			game->columncount++;
+			game->itemcount++;
 	if (game->map[height][width] == 'P'){
 			game->x_axis = width;
 			game->y_axis = height;
@@ -82,7 +82,7 @@ static void	count_checker(t_complete *game, int height, int width)
 			game->exitcount++;
 }
 
-void	character_valid(t_complete *game)
+void	character_valid(t_game *game)
 {
 	int	height;
 	int	width;
@@ -98,16 +98,16 @@ void	character_valid(t_complete *game)
 		}
 		height++;
 	}
-	if (!(game->playercount == 1 && game->columncount >= 1
+	if (!(game->playercount == 1 && game->itemcount >= 1
 			&& game->exitcount == 1))
 	{
 		printf("\nError\nSomething is wrong!\n");
 		printf("either player, exit or collectable issue\n");
-		exit_point(game);
+		freegame(game);
 	}
 }
 
-int **visited(t_complete *game){
+int **visited(t_game *game){
 	int **visited;
 	int i;
 	int j;
@@ -126,16 +126,16 @@ int **visited(t_complete *game){
 	return (visited);
 }
 
-void init_check(t_complete *game, t_check *check){
+void init_check(t_game *game, t_check *check){
 	check->visited = visited(game);
 	check->y = game->heightmap;
 	check->x = game->widthmap;
-	check->columncount = game->columncount;
+	check->itemcount = game->itemcount;
 	check->vaild = 0;
 	check->count = 0;
 }
 
-void dfs(t_complete *game, t_check *check, int y, int x){
+void dfs(t_game *game, t_check *check, int y, int x){
 	check->count++;
 	if (y < 0 || y >= check->y || x < 0 || x >= check->x)
 		return ;
@@ -148,7 +148,7 @@ void dfs(t_complete *game, t_check *check, int y, int x){
 		return ;
 	}
 	if (game->map[y][x] == 'C')
-		check->columncount--;
+		check->itemcount--;
 	check->visited[y][x] = '1';
 	dfs(game, check, y + 1, x);
 	dfs(game, check, y - 1, x);
@@ -156,19 +156,19 @@ void dfs(t_complete *game, t_check *check, int y, int x){
 	dfs(game, check, y, x - 1);
 }
 
-void if_road(t_complete *game){
+void if_road(t_game *game){
 	t_check check;
 
 	init_check(game, &check);
 	dfs(game, &check, game->y_axis, game->x_axis);
-	if (!check.vaild || check.columncount > 0){
+	if (!check.vaild || check.itemcount > 0){
 		printf("\nError\n");
 		printf("No vaild Road in map.\n");
-		exit_point(game);
+		freegame(game);
 	}
 }
 
-void	check_errors(t_complete *game)
+void	check_errors(t_game *game)
 {
 	if_walls(game);
 	character_valid(game);

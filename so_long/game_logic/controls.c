@@ -12,14 +12,14 @@
 
 #include "so_long.h"
 
-static int	right_move(t_complete *game, int i, int j)
+static int	right_move(t_game *game, int i, int j)
 {
 	if (game->map[j][i] == 'E')
 	{
 		if (game->collectables != 0)
 			return (0);
 		printf("\nYou Have Won, Congrats!\n");
-		exit_point(game);
+		freegame(game);
 	}
 	if (game->map[j][i] == '0')
 	{
@@ -39,7 +39,7 @@ static int	right_move(t_complete *game, int i, int j)
 	return (1);
 }
 
-static int	keyboard_w_s(t_complete *game, int movement)
+static int	keyboard_w_s(t_game *game, int movement)
 {
 	int	i;
 	int	j;
@@ -72,7 +72,7 @@ static int	keyboard_w_s(t_complete *game, int movement)
 	return (1);
 }
 
-static int	keyboard_a_d(t_complete *game, int movement)
+static int	keyboard_a_d(t_game *game, int movement)
 {
 	int	i;
 	int	j;
@@ -105,12 +105,12 @@ static int	keyboard_a_d(t_complete *game, int movement)
 	return (1);
 }
 
-int	controls_working(int command, t_complete *game)
+int	player_control(int command, t_game *game)
 {
 	int	works;
 
 	if (command == 53)
-		exit_point(game);
+		freegame(game);
 	if (command == 13 || command == 126)
 		works = keyboard_w_s(game, command);
 	if (command == 1 || command == 125)
@@ -120,6 +120,6 @@ int	controls_working(int command, t_complete *game)
 	if (command == 2 || command == 124)
 		works = keyboard_a_d(game, command);
 	if (works)
-		adding_in_graphics(game);
+		map_setting(game);
 	return (1);
 }

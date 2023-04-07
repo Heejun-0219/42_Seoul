@@ -1,22 +1,37 @@
-NAME := so_long
+NAME 	= so_long
 
-CC := gcc
+CC 		= cc
 
-CFLAGS := -Wall -Wextra -Werror -Iheaders/
+CFLAGS 	= -Wall -Wextra -Werror -Iheaders/
 
-SOURCE := game_logic/*.c
-GETNEXTLINE := get_next_line/*c
-LIBRARY := -Lminilibx -lmlx -framework OpenGL -framework AppKit
-MINILIBX := minilibx/
+SOURCE  = 	game_logic/controls.c\
+			game_logic/errors.c\
+			game_logic/map.c\
+			game_logic/moves.c\
+			game_logic/so_long.c
+GETNEXTLINE	= 	get_next_line/get_next_line.c\
+				get_next_line/get_next_line_utils.c
+LIBRARY	= -Lminilibx -lmlx -framework OpenGL -framework AppKit
+MINILIBX 	= minilibx/
 
-all:
-	make -C $(MINILIBX)
-	$(CC) $(CFLAGS) $(SOURCE) $(GETNEXTLINE) $(LIBRARY) -o $(NAME)
+.PHONY	: all
+all		: $(NAME) 
+$(NAME)	:
+			@$(MAKE) -C $(MINILIBX)
+			$(CC) $(CFLAGS) -o $@ $(SOURCE) $(GETNEXTLINE) $(LIBRARY)
 
-clean:
+.PHONY	: clean
+clean	:
+			@make clean -C $(MINILIBX)
+			@rm -rf *.o
+			@rm -rf *.gch
+			@rm -rf *.dSYM
 
-fclean: clean
-		make clean -C $(MINILIBX)
-		rm -rf $(NAME)
+.PHONY	: fclean
+fclean	: clean
+			rm -rf $(NAME)
 
-re: fclean all
+.PHONY	: re
+re		: 
+			make fclean 
+			make all
