@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:34:24 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/12 20:44:37 by prossi           ###   ########.fr       */
+/*   Updated: 2023/04/07 18:46:31 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 #define LEFT 123
 #define RIGHT 124
 
-static int	right_move(t_game *game, int i, int j)
+int	right_move(t_game *game, int i, int j)
 {
 	if (game->map[j][i] == 'E')
 	{
 		if (game->collectables != 0)
 			return (0);
-		printf("\nYou Have Won, Congrats!\n");
+		printf("\n\nThe End of So_Long!\n\n");
 		freegame(game);
 	}
 	if (game->map[j][i] == '0')
@@ -49,7 +49,8 @@ static int	right_move(t_game *game, int i, int j)
 	return (1);
 }
 
-void print_moving(t_game *game){
+void	print_moving(t_game *game)
+{
 	printf("the current number of movements: %i\n", game->counter);
 	printf("Item Remaining: %i\n", game->collectables);
 }
@@ -58,7 +59,6 @@ static int	keyboard_w_s(t_game *game, int movement)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = game->x_axis;
 	j = game->y_axis;
@@ -67,8 +67,7 @@ static int	keyboard_w_s(t_game *game, int movement)
 		j--;
 		if (game->map[j][i] == '1')
 			return (0);
-		k = right_move(game, i, j);
-		if (!k)
+		if (!right_move(game, i, j))
 			return (0);
 		game->map[j + 1][i] = '0';
 	}
@@ -77,8 +76,7 @@ static int	keyboard_w_s(t_game *game, int movement)
 		j++;
 		if (game->map[j][i] == '1')
 			return (0);
-		k = right_move(game, i, j);
-		if (!k)
+		if (!right_move(game, i, j))
 			return (0);
 		game->map[j - 1][i] = '0';
 	}
@@ -90,7 +88,6 @@ static int	keyboard_a_d(t_game *game, int movement)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = game->x_axis;
 	j = game->y_axis;
@@ -99,8 +96,7 @@ static int	keyboard_a_d(t_game *game, int movement)
 		i--;
 		if (game->map[j][i] == '1')
 			return (0);
-		k = right_move(game, i, j);
-		if (!k)
+		if (!right_move(game, i, j))
 			return (0);
 		game->map[j][i + 1] = '0';
 	}
@@ -109,8 +105,7 @@ static int	keyboard_a_d(t_game *game, int movement)
 		i++;
 		if (game->map[j][i] == '1')
 			return (0);
-		k = right_move(game, i, j);
-		if (!k)
+		if (!right_move(game, i, j))
 			return (0);
 		game->map[j][i - 1] = '0';
 	}

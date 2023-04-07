@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/07 18:21:27 by heejunki          #+#    #+#              #
+#    Updated: 2023/04/07 18:25:56 by heejunki         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME 	= so_long
 
 CC 		= cc
@@ -6,6 +18,7 @@ CFLAGS 	= -Wall -Wextra -Werror -Iheaders/
 
 SOURCE  = 	game_logic/controls.c\
 			game_logic/errors.c\
+			game_logic/errors_two.c\
 			game_logic/map.c\
 			game_logic/moves.c\
 			game_logic/so_long.c

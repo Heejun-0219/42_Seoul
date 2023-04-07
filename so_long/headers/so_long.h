@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 20:15:54 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/12 20:41:55 by prossi           ###   ########.fr       */
+/*   Updated: 2023/04/07 18:34:48 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ typedef struct s_check
 	int	x;
 	int	itemcount;
 	int	**visited;
-	int vaild;
-	int count; // dfs
+	int	vaild;
 }	t_check;
 
 int		freegame(t_game *game);
@@ -69,5 +68,13 @@ void	dfs(t_game *game, t_check *check, int y, int x);
 void	init_check(t_game *game, t_check *check);
 int		**visited(t_game *game);
 void	print_moving(t_game *game);
+int		horizontalwall(t_game *game);
+int		verticalwall(t_game *game);
+void	if_walls(t_game *game);
+void	count_checker(t_game *game, int height, int width);
+void	character_valid(t_game *game);
+int		moving_util(t_game *game, int i, int j, int *k);
+int		moving_util_two(t_game *game, int i, int j, int *k);
+int		right_move(t_game *game, int i, int j);
 
 #endif

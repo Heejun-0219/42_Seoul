@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphics.c                                         :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prossi <prossi@student.42adel.org.au>      +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 19:06:51 by prossi            #+#    #+#             */
-/*   Updated: 2022/12/12 20:41:53 by prossi           ###   ########.fr       */
+/*   Updated: 2023/04/07 18:39:54 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,26 @@ void	input_images(t_game *game)
 			"game_images/item.xpm", &i, &j);
 }
 
+void	map_util(t_game *game, int height, int width)
+{
+	if (game->map[height][width] == '1')
+		mlx_put_image_to_window(game->mlxpointer,
+			game->winpointer, game->barrier, \
+			width * RATIO, height * RATIO);
+	if (game->map[height][width] == 'C')
+		place_collectable(game, height, width);
+	if (game->map[height][width] == 'P')
+		place_player(game, height, width);
+	if (game->map[height][width] == 'E')
+		mlx_put_image_to_window(game->mlxpointer,
+			game->winpointer, game->exit, \
+			width * RATIO, height * RATIO);
+	if (game->map[height][width] == '0')
+		mlx_put_image_to_window(game->mlxpointer,
+			game->winpointer, game->floor, \
+			width * RATIO, height * RATIO);
+}
+
 void	map_setting(t_game *game)
 {
 	int	height;
@@ -56,19 +76,7 @@ void	map_setting(t_game *game)
 		width = 0;
 		while (game->map[height][width])
 		{
-			if (game->map[height][width] == '1')
-				mlx_put_image_to_window(game->mlxpointer,
-					game->winpointer, game->barrier, width * RATIO, height * RATIO);
-			if (game->map[height][width] == 'C')
-				place_collectable(game, height, width);
-			if (game->map[height][width] == 'P')
-				place_player(game, height, width);
-			if (game->map[height][width] == 'E')
-				mlx_put_image_to_window(game->mlxpointer,
-					game->winpointer, game->exit, width * RATIO, height * RATIO);
-			if (game->map[height][width] == '0')
-				mlx_put_image_to_window(game->mlxpointer,
-					game->winpointer, game->floor, width * RATIO, height * RATIO);
+			map_util(game, height, width);
 			width++;
 		}
 		height++;
