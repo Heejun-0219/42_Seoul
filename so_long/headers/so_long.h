@@ -48,6 +48,16 @@ typedef struct t_start
 
 }	t_complete;
 
+typedef struct s_check
+{
+	int	y;
+	int	x;
+	int	columncount;
+	int	**visited;
+	int vaild;
+	int count; // dfs
+}	t_check;
+
 int		exit_point(t_complete *game);
 int		map_reading(t_complete *game, char **argv);
 int		controls_working(int command, t_complete *game);
