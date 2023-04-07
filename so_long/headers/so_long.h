@@ -68,5 +68,6 @@ void	if_road(t_game *game);
 void	dfs(t_game *game, t_check *check, int y, int x);
 void	init_check(t_game *game, t_check *check);
 int		**visited(t_game *game);
+void	print_moving(t_game *game);
 
 #endif

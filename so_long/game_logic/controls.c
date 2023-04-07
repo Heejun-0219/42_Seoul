@@ -12,6 +12,16 @@
 
 #include "so_long.h"
 
+#define ESC 53
+#define W 13
+#define S 1
+#define A 0
+#define D 2
+#define UP 126
+#define DOWN 125
+#define LEFT 123
+#define RIGHT 124
+
 static int	right_move(t_game *game, int i, int j)
 {
 	if (game->map[j][i] == 'E')
@@ -39,6 +49,11 @@ static int	right_move(t_game *game, int i, int j)
 	return (1);
 }
 
+void print_moving(t_game *game){
+	printf("the current number of movements: %i\n", game->counter);
+	printf("Item Remaining: %i\n", game->collectables);
+}
+
 static int	keyboard_w_s(t_game *game, int movement)
 {
 	int	i;
@@ -47,7 +62,7 @@ static int	keyboard_w_s(t_game *game, int movement)
 
 	i = game->x_axis;
 	j = game->y_axis;
-	if (movement == 13 || movement == 126)
+	if (movement == W || movement == UP)
 	{
 		j--;
 		if (game->map[j][i] == '1')
@@ -57,7 +72,7 @@ static int	keyboard_w_s(t_game *game, int movement)
 			return (0);
 		game->map[j + 1][i] = '0';
 	}
-	else if (movement == 1 || movement == 125)
+	else if (movement == S || movement == DOWN)
 	{
 		j++;
 		if (game->map[j][i] == '1')
@@ -67,8 +82,7 @@ static int	keyboard_w_s(t_game *game, int movement)
 			return (0);
 		game->map[j - 1][i] = '0';
 	}
-	printf("Steps Taken: %i\n", game->counter);
-	printf("Collectables Remaining: %i\n", game->collectables);
+	print_moving(game);
 	return (1);
 }
 
@@ -80,7 +94,7 @@ static int	keyboard_a_d(t_game *game, int movement)
 
 	i = game->x_axis;
 	j = game->y_axis;
-	if (movement == 0 || movement == 123)
+	if (movement == A || movement == LEFT)
 	{
 		i--;
 		if (game->map[j][i] == '1')
@@ -90,7 +104,7 @@ static int	keyboard_a_d(t_game *game, int movement)
 			return (0);
 		game->map[j][i + 1] = '0';
 	}
-	else if (movement == 2 || movement == 124)
+	else if (movement == D || movement == RIGHT)
 	{
 		i++;
 		if (game->map[j][i] == '1')
@@ -100,8 +114,7 @@ static int	keyboard_a_d(t_game *game, int movement)
 			return (0);
 		game->map[j][i - 1] = '0';
 	}
-	printf("Steps Taken: %i\n", game->counter);
-	printf("Collectables Remaining: %i\n", game->collectables);
+	print_moving(game);
 	return (1);
 }
 
@@ -109,15 +122,15 @@ int	player_control(int command, t_game *game)
 {
 	int	works;
 
-	if (command == 53)
+	if (command == ESC)
 		freegame(game);
-	if (command == 13 || command == 126)
+	if (command == W || command == UP)
 		works = keyboard_w_s(game, command);
-	if (command == 1 || command == 125)
+	if (command == S || command == DOWN)
 		works = keyboard_w_s(game, command);
-	if (command == 0 || command == 123)
+	if (command == A || command == LEFT)
 		works = keyboard_a_d(game, command);
-	if (command == 2 || command == 124)
+	if (command == D || command == RIGHT)
 		works = keyboard_a_d(game, command);
 	if (works)
 		map_setting(game);
