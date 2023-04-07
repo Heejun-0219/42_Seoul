@@ -21,6 +21,8 @@
 # include "get_next_line.h"
 # include "../minilibx/mlx.h"
 
+# define RATIO 48
+
 typedef struct t_start
 {
 	int		fd;

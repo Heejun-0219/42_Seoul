@@ -94,7 +94,7 @@ void	character_valid(t_complete *game)
 		}
 		height++;
 	}
-	if (!(game->playercount == 1 && game->columncount > 1
+	if (!(game->playercount == 1 && game->columncount >= 1
 			&& game->exitcount == 1))
 	{
 		printf("\nError\nSomething is wrong!\n");

@@ -15,7 +15,7 @@
 void	place_player(t_complete *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlxpointer,
-		game->winpointer, game->player, width * 40, height * 40);
+		game->winpointer, game->player, width * RATIO, height * RATIO);
 	game->y_axis = height;
 	game->x_axis = width;
 }
@@ -23,7 +23,7 @@ void	place_player(t_complete *game, int height, int width)
 void	place_collectable(t_complete *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlxpointer,
-		game->winpointer, game->collectable, width * 40, height * 40);
+		game->winpointer, game->collectable, width * RATIO, height * RATIO);
 	game->collectables++;
 }
 
@@ -58,17 +58,17 @@ void	adding_in_graphics(t_complete *game)
 		{
 			if (game->map[height][width] == '1')
 				mlx_put_image_to_window(game->mlxpointer,
-					game->winpointer, game->barrier, width * 40, height * 40);
+					game->winpointer, game->barrier, width * RATIO, height * RATIO);
 			if (game->map[height][width] == 'C')
 				place_collectable(game, height, width);
 			if (game->map[height][width] == 'P')
 				place_player(game, height, width);
 			if (game->map[height][width] == 'E')
 				mlx_put_image_to_window(game->mlxpointer,
-					game->winpointer, game->exit, width * 40, height * 40);
+					game->winpointer, game->exit, width * RATIO, height * RATIO);
 			if (game->map[height][width] == '0')
 				mlx_put_image_to_window(game->mlxpointer,
-					game->winpointer, game->floor, width * 40, height * 40);
+					game->winpointer, game->floor, width * RATIO, height * RATIO);
 			width++;
 		}
 		height++;
