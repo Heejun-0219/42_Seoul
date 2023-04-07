@@ -9,3 +9,10 @@
 
 .vscode/
 *.dSYM
+*.swp
+*.swo
+*.swx
+*.swm
+*.swn
+*.o
+*.a

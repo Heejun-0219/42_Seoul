@@ -6,13 +6,13 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:53:19 by heejunki          #+#    #+#             */
-/*   Updated: 2023/02/11 09:47:26 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:58:41 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-// printf value 삭제 필수 
+// 프린트
 void	ft_lstprint(t_list *val)
 {
 	while (val)
@@ -21,45 +21,6 @@ void	ft_lstprint(t_list *val)
 		val = val->next;
 	}
 	printf("\n\n");
-}
-
-void	list_free(t_list **stack)
-{
-	t_list	*tmp;
-
-	while (*stack)
-	{
-		tmp = *stack;
-		*stack = (*stack)->next;
-		free(tmp);
-	}
-}
-
-void	sorting(t_list **a, t_list **b, int size)
-{
-	int	*lis;
-	int	*data_copy;
-	int	max;
-
-	if (size == 3)
-	{
-		three_size_sorting(a);
-		return ;
-	}
-	else if (size == 5)
-	{
-		five_size_sorting(a, b);
-		return ;
-	}
-	data_copy = list_data_copy(*a, size);
-	max = 1;
-	lis = count_lis(data_copy, size, &max);
-	move_to_b(a, b, lis, max);
-	move_to_a(a, b);
-	rotate_to_start(a, size);
-	ft_lstprint(*a);
-	free(lis);
-	free(data_copy);
 }
 
 void	insert_stack(t_list **stack, char **val)
@@ -75,9 +36,6 @@ void	insert_stack(t_list **stack, char **val)
 		ft_lstadd_back(stack, tmp);
 		i++;
 	}
-	ft_lst_order(stack);
-	ft_lst_inverted(stack);
-	tmp = NULL;
 }
 
 int	main(int ac, char **av)
@@ -94,15 +52,8 @@ int	main(int ac, char **av)
 	else
 		parameter = ++av;
 	size = param_check(parameter);
-	if (size == 2)
-		return (0);
 	a = NULL;
 	b = NULL;
 	insert_stack(&a, parameter);
-	sorting(&a, &b, size);
-	if (ac == 2)
-		null_free(parameter);
-	list_free(&a);
-	list_free(&b);
 	return (0);
 }
