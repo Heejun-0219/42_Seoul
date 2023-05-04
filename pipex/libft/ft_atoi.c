@@ -3,38 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnam <tnam@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 13:24:51 by tnam              #+#    #+#             */
-/*   Updated: 2023/01/30 13:05:36 by tnam             ###   ########.fr       */
+/*   Created: 2022/11/10 09:47:54 by heejunki          #+#    #+#             */
+/*   Updated: 2022/11/19 15:15:54 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int	check_max_or_min(long num, const char c, int minus)
+{
+	if (num > LONG_MAX / 10 || (num == LONG_MAX / 10 && c - '0' > 7))
+	{
+		if (minus == 1)
+			return (-1);
+		return (0);
+	}
+	return (1);
+}
+
 int	ft_atoi(const char *str)
 {
-	size_t	i;
-	int		sign;
-	int		sign_count;
-	int		result;
+	long	num;
+	int		minus;
 
-	i = 0;
-	sign = 1;
-	sign_count = 0;
-	result = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
-		i++;
-	while (str[i] == '+' || str[i] == '-')
+	num = 0;
+	minus = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*(str) == '-' || *(str) == '+')
+		if (*(str++) == '-')
+			minus *= -1;
+	while (*str >= '0' && *str <= '9')
 	{
-		if (str[i++] == '-')
-			sign = -1;
-		sign_count++;
-		if (sign_count == 2)
-			return (0);
+		if (check_max_or_min(num, *str, minus) != 1)
+			return (check_max_or_min(num, *str, minus));
+		num = num * 10 + (*str++ - '0');
 	}
-	while ('0' <= str[i] && str[i] <= '9')
-		result = (result * 10) + (str[i++] - '0');
-	return (sign * result);
+	return (num * minus);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnam <tnam@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:48:43 by tnam              #+#    #+#             */
-/*   Updated: 2023/01/30 16:12:52 by tnam             ###   ########.fr       */
+/*   Created: 2022/11/13 12:53:51 by heejunki          #+#    #+#             */
+/*   Updated: 2022/11/19 19:49:14 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,26 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*result;
-	size_t	i;
-	size_t	s_len;
+	char			*p;
+	size_t			index;
+	unsigned int	strlen;
 
-	s_len = ft_strlen(s);
 	if (!s)
-		return (0);
-	if (len < s_len)
-		result = (char *)malloc((len * sizeof(char)) + 1);
-	else
-		result = (char *)malloc((s_len * sizeof(char)) + 1);
-	if (result == 0)
-		return (0);
-	i = 0;
-	while ((i < len) && (start + i < s_len))
+		return (NULL);
+	strlen = ft_strlen(s);
+	if (len + start > strlen)
+		len += strlen - len - start;
+	if (start > strlen)
+		len = 0;
+	p = (char *)malloc((sizeof(char) * (1 + len)));
+	if (!p)
+		return (NULL);
+	p[len] = '\0';
+	index = 0;
+	while (index < len)
 	{
-		result[i] = s[start + i];
-		i++;
+		p[index] = s[start + index];
+		index++;
 	}
-	result[i] = '\0';
-	return (result);
+	return (p);
 }

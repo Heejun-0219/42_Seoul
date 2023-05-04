@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:19:34 by heejunki          #+#    #+#             */
-/*   Updated: 2022/12/19 16:13:23 by heejunki         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:13:19 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 ssize_t	ft_read(int fd, char **backup)
 {
@@ -106,22 +106,22 @@ char	*return_line(char **backup)
 
 char	*get_next_line(int fd)
 {
-	static char	*backup;
+	static char	*backup[OPEN_MAX];
 	ssize_t		read_size;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	while (!(ft_strchr(backup, '\n')))
+	while (!(ft_strchr(backup[fd], '\n')))
 	{
-		read_size = ft_read(fd, &backup);
+		read_size = ft_read(fd, &backup[fd]);
 		if (read_size == -1)
 		{
-			free(backup);
-			backup = 0;
+			free(backup[fd]);
+			backup[fd] = 0;
 			return (0);
 		}
 		if (read_size == 0)
-			return (eof(&backup));
+			return (eof(&backup[fd]));
 	}
-	return (return_line(&backup));
+	return (return_line(&backup[fd]));
 }

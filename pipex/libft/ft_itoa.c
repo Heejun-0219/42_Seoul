@@ -3,27 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnam <tnam@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 19:53:34 by tnam              #+#    #+#             */
-/*   Updated: 2023/01/30 13:40:01 by tnam             ###   ########.fr       */
+/*   Created: 2022/11/13 14:05:10 by heejunki          #+#    #+#             */
+/*   Updated: 2022/11/19 16:52:42 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_getlen(int n)
+int	integer_len(int ln)
 {
-	size_t	len;
+	int	len;
 
-	if (n == 0)
-		return (1);
 	len = 0;
-	if (n < 0)
-		len++;
-	while (n != 0)
+	if (!ln)
+		return (1);
+	if (ln < 0)
 	{
-		n /= 10;
+		len++;
+		ln *= -1;
+	}
+	while (ln)
+	{
+		ln /= 10;
 		len++;
 	}
 	return (len);
@@ -31,29 +34,27 @@ static size_t	ft_getlen(int n)
 
 char	*ft_itoa(int n)
 {
-	size_t			len;
-	ssize_t			new_n;
-	char			*result;
+	char	*p;
+	int		len;
+	long	ln;
 
-	len = ft_getlen(n);
-	new_n = n;
-	result = malloc((len * sizeof(char)) + 1);
-	if (result == 0)
+	ln = (long)n;
+	len = integer_len(ln);
+	p = (char *)malloc(sizeof(char) * (len + 1));
+	if (!p)
 		return (0);
-	if (new_n < 0)
+	p[len--] = '\0';
+	if (!ln)
+		p[0] = '0';
+	else if (ln < 0)
 	{
-		result[0] = '-';
-		new_n *= -1;
+		ln *= -1;
+		p[0] = '-';
 	}
-	if (new_n == 0)
-		result[0] = '0';
-	result[len] = 0;
-	len -= 1;
-	while (new_n != 0)
+	while (ln)
 	{
-		result[len] = (new_n % 10) + '0';
-		len--;
-		new_n /= 10;
+		p[len--] = ln % 10 + '0';
+		ln /= 10;
 	}
-	return (result);
+	return (p);
 }

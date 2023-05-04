@@ -3,35 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnam <tnam@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 16:15:26 by tnam              #+#    #+#             */
-/*   Updated: 2022/11/22 22:27:42 by tnam             ###   ########.fr       */
+/*   Created: 2022/11/13 13:08:28 by heejunki          #+#    #+#             */
+/*   Updated: 2022/11/13 16:20:01 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const	*s1, char const *s2)
 {
-	char	*result;
-	size_t	i;
-	size_t	result_i;
-	size_t	s1_len;
-	size_t	s2_len;
+	char	*p;
+	int		len_s1;
+	int		len_s2;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	result = (char *)malloc(((s1_len + s2_len) * sizeof(char)) + 1);
-	if (result == 0)
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	p = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	if (!p)
 		return (0);
-	i = 0;
-	result_i = 0;
-	while (s1[i] != '\0')
-		result[result_i++] = s1[i++];
-	i = 0;
-	while (s2[i] != '\0')
-		result[result_i++] = s2[i++];
-	result[result_i] = '\0';
-	return (result);
+	ft_memcpy(p, s1, len_s1);
+	ft_memcpy(p + len_s1, s2, len_s2);
+	p[len_s1 + len_s2] = '\0';
+	return (p);
 }

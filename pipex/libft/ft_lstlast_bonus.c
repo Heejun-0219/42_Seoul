@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 09:43:41 by heejunki          #+#    #+#             */
-/*   Updated: 2022/11/27 00:42:57 by heejunki         ###   ########.fr       */
+/*   Created: 2022/11/13 16:53:46 by heejunki          #+#    #+#             */
+/*   Updated: 2022/11/19 17:18:09 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if ((char)c >= 'a' && (char)c <= 'z')
-		c -= 32;
-	return (c);
+	t_list	*last;
+
+	last = lst;
+	while (last)
+	{
+		if (!last->next)
+			return (last);
+		last = last->next;
+	}
+	return (last);
 }

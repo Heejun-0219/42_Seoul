@@ -3,103 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnam <tnam@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 18:05:32 by tnam              #+#    #+#             */
-/*   Updated: 2023/02/07 11:30:51 by tnam             ###   ########.fr       */
+/*   Created: 2022/11/13 13:37:17 by heejunki          #+#    #+#             */
+/*   Updated: 2022/11/25 23:35:49 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_str_to_null(char const *str, char c, size_t str_len)
+int	count_strlen(char *str, char c, int str_in)
 {
-	size_t		i;
-	char		*str_to_null;
+	int	len;
 
-	str_to_null = ft_strdup(str);
-	if (str_to_null == 0)
-		return (0);
-	i = 0;
-	while (i < str_len)
+	len = 0;
+	while (str[str_in] != '\0')
 	{
-		if (str_to_null[i] == c)
-			str_to_null[i] = '\0';
-		i++;
+		if (str[str_in] == c)
+			return (len);
+		len++;
+		str_in++;
 	}
-	return (str_to_null);
+	return (len);
 }
 
-static size_t	ft_sub_str_count(char *str_to_null, size_t str_len)
+char	*ft_strndup(char *str, size_t str_len)
 {
-	size_t	sub_str_count;
+	char	*newsrc;
 	size_t	i;
 
-	sub_str_count = 0;
 	i = 0;
+	newsrc = (char *) malloc (sizeof (char) * (str_len + 1));
+	if (!newsrc)
+		return (0);
 	while (i < str_len)
 	{
-		if ((str_to_null[i] != '\0') && (str_to_null[i + 1] == '\0'))
-			sub_str_count++;
+		newsrc[i] = str[i];
 		i++;
 	}
-	return (sub_str_count);
+	newsrc[i] = '\0';
+	return (newsrc);
 }
 
-static char	**ft_split_str(char *str_to_null, size_t str_len, char **result)
+int	get_count(char const *s, char c)
 {
-	size_t		i;
-	size_t		sub_str_count;
-	char		*sub_str;
+	int	count;
+	int	len;
+	int	flag;
 
-	i = 0;
-	sub_str_count = 0;
-	while (i < str_len)
+	count = 0;
+	flag = 0;
+	len = ft_strlen(s);
+	while (len--)
 	{
-		if (str_to_null[i] != '\0')
+		if (s[len] == c)
+			flag = 0;
+		else if (s[len] != c && !flag)
 		{
-			sub_str = ft_strdup(&str_to_null[i]);
-			if (sub_str == 0)
-			{
-				while (--sub_str_count >= 0)
-					free(result[sub_str_count]);
-				free(result);
-				return (0);
-			}
-			result[sub_str_count++] = sub_str;
-			result[sub_str_count] = 0;
-			i += ft_strlen(sub_str);
+			flag = 1;
+			count++;
 		}
-		i++;
 	}
-	return (result);
+	return (count);
+}
+
+char	**null_free(char **res)
+{
+	size_t	j;
+
+	j = 0;
+	while (res[j])
+	{
+		free(res[j]);
+		j++;
+	}
+	free(res);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t		str_len;
-	size_t		sub_str_count;
-	char		*str_to_null;
-	char		**result;
+	char	**result;
+	int		str_in;
+	int		res_in;
+	int		flag;
+	int		count;
 
-	str_len = ft_strlen(s);
-	str_to_null = ft_str_to_null(s, c, str_len);
-	if (str_to_null == 0)
+	count = get_count((char *)s, c);
+	result = (char **) malloc (sizeof(char *) * (count + 1));
+	if (!result)
 		return (0);
-	sub_str_count = ft_sub_str_count(str_to_null, str_len);
-	result = (char **)malloc((sub_str_count * sizeof(char *) + sizeof(char *)));
-	if (result == 0)
+	result[count] = 0;
+	str_in = 0;
+	res_in = 0;
+	while (res_in < count && s[str_in])
 	{
-		free(str_to_null);
-		return (0);
+		while (s[str_in] == c)
+			str_in++;
+		flag = str_in;
+		while (s[str_in] != c && s[str_in])
+			str_in++;
+		result[res_in] = ft_strndup((char *)s + flag, str_in - flag);
+		if (result[res_in++] == 0)
+			return (null_free(result));
 	}
-	if (sub_str_count == 0)
-	{
-		result[0] = 0;
-		free(str_to_null);
-		return (result);
-	}
-	result = ft_split_str(str_to_null, str_len, result);
-	free(str_to_null);
 	return (result);
 }

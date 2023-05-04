@@ -3,36 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnam <tnam@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 21:54:05 by tnam              #+#    #+#             */
-/*   Updated: 2023/01/30 13:56:16 by tnam             ###   ########.fr       */
+/*   Created: 2022/11/13 15:59:44 by heejunki          #+#    #+#             */
+/*   Updated: 2022/11/19 17:02:19 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_putnbr_recursion(ssize_t new_n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	char	c;
 
-	if (new_n >= 10)
-		ft_putnbr_recursion(new_n / 10, fd);
-	c = (new_n % 10) + '0';
-	write(fd, &c, 1);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	ssize_t	new_n;
-
-	if (fd < 0)
-		return ;
-	new_n = n;
-	if (new_n < 0)
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
 	{
-		new_n *= -1;
-		write(fd, "-", 1);
+		n *= -1;
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(n, fd);
 	}
-	ft_putnbr_recursion(new_n, fd);
+	else if (n <= 9)
+	{
+		c = n + '0';
+		ft_putchar_fd(c, fd);
+	}
+	else
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
 }
