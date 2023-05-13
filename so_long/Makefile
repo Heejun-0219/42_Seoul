@@ -27,6 +27,8 @@ GETNEXTLINE	= 	get_next_line/get_next_line.c\
 LIBRARY	= -Lminilibx -lmlx -framework OpenGL -framework AppKit
 MINILIBX 	= minilibx/
 
+SRC_DIR	= game_logic/
+
 .PHONY	: all
 all		: $(NAME) 
 $(NAME)	:
@@ -39,6 +41,9 @@ clean	:
 			@rm -rf *.o
 			@rm -rf *.gch
 			@rm -rf *.dSYM
+			@rm -rf $(SRC_DIR)/*.o
+			@rm -rf $(SRC_DIR)/*.gch
+			@rm -rf $(SRC_DIR)/*.dSYM
 
 .PHONY	: fclean
 fclean	: clean

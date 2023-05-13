@@ -76,7 +76,7 @@ void	if_road(t_game *game)
 	{
 		printf("\nError\n");
 		printf("No vaild Road in map.\n");
-		freegame(game);
+		freegame(game); 
 	}
 	i = 0;
 	while (i < game->heightmap)
