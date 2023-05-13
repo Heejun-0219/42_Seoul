@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:33:01 by prossi            #+#    #+#             */
-/*   Updated: 2023/04/07 18:44:28 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/05/13 23:40:09 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void	count_checker(t_game *game, int height, int width)
 			game->itemcount++;
 	if (game->map[height][width] == 'P')
 	{
-			game->x_axis = width;
-			game->y_axis = height;
-			game->playercount++;
+		game->x_axis = width;
+		game->y_axis = height;
+		game->playercount++;
 	}
 	if (game->map[height][width] == 'E')
 			game->exitcount++;
@@ -104,7 +104,8 @@ void	character_valid(t_game *game)
 	if (!(game->playercount == 1 && game->itemcount >= 1
 			&& game->exitcount == 1))
 	{
-		ft_putstr_fd("Error\nThis map is missing the player, exit or collectable\n", 1);
+		ft_putstr_fd("Error\nThis map is missing the player, \
+			exit or collectable\n", 1);
 		freegame(game);
 	}
 }

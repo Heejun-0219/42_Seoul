@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:24:32 by heejunki          #+#    #+#             */
-/*   Updated: 2023/04/07 18:34:51 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/05/13 23:40:27 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	if_road(t_game *game)
 	{
 		ft_putstr_fd("Error\n", 1);
 		ft_putstr_fd("No vaild Road in map.\n", 1);
-		freegame(game); 
+		freegame(game);
 	}
 	i = 0;
 	while (i < game->heightmap)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:34:01 by prossi            #+#    #+#             */
-/*   Updated: 2022/02/25 19:05:49 by prossi           ###   ########.fr       */
+/*   Updated: 2023/05/13 23:42:00 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,30 +73,31 @@ void	ft_putnbr_fd(int n, int fd)
 
 int	is_valid_file(const char *path)
 {
-    struct stat st;
-    if (stat(path, &st) == 0 && S_ISREG(st.st_mode)) {
-        return 1;
-    }
-    return 0;
+	struct stat	st;
+
+	if (stat(path, &st) == 0 && S_ISREG(st.st_mode))
+	{
+		return (1);
+	}
+	return (0);
 }
 
 int	read_map(t_game *game, char **argv)
 {
-    char *readmap;
+	char	*readmap;
 
-    if (!is_valid_file(argv[1]) || !strstr(argv[1], ".ber")) {
-        return 0;
-    }
-    game->fd = open(argv[1], O_RDONLY);
-    if (game->fd < 0) {
-        return 0;
-    }
-    while (1) {
-        readmap = get_next_line(game->fd);
-        if (!add_line(game, readmap))
-            break;
-    }
-    close(game->fd);
-    game->widthmap = width_of_map(game->map[0]);
-    return 1;
+	if (!is_valid_file(argv[1]) || !strstr(argv[1], ".ber"))
+		return (0);
+	game->fd = open(argv[1], O_RDONLY);
+	if (game->fd < 0)
+		return (0);
+	while (1)
+	{
+		readmap = get_next_line(game->fd);
+		if (!add_line(game, readmap))
+			break ;
+	}
+	close(game->fd);
+	game->widthmap = width_of_map(game->map[0]);
+	return (1);
 }
