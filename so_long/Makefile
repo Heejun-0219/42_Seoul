@@ -6,7 +6,7 @@
 #    By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 18:21:27 by heejunki          #+#    #+#              #
-#    Updated: 2023/04/07 18:25:56 by heejunki         ###   ########.fr        #
+#    Updated: 2023/05/13 23:43:42 by heejunki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,9 +47,9 @@ clean	:
 
 .PHONY	: fclean
 fclean	: clean
-			rm -rf $(NAME)
+			@rm -rf $(NAME)
 
 .PHONY	: re
 re		: 
-			make fclean 
-			make all
+			@make fclean 
+			@make all
