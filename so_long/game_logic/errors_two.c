@@ -68,6 +68,7 @@ void	dfs(t_game *game, t_check *check, int y, int x)
 void	if_road(t_game *game)
 {
 	t_check	check;
+	int		i;
 
 	init_check(game, &check);
 	dfs(game, &check, game->y_axis, game->x_axis);
@@ -77,6 +78,10 @@ void	if_road(t_game *game)
 		printf("No vaild Road in map.\n");
 		freegame(game);
 	}
+	i = 0;
+	while (i < game->heightmap)
+		free(check.visited[i++]);
+	free(check.visited);
 }
 
 void	check_errors(t_game *game)
