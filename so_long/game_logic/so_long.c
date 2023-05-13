@@ -30,7 +30,7 @@ int	freegame(t_game *game)
 	if (game->winpointer)
 		mlx_destroy_window(game->mlxpointer, game->winpointer);
 	free(game->mlxpointer);
-	while (line < game->heightmap - 1)
+	while (line < game->heightmap)
 		free(game->map[line++]);
 	free(game->map);
 	exit(0);
@@ -39,11 +39,7 @@ int	freegame(t_game *game)
 void leaks_check(void){
 	system("leaks so_long");
 }
-
-// memory leak
 // makefile 
-// .ber
-// untouched file
 
 int	main(int argc, char **argv)
 {
