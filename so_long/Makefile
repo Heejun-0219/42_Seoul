@@ -6,7 +6,7 @@
 #    By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 18:21:27 by heejunki          #+#    #+#              #
-#    Updated: 2023/05/13 23:43:42 by heejunki         ###   ########.fr        #
+#    Updated: 2023/04/07 18:25:56 by heejunki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,23 +27,22 @@ GETNEXTLINE	= 	get_next_line/get_next_line.c\
 LIBRARY	= -Lminilibx -lmlx -framework OpenGL -framework AppKit
 MINILIBX 	= minilibx/
 
-SRC_DIR	= game_logic/
+OBJS	= $(SOURCE:.c=.o)
+%.o		: %.c
+			$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY	: all
 all		: $(NAME) 
-$(NAME)	:
+$(NAME)	: $(SOURCE) $(GETNEXTLINE) $(OBJS)
 			@$(MAKE) -C $(MINILIBX)
-			$(CC) $(CFLAGS) -o $@ $(SOURCE) $(GETNEXTLINE) $(LIBRARY)
+			@$(CC) $(CFLAGS) -o $@ $(SOURCE) $(GETNEXTLINE) $(LIBRARY)
 
 .PHONY	: clean
 clean	:
-			@make clean -C $(MINILIBX)
+			@$(MAKE) -C $(MINILIBX) clean
 			@rm -rf *.o
 			@rm -rf *.gch
 			@rm -rf *.dSYM
-			@rm -rf $(SRC_DIR)/*.o
-			@rm -rf $(SRC_DIR)/*.gch
-			@rm -rf $(SRC_DIR)/*.dSYM
 
 .PHONY	: fclean
 fclean	: clean
