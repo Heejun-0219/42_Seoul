@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
+# include <sys/stat.h>
 # include "get_next_line.h"
 # include "../minilibx/mlx.h"
 
@@ -56,6 +57,7 @@ typedef struct s_check
 	int	vaild;
 }	t_check;
 
+int		is_valid_file(const char *path);
 void	ft_putnbr_fd(int n, int fd);
 int		freegame(t_game *game);
 int		read_map(t_game *game, char **argv);

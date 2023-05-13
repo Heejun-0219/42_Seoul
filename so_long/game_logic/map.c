@@ -47,24 +47,6 @@ static int	add_line(t_game *game, char *line)
 	return (1);
 }
 
-int	read_map(t_game *game, char **argv)
-{
-	char	*readmap;
-
-	game->fd = open(argv[1], O_RDONLY);
-	if (game->fd < 0)
-		return (0);
-	while (1)
-	{
-		readmap = get_next_line(game->fd);
-		if (!add_line(game, readmap))
-			break ;
-	}
-	close (game->fd);
-	game->widthmap = width_of_map(game->map[0]);
-	return (1);
-}
-
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	c;
@@ -87,4 +69,34 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n / 10, fd);
 		ft_putnbr_fd(n % 10, fd);
 	}
+}
+
+int	is_valid_file(const char *path)
+{
+    struct stat st;
+    if (stat(path, &st) == 0 && S_ISREG(st.st_mode)) {
+        return 1;
+    }
+    return 0;
+}
+
+int	read_map(t_game *game, char **argv)
+{
+    char *readmap;
+
+    if (!is_valid_file(argv[1]) || !strstr(argv[1], ".ber")) {
+        return 0;
+    }
+    game->fd = open(argv[1], O_RDONLY);
+    if (game->fd < 0) {
+        return 0;
+    }
+    while (1) {
+        readmap = get_next_line(game->fd);
+        if (!add_line(game, readmap))
+            break;
+    }
+    close(game->fd);
+    game->widthmap = width_of_map(game->map[0]);
+    return 1;
 }
