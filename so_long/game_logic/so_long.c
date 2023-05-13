@@ -39,10 +39,11 @@ int	freegame(t_game *game)
 void leaks_check(void){
 	system("leaks so_long");
 }
+
+// memory leak
 // makefile 
 // .ber
 // untouched file
-// printf
 
 int	main(int argc, char **argv)
 {

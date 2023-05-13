@@ -74,8 +74,8 @@ void	if_road(t_game *game)
 	dfs(game, &check, game->y_axis, game->x_axis);
 	if (!check.vaild || check.itemcount > 0)
 	{
-		printf("\nError\n");
-		printf("No vaild Road in map.\n");
+		ft_putstr_fd("Error\n", 1);
+		ft_putstr_fd("No vaild Road in map.\n", 1);
 		freegame(game); 
 	}
 	i = 0;

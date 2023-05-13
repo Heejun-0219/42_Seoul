@@ -28,7 +28,7 @@ int	right_move(t_game *game, int i, int j)
 	{
 		if (game->collectables != 0)
 			return (0);
-		printf("\n\nThe End of So_Long!\n\n");
+		ft_putstr_fd("\n\nThe End of So_Long!\n\n", 1);
 		freegame(game);
 	}
 	if (game->map[j][i] == '0')
@@ -51,8 +51,12 @@ int	right_move(t_game *game, int i, int j)
 
 void	print_moving(t_game *game)
 {
-	printf("the current number of movements: %i\n", game->counter);
-	printf("Item Remaining: %i\n", game->collectables);
+	ft_putstr_fd("the current number of movements:", 1);
+	ft_putnbr_fd(game->counter, 1);
+	write(1, "\n", 1);
+	ft_putstr_fd("Item Remaining:", 1);
+	ft_putnbr_fd(game->collectables, 1);
+	write(1, "\n", 1);
 }
 
 static int	keyboard_w_s(t_game *game, int movement)

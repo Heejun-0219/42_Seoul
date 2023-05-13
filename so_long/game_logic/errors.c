@@ -55,7 +55,7 @@ void	if_walls(t_game *game)
 	horizontalwalls = horizontalwall(game);
 	if (!verticalwalls || !horizontalwalls)
 	{
-		printf("\nError\nThis map is missing the walls\n\n");
+		ft_putstr_fd("Error\nThis map is missing the walls\n", 1);
 		freegame(game);
 	}
 }
@@ -69,7 +69,8 @@ void	count_checker(t_game *game, int height, int width)
 		game->map[height][width] != 'C' &&
 		game->map[height][width] != '\n')
 	{
-		printf("\nError Here!%c\n", game->map[height][width]);
+		ft_putstr_fd("Error\nThis map has invalid characters\n", 1);
+		ft_putstr_fd("Valid characters are 0, 1, P, E, C\n", 1);
 		freegame(game);
 	}
 	if (game->map[height][width] == 'C')
@@ -103,8 +104,7 @@ void	character_valid(t_game *game)
 	if (!(game->playercount == 1 && game->itemcount >= 1
 			&& game->exitcount == 1))
 	{
-		printf("\nError\nSomething is wrong!\n");
-		printf("either player, exit or collectable issue\n");
+		ft_putstr_fd("Error\nThis map is missing the player, exit or collectable\n", 1);
 		freegame(game);
 	}
 }

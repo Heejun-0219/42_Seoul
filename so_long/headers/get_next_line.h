@@ -23,6 +23,7 @@ ssize_t	ft_read(int fd, char **p);
 char	*eof(char **p);
 char	*ft_getline(char *tmp);
 char	*get_next_line(int fd);
+void	ft_putstr_fd(char *s, int fd);
 
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);

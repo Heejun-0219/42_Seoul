@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # include <unistd.h>
-# include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
@@ -57,6 +56,7 @@ typedef struct s_check
 	int	vaild;
 }	t_check;
 
+void	ft_putnbr_fd(int n, int fd);
 int		freegame(t_game *game);
 int		read_map(t_game *game, char **argv);
 int		player_control(int command, t_game *game);
