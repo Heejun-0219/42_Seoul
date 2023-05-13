@@ -36,16 +36,10 @@ int	freegame(t_game *game)
 	exit(0);
 }
 
-void leaks_check(void){
-	system("leaks so_long");
-}
-// makefile 
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	atexit(leaks_check);
 	if (argc != 2)
 		return (0);
 	ft_memset(&game, 0, sizeof(t_game));
