@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:24:32 by heejunki          #+#    #+#             */
-/*   Updated: 2023/05/13 23:40:27 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/05/19 00:42:27 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,20 @@ void	if_road(t_game *game)
 
 void	check_errors(t_game *game)
 {
+	int	i;
+
 	if_walls(game);
 	character_valid(game);
 	if_road(game);
+	i = 0;
+	while (i < game->heightmap)
+	{
+		if (game->widthmap != width_of_map(game->map[i]))
+		{
+			ft_putstr_fd("Error\n", 1);
+			ft_putstr_fd("Map is not rectangular.\n", 1);
+			freegame(game);
+		}
+		i++;
+	}
 }

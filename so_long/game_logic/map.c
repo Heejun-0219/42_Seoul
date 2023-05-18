@@ -6,13 +6,13 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:34:01 by prossi            #+#    #+#             */
-/*   Updated: 2023/05/13 23:42:00 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/05/19 00:42:02 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	width_of_map(char *string)
+int	width_of_map(char *string)
 {
 	int	width;
 

@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 20:15:54 by prossi            #+#    #+#             */
-/*   Updated: 2023/04/07 18:34:48 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/05/19 00:41:48 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ void	character_valid(t_game *game);
 int		moving_util(t_game *game, int i, int j, int *k);
 int		moving_util_two(t_game *game, int i, int j, int *k);
 int		right_move(t_game *game, int i, int j);
+int		width_of_map(char *string);
 
 #endif

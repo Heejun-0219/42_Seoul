@@ -6,7 +6,7 @@
 #    By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 18:21:27 by heejunki          #+#    #+#              #
-#    Updated: 2023/04/07 18:25:56 by heejunki         ###   ########.fr        #
+#    Updated: 2023/05/19 00:38:11 by heejunki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SOURCE  = 	game_logic/controls.c\
 			game_logic/so_long.c
 GETNEXTLINE	= 	get_next_line/get_next_line.c\
 				get_next_line/get_next_line_utils.c
+SOU_DIR = 	game_logic/
 LIBRARY	= -Lminilibx -lmlx -framework OpenGL -framework AppKit
 MINILIBX 	= minilibx/
 
@@ -40,6 +41,7 @@ $(NAME)	: $(SOURCE) $(GETNEXTLINE) $(OBJS)
 .PHONY	: clean
 clean	:
 			@$(MAKE) -C $(MINILIBX) clean
+			rm -rf ${SOU_DIR}*.o
 			@rm -rf *.o
 			@rm -rf *.gch
 			@rm -rf *.dSYM
