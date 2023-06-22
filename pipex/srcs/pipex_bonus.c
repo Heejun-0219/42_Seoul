@@ -12,7 +12,7 @@
 
 #include "../includes/pipex_bonus.h"
 
-void	ft_init_pipeiables(t_pipe *var, int argc, char *argv[], char *envp[])
+void	init_var(t_pipe *var, int argc, char *argv[], char *envp[])
 {
 	size_t	i;
 	char	*path;
@@ -37,7 +37,7 @@ void	ft_init_pipeiables(t_pipe *var, int argc, char *argv[], char *envp[])
 		exit(EXIT_FAILURE);
 }
 
-void	ft_here_doc_init(t_pipe *var)
+void	hd_init(t_pipe *var)
 {
 	var->here_doc = 1;
 	var->limiter = ft_strjoin(var->argv[2], "\n");
@@ -47,7 +47,7 @@ void	ft_here_doc_init(t_pipe *var)
 	var->count_c = var->argc - 4;
 }
 
-void	ft_exec_cmd(t_pipe *var)
+void	exe_cmd(t_pipe *var)
 {
 	if (var->index_c != var->argc - 2)
 		if (pipe(var->pipe_fd) == ERROR)
@@ -68,12 +68,12 @@ int	main(int argc, char *argv[], char *envp[])
 
 	if (argc < 5)
 		return (EXIT_FAILURE);
-	ft_init_pipeiables(&var, argc, argv, envp);
+	init_var(&var, argc, argv, envp);
 	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
-		ft_here_doc_init(&var);
+		hd_init(&var);
 	while (var.index_c < argc - 1)
 	{
-		ft_exec_cmd(&var);
+		exe_cmd(&var);
 		var.index_c++;
 	}
 	i = 0;

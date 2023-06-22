@@ -76,10 +76,13 @@ void	child(t_pipe *var)
 		else
 			hd_last_cmd(var);
 	}
-	if (var->index_c == 2)
-		first_cmd(var);
-	else if (var->index_c == var->argc - 2)
-		last_cmd(var);
 	else
+	{
+		if (var->index_c == 2)
+			first_cmd(var);
+		else if (var->index_c == var->argc - 2)
+			last_cmd(var);
+	}
+	if (var->index_c != 2 && var->index_c != var->argc - 2)
 		middle_cmd(var);
 }

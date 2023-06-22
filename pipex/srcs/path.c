@@ -30,7 +30,7 @@ int	abs_path(t_pipe *var)
 	return (0);
 }
 
-static char	*ft_make_path(t_pipe *var, char *path)
+char	*make_path(t_pipe *var, char *path)
 {
 	char	*result;
 	char	*temp;
@@ -61,7 +61,7 @@ void	get_path_c(t_pipe *var)
 	i = 0;
 	while (var->paths[i])
 	{
-		cmd_path = ft_make_path(var, var->paths[i]);
+		cmd_path = make_path(var, var->paths[i]);
 		if (access(cmd_path, X_OK) == SUCCESS)
 		{
 			var->cmd_path = cmd_path;

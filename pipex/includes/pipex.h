@@ -72,5 +72,6 @@ void	first_cmd(t_pipe *var);
 void	middle_cmd(t_pipe *var);
 void	last_cmd(t_pipe *var);
 void	not_cmd(t_pipe *var);
+char	*make_path(t_pipe *var, char *path);
 
 #endif
