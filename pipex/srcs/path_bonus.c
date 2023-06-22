@@ -12,7 +12,7 @@
 
 #include "../includes/pipex_bonus.h"
 
-static void	ft_cmd_not_found_error(t_var *var)
+void	not_cmd(t_pipe *var)
 {
 	write(1, "command not found: ", 19);
 	write(1, var->cmd[0], ft_strlen(var->cmd[0]));
@@ -20,7 +20,7 @@ static void	ft_cmd_not_found_error(t_var *var)
 	exit(127);
 }
 
-static int	ft_check_cmd_is_absolute_path(t_var *var)
+int	abs_path(t_pipe *var)
 {
 	if (access(var->cmd[0], X_OK) == SUCCESS)
 	{
@@ -30,7 +30,7 @@ static int	ft_check_cmd_is_absolute_path(t_var *var)
 	return (0);
 }
 
-static char	*ft_make_path(t_var *var, char *path)
+static char	*ft_make_path(t_pipe *var, char *path)
 {
 	char	*result;
 	char	*temp;
@@ -48,15 +48,15 @@ static char	*ft_make_path(t_var *var, char *path)
 	return (result);
 }
 
-void	ft_find_cmd_path(t_var *var)
+void	get_path_c(t_pipe *var)
 {
 	size_t	i;
 	char	*cmd_path;
 
-	var->cmd = ft_split(var->argv[var->cmd_i], ' ');
+	var->cmd = ft_split(var->argv[var->index_c], ' ');
 	if (var->cmd == NULL)
 		exit(EXIT_FAILURE);
-	if (ft_check_cmd_is_absolute_path(var))
+	if (abs_path(var))
 		return ;
 	i = 0;
 	while (var->paths[i])
@@ -65,12 +65,12 @@ void	ft_find_cmd_path(t_var *var)
 		if (access(cmd_path, X_OK) == SUCCESS)
 		{
 			var->cmd_path = cmd_path;
-			var->cmd_isin = 1;
+			var->possible_c = 1;
 			break ;
 		}
 		free(cmd_path);
 		i++;
 	}
-	if (var->cmd_isin == 0)
-		ft_cmd_not_found_error(var);
+	if (var->possible_c == 0)
+		not_cmd(var);
 }

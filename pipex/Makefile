@@ -11,9 +11,10 @@
 # **************************************************************************** #
 
 NAME			=	pipex
+
 CC				=	cc
+
 CFLAG			=	-Wall -Wextra -Werror
-RM				=	rm -f
 
 LIBFT_DIR		=	libft/
 LIBFT			=	libft.a
@@ -22,54 +23,57 @@ LIBFT_C			=	-L$(LIBFT_DIR) -lft
 INCLUDES		=	includes/
 
 SRCS_M			=	srcs/pipex.c						\
-					srcs/pipex_child.c					\
-					srcs/pipex_parent.c					\
-					srcs/pipex_utils.c					\
-					srcs/pipex_find_cmd_path.c			\
-					srcs/pipex_awk_sed.c				\
+					srcs/child.c						\
+					srcs/parent.c						\
+					srcs/utils.c						\
+					srcs/path.c							\
+					srcs/other.c						\
 									
 SRCS_B			=	srcs/pipex_bonus.c					\
-					srcs/pipex_child_bonus.c			\
-					srcs/pipex_parent_bonus.c			\
-					srcs/pipex_utils_bonus.c			\
-					srcs/pipex_here_doc_bonus.c			\
-					srcs/pipex_find_cmd_path_bonus.c	\
-					srcs/pipex_awk_sed_bonus.c			\
+					srcs/child_bonus.c					\
+					srcs/parent_bonus.c					\
+					srcs/utils_bonus.c					\
+					srcs/hd_bonus.c						\
+					srcs/path_bonus.c					\
+					srcs/other_bonus.c					\
 					gnl/get_next_line.c					\
 					gnl/get_next_line_utils.c			\
 					
 OBJS_M			=	$(SRCS_M:.c=.o)
 OBJS_B			=	$(SRCS_B:.c=.o)
 
-BONUS_MODE = $(findstring $(MAKECMDGOALS),bonus)
+%.o		: %.c
+			$(CC) $(CFLAG) -I$(INCLUDES) -c $< -o $@
 
+BONUS_MODE = $(findstring $(MAKECMDGOALS),bonus)
 ifeq ($(BONUS_MODE), )
     OBJS = $(OBJS_M)
 else
     OBJS = $(OBJS_B)
 endif
 
-all: $(NAME)
+.PHONY	: all
+all		: $(NAME)
 
-bonus: $(NAME)
+.PHONY	: bonus
+bonus	: $(NAME)
 
-$(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT_DIR) all
-	$(CC) $(CFLAG) -I$(INCLUDES) $(OBJS) $(LIBFT_C) -o $(NAME)
+$(NAME)	: $(OBJS)
+			@$(MAKE) -C $(LIBFT_DIR) all
+			@$(CC) $(CFLAG) -I$(INCLUDES) $(OBJS) $(LIBFT_C) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAG) -I$(INCLUDES) -c $< -o $@
+.PHONY	: clean
+clean	:
+			@$(MAKE) -C $(LIBFT_DIR) clean
+			@rm -rf $(OBJS_M) 
+			@rm -rf $(OBJS_B)
 
-clean :
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(RM) $(OBJS_M) $(OBJS_B)
+.PHONY	: fclean
+fclean	: clean
+			@$(MAKE) -C $(LIBFT_DIR) fclean
+			@rm -rf $(NAME)
 
-fclean : clean
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME)
-
-re:
-	make fclean
-	make all
-
-.PHONY : all bonus clean fclean re
+.PHONY	: re
+re		:
+			@make fclean
+			@make all

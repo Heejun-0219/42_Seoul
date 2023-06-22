@@ -12,16 +12,16 @@
 
 #include "../includes/pipex.h"
 
-static void	ft_first_cmd(t_var *var)
+void	first_cmd(t_pipe *var)
 {
-	var->infile_fd = open(var->argv[1], O_RDONLY);
-	if (var->infile_fd == ERROR)
+	var->in_fd = open(var->argv[1], O_RDONLY);
+	if (var->in_fd == ERROR)
 		ft_error();
-	if (dup2(var->infile_fd, STDIN_FILENO) == ERROR)
+	if (dup2(var->in_fd, STDIN_FILENO) == ERROR)
 		ft_error();
 	if (dup2(var->pipe_fd[OUT], STDOUT_FILENO) == ERROR)
 		ft_error();
-	if (close(var->infile_fd) == ERROR)
+	if (close(var->in_fd) == ERROR)
 		ft_error();
 	if (close(var->pipe_fd[IN]) == ERROR)
 		ft_error();
@@ -31,13 +31,13 @@ static void	ft_first_cmd(t_var *var)
 		ft_error();
 }
 
-static void	ft_middle_cmd(t_var *var)
+void	middle_cmd(t_pipe *var)
 {
-	if (dup2(var->prev_pipe_fd, STDIN_FILENO) == ERROR)
+	if (dup2(var->pre_fd, STDIN_FILENO) == ERROR)
 		ft_error();
 	if (dup2(var->pipe_fd[OUT], STDOUT_FILENO) == ERROR)
 		ft_error();
-	if (close(var->prev_pipe_fd) == ERROR)
+	if (close(var->pre_fd) == ERROR)
 		ft_error();
 	if (close(var->pipe_fd[IN]) == ERROR)
 		ft_error();
@@ -47,32 +47,32 @@ static void	ft_middle_cmd(t_var *var)
 		ft_error();
 }
 
-static void	ft_last_cmd(t_var *var)
+void	last_cmd(t_pipe *var)
 {
-	var->outfile_fd = open(var->argv[var->argc - 1], O_WRONLY
+	var->out_fd = open(var->argv[var->argc - 1], O_WRONLY
 			| O_CREAT | O_TRUNC, 0644);
-	if (var->outfile_fd == ERROR)
+	if (var->out_fd == ERROR)
 		ft_error();
-	if (dup2(var->prev_pipe_fd, STDIN_FILENO) == ERROR)
+	if (dup2(var->pre_fd, STDIN_FILENO) == ERROR)
 		ft_error();
-	if (dup2(var->outfile_fd, STDOUT_FILENO) == ERROR)
+	if (dup2(var->out_fd, STDOUT_FILENO) == ERROR)
 		ft_error();
-	if (close(var->prev_pipe_fd) == ERROR)
+	if (close(var->pre_fd) == ERROR)
 		ft_error();
-	if (close(var->outfile_fd) == ERROR)
+	if (close(var->out_fd) == ERROR)
 		ft_error();
 	if (execve(var->cmd_path, var->cmd, var->envp) == ERROR)
 		ft_error();
 }
 
-void	ft_child(t_var *var)
+void	child(t_pipe *var)
 {
-	ft_find_cmd_path(var);
-	ft_make_cmd_if_awk_sed(var);
-	if (var->cmd_i == 2)
-		ft_first_cmd(var);
-	else if (var->cmd_i == var->argc - 2)
-		ft_last_cmd(var);
+	get_path_c(var);
+	check_other(var);
+	if (var->index_c == 2)
+		first_cmd(var);
+	else if (var->index_c == var->argc - 2)
+		last_cmd(var);
 	else
-		ft_middle_cmd(var);
+		middle_cmd(var);
 }

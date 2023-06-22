@@ -29,25 +29,25 @@
 # include <string.h>
 # include <stdio.h>
 
-typedef struct s_var
+typedef struct s_pipe
 {
 	int		argc;
 	char	**argv;
 	char	**envp;
 	int		here_doc;
 	char	*limiter;
-	int		prev_pipe_fd;
-	int		infile_fd;
-	int		outfile_fd;
+	int		pre_fd;
+	int		in_fd;
+	int		out_fd;
 	int		pipe_fd[2];
 	pid_t	pid;
 	char	**paths;
 	char	**cmd;
 	char	*cmd_path;
-	int		cmd_i;
-	int		cmd_count;
-	int		cmd_isin;
-}			t_var;
+	int		index_c;
+	int		count_c;
+	int		possible_c;
+}			t_pipe;
 
 typedef struct s_parser
 {
@@ -61,11 +61,22 @@ typedef struct s_parser
 	char	**result;
 }			t_parser;
 
-void	ft_child(t_var *var);
-void	ft_parent(t_var *var);
-void	ft_find_cmd_path(t_var *var);
-void	ft_make_cmd_if_awk_sed(t_var *var);
+void	child(t_pipe *var);
+void	parent(t_pipe *var);
+void	get_path_c(t_pipe *var);
+void	check_other(t_pipe *var);
 void	ft_error(void);
-void	ft_here_doc_first_cmd(t_var *var);
-void	ft_here_doc_last_cmd(t_var *var);
+void	hd_first_cmd(t_pipe *var);
+void	hd_last_cmd(t_pipe *var);
+int		abs_path(t_pipe *var);
+void	copycmd(t_parser *p_var);
+void	space(t_parser *p_var);
+void	query(t_parser *p_var, char quote);
+void	other_command(t_pipe *var, t_parser *p_var);
+void	first_cmd(t_pipe *var);
+void	middle_cmd(t_pipe *var);
+void	last_cmd(t_pipe *var);
+void	not_cmd(t_pipe *var);
+void	hd_get_input(t_pipe *var);
+
 #endif

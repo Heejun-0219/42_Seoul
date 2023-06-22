@@ -12,7 +12,7 @@
 
 #include "../includes/pipex_bonus.h"
 
-static void	ft_copycmd(t_parser *p_var)
+void	copycmd(t_parser *p_var)
 {
 	int		i;
 	char	*str;
@@ -31,17 +31,17 @@ static void	ft_copycmd(t_parser *p_var)
 	p_var->result[p_var->str_i++] = str;
 }
 
-static void	ft_space(t_parser *p_var)
+void	space(t_parser *p_var)
 {
 	p_var->end = p_var->i - 1;
 	p_var->str_len = (p_var->end - p_var->start) + 1;
-	ft_copycmd(p_var);
+	copycmd(p_var);
 	while (p_var->cmd[p_var->start] == ' ')
 		p_var->start++;
 	p_var->i = p_var->start - 1;
 }
 
-static void	ft_quote(t_parser *p_var, char quote)
+void	query(t_parser *p_var, char quote)
 {
 	int		quote_end;
 
@@ -51,14 +51,14 @@ static void	ft_quote(t_parser *p_var, char quote)
 		quote_end++;
 	p_var->end = quote_end - 1;
 	p_var->str_len = (p_var->end - p_var->start) + 1;
-	ft_copycmd(p_var);
+	copycmd(p_var);
 	p_var->start++;
 	while (p_var->cmd[p_var->start] == ' ')
 		p_var->start++;
 	p_var->i = p_var->start - 1;
 }
 
-static void	ft_make_cmd_for_awk_sed(t_var *var, t_parser *p_var)
+void	other_command(t_pipe *var, t_parser *p_var)
 {
 	p_var->result = (char **)malloc(sizeof(char *) * (p_var->str_count + 1));
 	if (p_var->result == NULL)
@@ -66,9 +66,9 @@ static void	ft_make_cmd_for_awk_sed(t_var *var, t_parser *p_var)
 	while (p_var->cmd[p_var->i])
 	{
 		if (p_var->cmd[p_var->i] == ' ')
-			ft_space(p_var);
+			space(p_var);
 		else if (p_var->cmd[p_var->i] == '\'' || p_var->cmd[p_var->i] == '"')
-			ft_quote(p_var, p_var->cmd[p_var->i]);
+			query(p_var, p_var->cmd[p_var->i]);
 		p_var->i++;
 	}
 	p_var->result[p_var->str_i] = NULL;
@@ -76,7 +76,7 @@ static void	ft_make_cmd_for_awk_sed(t_var *var, t_parser *p_var)
 	p_var->result = NULL;
 }
 
-void	ft_make_cmd_if_awk_sed(t_var *var)
+void	check_other(t_pipe *var)
 {
 	t_parser	p_var;
 	int			i;
@@ -92,7 +92,7 @@ void	ft_make_cmd_if_awk_sed(t_var *var)
 		p_var.str_i = 0;
 		p_var.str_count = 1;
 		p_var.str_len = 0;
-		p_var.cmd = var->argv[var->cmd_i];
+		p_var.cmd = var->argv[var->index_c];
 		p_var.result = NULL;
 		i = 0;
 		while (p_var.cmd[i])
@@ -101,6 +101,6 @@ void	ft_make_cmd_if_awk_sed(t_var *var)
 				p_var.str_count++;
 			i++;
 		}
-		ft_make_cmd_for_awk_sed(var, &p_var);
+		other_command(var, &p_var);
 	}
 }
