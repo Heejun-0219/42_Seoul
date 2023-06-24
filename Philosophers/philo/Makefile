@@ -5,11 +5,12 @@ CFLAGS		=	-Wall -Werror -Wextra
 
 INCLUDES	=	includes/
 SRC			=	srcs/create.c 		\
-				srcs/utils_libft.c 	\
+				srcs/utils.c 		\
 				srcs/utils_1.c		\
 				srcs/init.c			\
 				srcs/main.c			\
 				srcs/die.c
+				
 OBJS		= 	$(SRC:.c=.o)
 
 %.o		: %.c

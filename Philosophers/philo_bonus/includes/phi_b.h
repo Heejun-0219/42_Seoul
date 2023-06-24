@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BONUS_H
-# define BONUS_H
+#ifndef PHI_B_H
+# define PHI_B_H
 
 # include "stdio.h"
 # include "unistd.h"

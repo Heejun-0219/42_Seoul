@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bonus.h"
+#include "../includes/phi_b.h"
 
 int	main(int ac, char **av)
 {

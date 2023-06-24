@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bonus.h"
+#include "../includes/phi_b.h"
 
 void	check(t_state *all)
 {
