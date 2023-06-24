@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phi.h"
+#include "../includes/phi.h"
 
 void	die(t_state *aristo, int i, int j)
 {

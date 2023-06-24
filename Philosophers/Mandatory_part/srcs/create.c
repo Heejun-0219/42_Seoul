@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phi.h"
+#include "../includes/phi.h"
 
 void	meal_time(t_phi *philo)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phi.h"
+#include "../includes/phi.h"
 
 void	ft_init_2(t_state *aristo)
 {

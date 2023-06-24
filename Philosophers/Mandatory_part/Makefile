@@ -1,27 +1,34 @@
-CC		=	gcc
-NAME 	=	philo
-SRC		=	create.c utils_libft.c utils_1.c init.c main.c die.c
-OBJ		= 	$(SRC:.c=.o)
-FLAGS	=	-Wall -Werror -Wextra
-BLUE = \033[1;34m
+NAME 		=	philo
 
-all: $(NAME) credit
-	@echo "$(BLUE)██████████████████████ Compiling is DONE ███████████████████████$(RESET)"
+CC			=	cc
+CFLAGS		=	-Wall -Werror -Wextra
 
-$(NAME): $(OBJ)
-	@$(CC) $(FLAGS) $(OBJ) -o philo
-clean:
-	rm -rf $(OBJ)
-fclean: clean
-	rm -rf $(OBJ)
-	rf -f $(NAME)
-re: fclean all
-.PHONY: clean fclean re all
-credit:
-	@echo "\033[1;33m▀██▀▀█▄  ▀██       ██  ▀██                                  ▀██"
-	@echo "\033[1;33m ██   ██  ██ ▄▄   ▄▄▄   ██    ▄▄▄    ▄▄▄▄    ▄▄▄   ▄▄▄ ▄▄▄   ██ ▄▄     ▄▄▄▄  ▄▄▄ ▄▄   ▄▄▄▄"
-	@echo "\033[1;33m ██▄▄▄█▀  ██▀ ██   ██   ██  ▄█  ▀█▄ ██▄ ▀  ▄█  ▀█▄  ██▀  ██  ██▀ ██  ▄█▄▄▄██  ██▀ ▀▀ ██▄ ▀"
-	@echo "\033[1;33m ██       ██  ██   ██   ██  ██   ██ ▄ ▀█▄▄ ██   ██  ██    █  ██  ██  ██       ██     ▄ ▀█▄▄"
-	@echo "\033[1;33m▄██▄     ▄██▄ ██▄ ▄██▄ ▄██▄  ▀█▄▄█▀ █▀▄▄█▀  ▀█▄▄█▀  ██▄▄▄▀  ▄██▄ ██▄  ▀█▄▄▄▀ ▄██▄    █▀▄▄█▀"
-	@echo "\033[1;33m                                                    ██"
-	@echo "\033[1;35m         Made with love by : \033[1;95mbcayir\033[1;33m                 ▀▀▀▀"
+INCLUDES	=	includes/
+SRC			=	srcs/create.c 		\
+				srcs/utils_libft.c 	\
+				srcs/utils_1.c		\
+				srcs/init.c			\
+				srcs/main.c			\
+				srcs/die.c
+OBJS		= 	$(SRC:.c=.o)
+
+%.o		: %.c
+			$(CC) $(CFLAG) -I$(INCLUDES) -c $< -o $@
+
+.PHONY	: all
+all		: $(NAME)
+$(NAME)	: $(OBJS)
+			@$(CC) $(CFLAG) -I$(INCLUDES) $(OBJS) -o $(NAME)
+
+.PHONY	: clean
+clean	:
+			@rm -rf $(OBJS) 
+
+.PHONY	: fclean
+fclean	: clean
+			@rm -rf $(NAME)
+
+.PHONY	: re
+re		:
+			@make fclean
+			@make all
