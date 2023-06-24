@@ -16,6 +16,7 @@ CC			=	cc
 CFLAGS		=	-Wall -Werror -Wextra
 
 INCLUDES	=	includes/
+
 SRC			=	srcs/assign.c 		\
 				srcs/utils.c 		\
 				srcs/utils_1.c		\
