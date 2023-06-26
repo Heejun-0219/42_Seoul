@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 20:03:28 by bcayir            #+#    #+#             */
-/*   Updated: 2023/06/26 15:48:52 by heejunki         ###   ########.fr       */
+/*   Created: 2022/12/10 20:03:28 by heejunki          #+#    #+#             */
+/*   Updated: 2023/06/26 22:44:48 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	philo_sleep(t_phis *philo)
 
 	all = philo->link;
 	print(philo->id, "\033[0;94mSleeping", philo->link);
-	pass_the_time(all->time_sleep, all); 
+	pass_the_time(all->time_sleep, all);
 }
 
 void	philo_think(t_phis *philo)
