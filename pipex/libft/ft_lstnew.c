@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heejunki <heejunki@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 10:44:46 by heejunki              #+#    #+#             */
-/*   Updated: 2022/11/24 11:14:04 by heejunki             ###   ########.fr       */
+/*   Created: 2022/11/22 10:44:46 by heejunki          #+#    #+#             */
+/*   Updated: 2023/06/26 23:14:48 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

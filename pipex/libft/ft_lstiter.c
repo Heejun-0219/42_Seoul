@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heejunki <heejunki@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 11:15:10 by heejunki              #+#    #+#             */
-/*   Updated: 2022/11/22 11:15:10 by heejunki             ###   ########.fr       */
+/*   Created: 2023/06/26 22:47:38 by heejunki          #+#    #+#             */
+/*   Updated: 2023/06/26 22:47:38 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

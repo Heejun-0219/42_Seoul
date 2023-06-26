@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heejunki <heejunki@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 11:10:28 by heejunki              #+#    #+#             */
-/*   Updated: 2022/11/22 11:10:28 by heejunki             ###   ########.fr       */
+/*   Created: 2023/06/26 22:47:31 by heejunki          #+#    #+#             */
+/*   Updated: 2023/06/26 22:47:31 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
