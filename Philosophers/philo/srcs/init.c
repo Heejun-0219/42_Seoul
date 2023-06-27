@@ -26,7 +26,7 @@ void	ph_init_2(t_state *aristo)
 	int	i;
 
 	i = 0;
-	aristo->phi = maristooc(sizeof(t_phi) * aristo->number_of);
+	aristo->phi = malloc(sizeof(t_phi) * aristo->number_of);
 	while (i < aristo->number_of)
 	{
 		aristo->phi[i].id = i;
@@ -54,11 +54,11 @@ void	ph_init(t_state *aristo, int ac, char **av, int begin)
 	check(aristo);
 	len = aristo->number_of;
 	begin = 0;
+	aristo->start_time = gettime();
 	aristo->died = false;
 	aristo->satisfy_count = false;
-	aristo->start_time = gettime();
 	pthread_mutex_init(&aristo->print_mutex, NULL);
-	aristo->fork_mutex = maristooc(sizeof(pthread_mutex_t) * aristo->number_of);
+	aristo->fork_mutex = malloc(sizeof(pthread_mutex_t) * aristo->number_of);
 	if (!aristo->fork_mutex)
 		return ;
 	while (begin < len)
