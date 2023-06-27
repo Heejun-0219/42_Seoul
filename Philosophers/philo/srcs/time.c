@@ -20,18 +20,6 @@ uint64_t	gettime(void)
 	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
 }
 
-void	print(int id, char *s, t_state *aristo)
-{
-	if (aristo->died == false)
-	{
-		pthread_mutex_lock(&aristo->print_mutex);
-		printf(WHITE"%llu -> timestamp_in_ms ~ ",
-			(gettime() - aristo->start_time));
-		printf(SKY"%d. philosop -> %s\n", id, s);
-		pthread_mutex_unlock(&aristo->print_mutex);
-	}
-}
-
 void	pass_the_time(int time, t_state *aristo)
 {
 	uint64_t	start;
@@ -41,6 +29,6 @@ void	pass_the_time(int time, t_state *aristo)
 	{
 		if (gettime() - start >= time)
 			break ;
-		usleep(42);
+		usleep(10);
 	}
 }

@@ -19,6 +19,7 @@
 # include <pthread.h>
 # include <stdbool.h>
 # include <sys/time.h>
+# include <limits.h>
 
 # define PURPLE "\033[0;95m"
 # define RED "\033[0;91m"
@@ -49,18 +50,18 @@ typedef struct s_state
 	int				time_to_sleep;
 	int				must_eat;	
 	bool			died;
-	bool			eat_all;
+	bool			satisfy_count;
 	pthread_mutex_t	*fork_mutex;
 	pthread_mutex_t	print_mutex;
 	t_phi			*phi;
 	uint64_t		start_time;
 }t_state;
 
-int			ft_atoi(char *s);
+int			ft_atoi(const char *str);
 void		ph_init(t_state *aristo, int ac, char **av, int begin);
 void		ft_exit(char *s);
 uint64_t	gettime(void);
-void		create_thread(t_state *aristo, int i, int j);
+void		create(t_state *aristo, int i, int j);
 void		print(int id, char *s, t_state *aristo);
 void		put_on_hold(int time, t_state *aristo);
 void		die(t_state *aristo, int i, int j);

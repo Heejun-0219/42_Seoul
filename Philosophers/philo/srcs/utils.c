@@ -18,29 +18,46 @@ void	ft_exit(char *s)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_atoi(char *s)
+void	print(int id, char *s, t_state *aristo)
 {
-	int	res;
-	int	sing;
-	int	i;
-	int	j;
-
-	res = 0;
-	sing = 1;
-	i = 0;
-	j = -1;
-	while (s[++j])
-		if (s[j] < '0' || s[j] > '9')
-			ft_exit("Only + number..\n");
-	while (s[i] <= 32)
-		i++;
-	if (s[i] == '-' || s[i] == '+')
+	if (aristo->died == false)
 	{
-		if (s[i] == '-')
-			sing = -1;
-		i++;
+		pthread_mutex_lock(&aristo->print_mutex);
+		printf(WHITE"%llu ~ ",
+			gettime() - aristo->start_time);
+		printf(SKY"Num: %d philosopher %s\n", id, s);
+		pthread_mutex_unlock(&aristo->print_mutex);
 	}
-	while (s[i] >= '0' && s[i] <= '9')
-		res = res * 10 + (s[i++] - 48);
-	return (res * sing);
+}
+
+static int	check_max_or_min(long num, const char c, int minus)
+{
+	if (num > LONG_MAX / 10 || (num == LONG_MAX / 10 && c - '0' > 7))
+	{
+		if (minus == 1)
+			return (-1);
+		return (0);
+	}
+	return (1);
+}
+
+int	ft_atoi(const char *str)
+{
+	long	num;
+	int		minus;
+
+	num = 0;
+	minus = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*(str) == '-' || *(str) == '+')
+		if (*(str++) == '-')
+			minus *= -1;
+	while (*str >= '0' && *str <= '9')
+	{
+		if (check_max_or_min(num, *str, minus) != 1)
+			return (check_max_or_min(num, *str, minus));
+		num = num * 10 + (*str++ - '0');
+	}
+	return (num * minus);
 }

@@ -45,10 +45,11 @@ void	ph_init(t_state *aristo, int ac, char **av, int begin)
 	len = aristo->number_of;
 	begin = 0;
 	aristo->died = false;
-	aristo->eat_all = false;
+	aristo->satisfy_count = false;
 	aristo->start_time = gettime();
-	if (aristo->time_to_die < 0 || aristo->time_to_eat < 0
-		|| aristo->number_of < 1 || aristo->time_to_sleep < 0)
+	if (aristo->time_to_die < 10 || aristo->time_to_eat < 10
+		|| aristo->number_of <= 1 || aristo->time_to_sleep < 10
+		|| aristo->must_eat < -1 || aristo->must_eat == 0)
 		ft_exit("Error: Invalid argument value");
 	pthread_mutex_init(&aristo->print_mutex, NULL);
 	aristo->fork_mutex = malloc(sizeof(pthread_mutex_t) * aristo->number_of);

@@ -13,12 +13,12 @@
 NAME 		=	philo
 
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -f_sanitize=thread -pthread
 
 INCLUDES	=	includes/
 SRC			=	srcs/create.c 		\
 				srcs/utils.c 		\
-				srcs/utils_1.c		\
+				srcs/time.c			\
 				srcs/init.c			\
 				srcs/main.c			\
 				srcs/die.c
