@@ -6,27 +6,27 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:03:18 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/26 22:43:47 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:40:05 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHI_B_H
 # define PHI_B_H
 
-# include "stdio.h"
-# include "unistd.h"
-# include "stdlib.h"
-# include "semaphore.h"
-# include "pthread.h"
-# include "stdint.h"
-# include "sys/time.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <semaphore.h>
+# include <pthread.h>
+# include <stdint.h>
+# include <sys/time.h>
 # include <pthread.h>
 # include <fcntl.h>
 # include <sys/time.h>
 # include <sys/stat.h> 
-# include "stdbool.h"
-# include "sys/time.h"
-# include "sys/wait.h"
+# include <stdbool.h>
+# include <sys/time.h>
+# include <sys/wait.h>
 # include <signal.h>
 
 typedef struct s_env	t_state;

@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:33 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/26 22:42:53 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:39:08 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define PHI_H
 
 # include <stdio.h>
-# include "unistd.h"
-# include "stdlib.h"
-# include "pthread.h"
-# include "stdbool.h"
-# include "sys/time.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <pthread.h>
+# include <stdbool.h>
+# include <sys/time.h>
 
 struct	s_state;
 
