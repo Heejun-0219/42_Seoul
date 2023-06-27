@@ -51,7 +51,7 @@ typedef struct s_state
 	bool			died;
 	bool			eat_all;
 	pthread_mutex_t	*fork_mutex;
-	pthread_mutex_t	random;
+	pthread_mutex_t	print_mutex;
 	t_phi			*phi;
 	uint64_t		start_time;
 }t_state;

@@ -67,5 +67,5 @@ void	create_thread(t_state *aristo, int i, int j)
 	j = -1;
 	while (++j < aristo->number_of)
 		pthread_mutex_destroy(&aristo->fork_mutex[j]);
-	pthread_mutex_destroy(&aristo->random);
+	pthread_mutex_destroy(&aristo->print_mutex);
 }

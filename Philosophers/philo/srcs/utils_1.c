@@ -24,11 +24,11 @@ void	print(int id, char *s, t_state *aristo)
 {
 	if (aristo->died == false)
 	{
-		pthread_mutex_lock(&aristo->random);
+		pthread_mutex_lock(&aristo->print_mutex);
 		printf(WHITE"%llu -> timestamp_in_ms ~ ",
 			(gettime() - aristo->start_time));
 		printf(SKY"%d. philosop -> %s\n", id, s);
-		pthread_mutex_unlock(&aristo->random);
+		pthread_mutex_unlock(&aristo->print_mutex);
 	}
 }
 

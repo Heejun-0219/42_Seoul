@@ -25,10 +25,9 @@ void	die(t_state *aristo, int i, int j)
 				aristo->died = true;
 				if (aristo->number_of == 1)
 				{
-					pthread_mutex_destroy(&aristo->random);
 					while (++j < aristo->number_of)
 						pthread_mutex_destroy(&aristo->fork_mutex[j]);
-					pthread_mutex_destroy(&aristo->random);
+					pthread_mutex_destroy(&aristo->print_mutex);
 					exit(0);
 				}
 			}
