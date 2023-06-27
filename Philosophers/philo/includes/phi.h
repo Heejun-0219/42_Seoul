@@ -57,15 +57,16 @@ typedef struct s_state
 	uint64_t		start_time;
 }t_state;
 
-void		check(t_state *aristo);
+int			check(t_state *info);
 int			ft_atoi(const char *str);
-void		ph_init(t_state *aristo, int ac, char **av, int begin);
-void		ft_exit(char *s);
+int			ph_init(t_state *info, int ac, char **av, int begin);
+int			ind_init(t_state *info);
+int			ft_error(char *s);
 uint64_t	gettime(void);
-void		create(t_state *aristo, int i, int j);
-void		print(int id, char *s, t_state *aristo);
-void		put_on_hold(int time, t_state *aristo);
-void		die(t_state *aristo, int i, int j);
-void		pass_the_time(int time, t_state *aristo);
+void		create(t_state *info, int i, int j);
+void		print(int id, char *s, t_state *info);
+void		put_on_hold(int time, t_state *info);
+void		die(t_state *info, int i, int j);
+void		pass_the_time(int time, t_state *info);
 
 #endif

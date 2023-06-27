@@ -12,56 +12,66 @@
 
 #include "../includes/phi.h"
 
-void	check(t_state *aristo)
+int	check(t_state *info)
 {
-	if (aristo->time_to_die < 10 || aristo->number_of <= 1
-		|| aristo->time_to_die < 10 || aristo->time_to_sleep < 10 
-		|| aristo->number_of > 200 || aristo->must_eat < -1
-		|| aristo->must_eat == 0)
-		ft_exit("Error: Invalid argument value");
+	if (info->time_to_die < 60 || info->number_of < 1
+		|| info->time_to_die < 60 || info->time_to_sleep < 60 
+		|| info->number_of > 200 || info->must_eat < -1
+		|| info->must_eat == 0)
+		{
+			ft_error("Error: Invalid argument value");
+			return (1);
+		}
+	return (0);
 }
 
-void	ph_init_2(t_state *aristo)
+int	ind_init(t_state *info)
 {
 	int	i;
 
 	i = 0;
-	aristo->phi = malloc(sizeof(t_phi) * aristo->number_of);
-	while (i < aristo->number_of)
+	info->phi = malloc(sizeof(t_phi) * info->number_of);
+	if (!info->phi)
+		return (1);
+	while (i < info->number_of)
 	{
-		aristo->phi[i].id = i;
-		aristo->phi[i].count_eat = 0;
-		aristo->phi[i].l_fork_id = i;
-		aristo->phi[i].r_fork_id = (i + 1) % aristo->number_of;
-		aristo->phi[i].link = aristo;
-		aristo->phi[i].last_eat = gettime();
+		info->phi[i].id = i;
+		info->phi[i].count_eat = 0;
+		info->phi[i].l_fork_id = i;
+		info->phi[i].r_fork_id = (i + 1) % info->number_of;
+		info->phi[i].link = info;
+		info->phi[i].last_eat = gettime();
 		i++;
 	}
+	return (0);
 }
 
-void	ph_init(t_state *aristo, int ac, char **av, int begin)
+int	ph_init(t_state *info, int ac, char **av, int begin)
 {
 	int	len;
 
-	aristo->number_of = ft_atoi(av[1]);
-	aristo->time_to_die = ft_atoi(av[2]);
-	aristo->time_to_eat = ft_atoi(av[3]);
-	aristo->time_to_sleep = ft_atoi(av[4]);
+	info->number_of = ft_atoi(av[1]);
+	info->time_to_die = ft_atoi(av[2]);
+	info->time_to_eat = ft_atoi(av[3]);
+	info->time_to_sleep = ft_atoi(av[4]);
 	if (ac == 6)
-		aristo->must_eat = ft_atoi(av[5]);
+		info->must_eat = ft_atoi(av[5]);
 	else
-		aristo->must_eat = -1;
-	check(aristo);
-	len = aristo->number_of;
+		info->must_eat = -1;
+	if(check(info) == 1)
+		return (1);
+	len = info->number_of;
 	begin = 0;
-	aristo->start_time = gettime();
-	aristo->died = false;
-	aristo->satisfy_count = false;
-	pthread_mutex_init(&aristo->print_mutex, NULL);
-	aristo->fork_mutex = malloc(sizeof(pthread_mutex_t) * aristo->number_of);
-	if (!aristo->fork_mutex)
-		return ;
+	info->start_time = gettime();
+	info->died = false;
+	info->satisfy_count = false;
+	pthread_mutex_init(&info->print_mutex, NULL);
+	info->fork_mutex = malloc(sizeof(pthread_mutex_t) * info->number_of);
+	if (!info->fork_mutex)
+		return (1);
 	while (begin < len)
-		pthread_mutex_init(&aristo->fork_mutex[begin++], NULL);
-	ph_init_2(aristo);
+		pthread_mutex_init(&info->fork_mutex[begin++], NULL);
+	if(ind_init(info) == 1)
+		return (1);
+	return (0);
 }

@@ -12,21 +12,21 @@
 
 #include "../includes/phi.h"
 
-void	ft_exit(char *s)
+int	ft_error(char *s)
 {
 	printf("%s", s);
-	exit(EXIT_FAILURE);
+	return (1);
 }
 
-void	print(int id, char *s, t_state *aristo)
+void	print(int id, char *s, t_state *info)
 {
-	if (aristo->died == false)
+	if (info->died == false)
 	{
-		pthread_mutex_lock(&aristo->print_mutex);
+		pthread_mutex_lock(&info->print_mutex);
 		printf(WHITE"%llu ~ ",
-			gettime() - aristo->start_time);
+			gettime() - info->start_time);
 		printf(SKY"Num: %d philosopher %s\n", id, s);
-		pthread_mutex_unlock(&aristo->print_mutex);
+		pthread_mutex_unlock(&info->print_mutex);
 	}
 }
 

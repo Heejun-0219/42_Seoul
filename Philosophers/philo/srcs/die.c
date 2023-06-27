@@ -12,21 +12,28 @@
 
 #include "../includes/phi.h"
 
-void	die(t_state *aristo, int i, int j)
+void	die(t_state *info, int i, int j)
 {
-	while (aristo->satisfy_count == false)
+	while (info->satisfy_count == false)
 	{
 		i = 0;
-		while (i < aristo->number_of)
+		while (i < info->number_of)
 		{
-			if (gettime() - aristo->phi[i].last_eat > aristo->time_to_die)
+			if (gettime() - info->phi[i].last_eat > info->time_to_die)
 			{
-				print(aristo->phi[i].id, RED"died", aristo);
-				aristo->died = true;
+				print(info->phi[i].id, RED"died", info);
+				info->died = true;
+				if (info->number_of == 1)
+				{
+					while (++j < info->number_of)
+						pthread_mutex_destroy(&info->fork_mutex[j]);
+					pthread_mutex_destroy(&info->print_mutex);
+					exit(0);
+				}
 			}
 			i++;
 		}
-		if (aristo->died == true)
+		if (info->died == true)
 			break ;
 	}
 }

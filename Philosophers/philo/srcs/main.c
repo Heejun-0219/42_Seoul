@@ -14,14 +14,18 @@
 
 int	main(int ac, char **av)
 {
-	t_state	*aristo;
+	t_state	*info;
 
-	aristo = malloc(sizeof(t_state));
-	if (!aristo)
+	info = malloc(sizeof(t_state));
+	if (!info)
 		return (0);
 	if (ac != 5 && ac != 6)
-		ft_exit("Bad number of arg...");
-	ph_init(aristo, ac, av, 0);
-	create(aristo, -1, -1);
+	{
+		ft_error("Bad number of arg...");
+		return (1);
+	}
+	if(ph_init(info, ac, av, 0) == 1)
+		return (1);
+	create(info, -1, -1);
 	return (0);
 }
