@@ -25,7 +25,7 @@ void	*hospital(void *data)
 			break ;
 		if (gettime() - philo->last_eat > all->time_die)
 		{
-			print(philo->id, "\033[0;91mPhilosop died", all);
+			print(philo->id, RED"Philosop died", all);
 			all->is_died = true;
 			exit(1);
 		}

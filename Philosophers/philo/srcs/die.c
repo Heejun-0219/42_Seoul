@@ -21,7 +21,7 @@ void	die(t_state *aristo, int i, int j)
 		{
 			if (gettime() - aristo->phi[i].last_eat > aristo->time_to_die)
 			{
-				print(aristo->phi[i].id, "\033[0;91mPhilosop died", aristo);
+				print(aristo->phi[i].id, RED"Philosop died", aristo);
 				aristo->died = true;
 				if (aristo->number_of == 1)
 				{

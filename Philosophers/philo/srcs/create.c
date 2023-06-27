@@ -15,10 +15,10 @@
 void	meal_time(t_phi *philo)
 {
 	pthread_mutex_lock(&philo->link->fork_mutex[philo->r_fork_id]);
-	print(philo->id, "\033[0;91mtook the right fork", philo->link);
+	print(philo->id, PURPLE"took the right fork", philo->link);
 	pthread_mutex_lock(&philo->link->fork_mutex[philo->l_fork_id]);
-	print(philo->id, "\033[0;95mtook the left fork", philo->link);
-	print(philo->id, "\033[0;92mEating", philo->link);
+	print(philo->id, PURPLE"took the left fork", philo->link);
+	print(philo->id, GREEN"Eating", philo->link);
 	philo->last_eat = gettime();
 	pass_the_time(philo->link->time_to_eat, philo->link);
 	pthread_mutex_unlock(&philo->link->fork_mutex[philo->r_fork_id]);
@@ -46,11 +46,11 @@ void	*start(void *data)
 		}
 		if (philo->link->died == true)
 			break ;
-		print(philo->id, "\033[0;94mSleeping", philo->link);
+		print(philo->id, BLUE"Sleeping", philo->link);
 		pass_the_time(philo->link->time_to_sleep, philo->link);
 		if (philo->link->died == true)
 			break ;
-		print(philo->id, "\033[0;93mThinking", philo->link);
+		print(philo->id, YELLOW"Thinking", philo->link);
 	}
 	return (NULL);
 }

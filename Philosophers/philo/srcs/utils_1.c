@@ -25,9 +25,9 @@ void	print(int id, char *s, t_state *aristo)
 	if (aristo->died == false)
 	{
 		pthread_mutex_lock(&aristo->random);
-		printf("\033[0;97m%llu -> timestamp_in_ms ~ ",
+		printf(WHITE"%llu -> timestamp_in_ms ~ ",
 			(gettime() - aristo->start_time));
-		printf("\033[0;96m%d. philosop -> %s\n", id, s);
+		printf(SKY"%d. philosop -> %s\n", id, s);
 		pthread_mutex_unlock(&aristo->random);
 	}
 }

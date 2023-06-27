@@ -25,9 +25,9 @@ void	print(int id, char *s, t_state *all)
 	if (all->is_died == false)
 	{
 		sem_wait(all->print);
-		printf("\033[0;97m%llu -> timestamp_in_ms ~ ",
+		printf(WHITE"%llu -> timestamp_in_ms ~ ",
 			(gettime() - all->start_time));
-		printf("\033[0;96m%d. philosop -> %s\n", id, s);
+		printf(SKY"%d. philosop -> %s\n", id, s);
 		sem_post(all->print);
 	}
 }

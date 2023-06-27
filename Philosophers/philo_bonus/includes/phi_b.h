@@ -13,6 +13,14 @@
 #ifndef PHI_B_H
 # define PHI_B_H
 
+# define PURPLE "\033[0;95m"
+# define RED "\033[0;91m"
+# define GREEN "\033[0;92m"
+# define YELLOW "\033[0;93m"
+# define BLUE "\033[0;94m"
+# define WHITE "\033[0;97m"
+# define SKY "\033[0;96m"
+
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>

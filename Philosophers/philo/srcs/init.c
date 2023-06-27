@@ -47,9 +47,9 @@ void	ph_init(t_state *aristo, int ac, char **av, int begin)
 	aristo->died = false;
 	aristo->eat_all = false;
 	aristo->start_time = gettime();
-	if (aristo->time_to_die < 60 || aristo->time_to_eat < 60
-		|| aristo->number_of < 1 || aristo->time_to_sleep < 60)
-		ft_exit("Error: THE time_to... CAN'T BE LESS THAN 60 ms");
+	if (aristo->time_to_die < 0 || aristo->time_to_eat < 0
+		|| aristo->number_of < 1 || aristo->time_to_sleep < 0)
+		ft_exit("Error: Invalid argument value");
 	pthread_mutex_init(&aristo->random, NULL);
 	aristo->fork_mutex = malloc(sizeof(pthread_mutex_t) * aristo->number_of);
 	if (!aristo->fork_mutex)
