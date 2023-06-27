@@ -27,7 +27,7 @@ void	print(int id, char *s, t_state *all)
 		sem_wait(all->print);
 		printf(WHITE"%llu -> timestamp_in_ms ~ ",
 			(gettime() - all->start_time));
-		printf(SKY"%d. philosop -> %s\n", id, s);
+		printf(SKY"%d. philosopher -> %s\n", id, s);
 		sem_post(all->print);
 	}
 }

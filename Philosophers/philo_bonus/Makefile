@@ -13,7 +13,7 @@
 NAME 		=	philo_bonus
 
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -f_sanitize=address 
 
 INCLUDES	=	includes/
 

@@ -51,9 +51,9 @@ typedef struct s_a
 typedef struct s_env
 {
 	int			number_of;
-	int			time_die;
-	int			time_eat;
-	int			time_sleep;
+	int			time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
 	int			must_eat;
 	uint64_t	start_time;
 	sem_t		*forks;
@@ -65,6 +65,7 @@ typedef struct s_env
 	t_phis		*philo;
 }				t_state;
 
+void		check(t_state *all);
 uint64_t	gettime(void);
 void		ft_exit(char *s);
 int			ft_atoi(char *s);

@@ -14,9 +14,11 @@
 
 void	check(t_state *all)
 {
-	if (all->time_die < 60 || all->number_of < 1
-		|| all->time_die < 60 || all->time_sleep < 60 || all->number_of > 200)
-		ft_exit("Error! Bad numbers of argument");
+	if (all->time_to_die < 10 || all->number_of <= 1
+		|| all->time_to_die < 10 || all->time_to_sleep < 10 
+		|| all->number_of > 200 || all->must_eat < -1
+		|| all->must_eat == 0)
+		ft_exit("Error: Invalid argument value");
 }
 
 void	ph_initilos(t_state *all, int idx)
@@ -44,17 +46,17 @@ void	init_sem(t_state *all)
 void	init_arguments(t_state *all, int ac, char **av)
 {
 	all->number_of = ft_atoi(av[1]);
-	all->time_die = ft_atoi(av[2]);
-	all->time_eat = ft_atoi(av[3]);
-	all->time_sleep = ft_atoi(av[4]);
+	all->time_to_die = ft_atoi(av[2]);
+	all->time_to_eat = ft_atoi(av[3]);
+	all->time_to_sleep = ft_atoi(av[4]);
 	if (ac < 6)
 		all->must_eat = -1;
 	else
 		all->must_eat = ft_atoi(av[5]);
+	check(all);
 	all->start_time = gettime();
 	all->is_died = false;
 	all->all_eat = false;
-	check(all);
 	ph_initilos(all, -1);
 	init_sem(all);
 }

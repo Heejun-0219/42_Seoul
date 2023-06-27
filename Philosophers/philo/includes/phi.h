@@ -57,6 +57,7 @@ typedef struct s_state
 	uint64_t		start_time;
 }t_state;
 
+void		check(t_state *aristo);
 int			ft_atoi(const char *str);
 void		ph_init(t_state *aristo, int ac, char **av, int begin);
 void		ft_exit(char *s);

@@ -18,11 +18,11 @@ void	meal_time(t_phis *philo)
 
 	all = philo->link;
 	sem_wait(all->forks);
-	print(philo->id, PURPLE"took the right fork", all);
+	print(philo->id, PURPLE"has taken a right fork", all);
 	sem_wait(all->forks);
-	print(philo->id, PURPLE"took the left fork", all);
-	print(philo->id, GREEN"Eating", all);
-	pass_the_time(philo->link->time_eat, philo->link);
+	print(philo->id, PURPLE"has taken a left fork", all);
+	print(philo->id, GREEN"is eating", all);
+	pass_the_time(philo->link->time_to_eat, philo->link);
 	philo->last_eat = gettime();
 	philo->eat_count++;
 	sem_post(all->forks);
@@ -34,11 +34,11 @@ void	philo_sleep(t_phis *philo)
 	t_state	*all;
 
 	all = philo->link;
-	print(philo->id, BLUE"Sleeping", philo->link);
-	pass_the_time(all->time_sleep, all);
+	print(philo->id, BLUE"is sleeping", philo->link);
+	pass_the_time(all->time_to_sleep, all);
 }
 
 void	philo_think(t_phis *philo)
 {
-	print(philo->id, YELLOW"Thinking", philo->link);
+	print(philo->id, YELLOW"is thinking", philo->link);
 }
