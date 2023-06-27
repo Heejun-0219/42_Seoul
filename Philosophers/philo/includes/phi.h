@@ -17,9 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <pthread.h>
-# include <stdbool.h>
 # include <sys/time.h>
-# include <limits.h>
 
 # define PURPLE "\033[0;95m"
 # define RED "\033[0;91m"
@@ -49,8 +47,8 @@ typedef struct s_state
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				must_eat;	
-	bool			died;
-	bool			satisfy_count;
+	int				died;
+	int				satisfy_count;
 	pthread_mutex_t	*fork_mutex;
 	pthread_mutex_t	print_mutex;
 	t_phi			*phi;

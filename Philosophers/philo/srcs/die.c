@@ -14,7 +14,7 @@
 
 int	die(t_state *info, int i, int j)
 {
-	while (info->satisfy_count == false)
+	while (info->satisfy_count == 0)
 	{
 		i = 0;
 		while (i < info->number_of)
@@ -22,7 +22,7 @@ int	die(t_state *info, int i, int j)
 			if (gettime() - info->phi[i].last_eat > info->time_to_die)
 			{
 				print(info->phi[i].id, RED"died", info);
-				info->died = true;
+				info->died = 1;
 				if (info->number_of == 1)
 				{
 					pthread_mutex_destroy(&info->fork_mutex[0]);
@@ -32,7 +32,7 @@ int	die(t_state *info, int i, int j)
 			}
 			i++;
 		}
-		if (info->died == true)
+		if (info->died == 1)
 			break ;
 	}
 	return (0);

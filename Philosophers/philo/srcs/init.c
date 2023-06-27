@@ -60,8 +60,8 @@ int	ph_init(t_state *info, int ac, char **av, int begin)
 		return (1);
 	begin = 0;
 	info->start_time = gettime();
-	info->died = false;
-	info->satisfy_count = false;
+	info->died = 0;
+	info->satisfy_count = 0;
 	pthread_mutex_init(&info->print_mutex, NULL);
 	info->fork_mutex = malloc(sizeof(pthread_mutex_t) * info->number_of);
 	if (!info->fork_mutex)

@@ -20,7 +20,7 @@ int	ft_error(char *s)
 
 void	print(int id, char *s, t_state *info)
 {
-	if (info->died == false)
+	if (info->died == 0)
 	{
 		pthread_mutex_lock(&info->print_mutex);
 		printf(WHITE"%llu ~ ",
@@ -32,7 +32,7 @@ void	print(int id, char *s, t_state *info)
 
 static int	check_max_or_min(long num, const char c, int minus)
 {
-	if (num > LONG_MAX / 10 || (num == LONG_MAX / 10 && c - '0' > 7))
+	if (num > 9223372036854775807L / 10 || (num == 9223372036854775807L / 10 && c - '0' > 7))
 	{
 		if (minus == 1)
 			return (-1);

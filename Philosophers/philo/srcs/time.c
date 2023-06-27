@@ -25,7 +25,7 @@ void	pass_the_time(int time, t_state *info)
 	uint64_t	start;
 
 	start = gettime();
-	while (info->died == false)
+	while (info->died == 0)
 	{
 		if (gettime() - start >= time)
 			break ;

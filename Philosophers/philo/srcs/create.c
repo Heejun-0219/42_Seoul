@@ -33,22 +33,22 @@ void	*start(void *data)
 	philo = (t_phi *)data;
 	if (philo->id % 2)
 		usleep(100);
-	while (philo->link->died == false)
+	while (philo->link->died == 0)
 	{
-		if (philo->link->died == true)
+		if (philo->link->died == 1)
 			break ;
 		meal_time(philo);
 		if (philo->link->must_eat != -1
 			&& philo->link->must_eat <= philo->count_eat)
 		{
-			philo->link->satisfy_count = true;
+			philo->link->satisfy_count = 1;
 			break ;
 		}
-		if (philo->link->died == true)
+		if (philo->link->died == 1)
 			break ;
 		print(philo->id, BLUE"is sleeping", philo->link);
 		pass_the_time(philo->link->time_to_sleep, philo->link);
-		if (philo->link->died == true)
+		if (philo->link->died == 1)
 			break ;
 		print(philo->id, YELLOW"is thinking", philo->link);
 	}
