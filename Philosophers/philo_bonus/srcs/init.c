@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:03:41 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/26 22:43:47 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:43:09 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	check(t_state *all)
 		ft_exit("Error! Bad numbers of argument");
 }
 
-void	init_philos(t_state *all, int idx)
+void	ph_initilos(t_state *all, int idx)
 {
 	all->philo = malloc(sizeof(t_phis) * all->number_of);
 	while (++idx < all->number_of)
@@ -55,6 +55,6 @@ void	init_arguments(t_state *all, int ac, char **av)
 	all->is_died = false;
 	all->all_eat = false;
 	check(all);
-	init_philos(all, -1);
+	ph_initilos(all, -1);
 	init_sem(all);
 }

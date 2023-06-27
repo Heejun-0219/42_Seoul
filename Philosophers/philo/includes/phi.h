@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:33 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/27 14:39:08 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:43:09 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_state
 }t_state;
 
 int			ft_atoi(char *s);
-void		ft_init(t_state *aristo, int ac, char **av, int begin);
+void		ph_init(t_state *aristo, int ac, char **av, int begin);
 void		ft_exit(char *s);
 uint64_t	gettime(void);
 void		create_thread(t_state *aristo, int i, int j);

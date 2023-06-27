@@ -6,13 +6,13 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:15 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/26 22:43:47 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:43:09 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/phi.h"
 
-void	ft_init_2(t_state *aristo)
+void	ph_init_2(t_state *aristo)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ void	ft_init_2(t_state *aristo)
 	}
 }
 
-void	ft_init(t_state *aristo, int ac, char **av, int begin)
+void	ph_init(t_state *aristo, int ac, char **av, int begin)
 {
 	int	len;
 
@@ -56,5 +56,5 @@ void	ft_init(t_state *aristo, int ac, char **av, int begin)
 		return ;
 	while (begin < len)
 		pthread_mutex_init(&aristo->fork_mutex[begin++], NULL);
-	ft_init_2(aristo);
+	ph_init_2(aristo);
 }
