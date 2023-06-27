@@ -21,11 +21,12 @@ int	main(int ac, char **av)
 		return (0);
 	if (ac != 5 && ac != 6)
 	{
-		ft_error("Bad number of arg...");
+		ft_error("Error: Invalid argument");
 		return (1);
 	}
 	if (ph_init(info, ac, av, 0) == 1)
 		return (1);
-	create(info, -1, -1);
+	if (create(info, -1, -1) == 1)
+		return (1);
 	return (0);
 }

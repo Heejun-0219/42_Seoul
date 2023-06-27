@@ -63,10 +63,9 @@ int			ph_init(t_state *info, int ac, char **av, int begin);
 int			ind_init(t_state *info);
 int			ft_error(char *s);
 uint64_t	gettime(void);
-void		create(t_state *info, int i, int j);
+int			create(t_state *info, int i, int j);
 void		print(int id, char *s, t_state *info);
-void		put_on_hold(int time, t_state *info);
-void		die(t_state *info, int i, int j);
+int			die(t_state *info, int i, int j);
 void		pass_the_time(int time, t_state *info);
 
 #endif

@@ -55,17 +55,19 @@ void	*start(void *data)
 	return (NULL);
 }
 
-void	create(t_state *info, int i, int j)
+int	create(t_state *info, int i, int j)
 {
 	while (++i < info->number_of)
 	{
 		pthread_create(&info->phi[i].th_id, NULL, start, &info->phi[i]);
 	}
-	die(info, 0, -1);
+	if (die(info, 0, -1) == 1)
+		return (1);
 	while (++j < info->number_of)
 		pthread_join(info->phi[j].th_id, NULL);
 	j = -1;
 	while (++j < info->number_of)
 		pthread_mutex_destroy(&info->fork_mutex[j]);
 	pthread_mutex_destroy(&info->print_mutex);
+	return (0);
 }

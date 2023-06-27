@@ -12,7 +12,7 @@
 
 #include "../includes/phi.h"
 
-void	die(t_state *info, int i, int j)
+int	die(t_state *info, int i, int j)
 {
 	while (info->satisfy_count == false)
 	{
@@ -25,10 +25,9 @@ void	die(t_state *info, int i, int j)
 				info->died = true;
 				if (info->number_of == 1)
 				{
-					while (++j < info->number_of)
-						pthread_mutex_destroy(&info->fork_mutex[j]);
+					pthread_mutex_destroy(&info->fork_mutex[0]);
 					pthread_mutex_destroy(&info->print_mutex);
-					exit(0);
+					return (1);
 				}
 			}
 			i++;
@@ -36,4 +35,5 @@ void	die(t_state *info, int i, int j)
 		if (info->died == true)
 			break ;
 	}
+	return (0);
 }
