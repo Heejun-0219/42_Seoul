@@ -14,16 +14,43 @@
 
 void	meal_time(t_phi *philo)
 {
-	pthread_mutex_lock(&philo->link->fork_mutex[philo->r_fork_id]);
-	print(philo->id, PURPLE"has taken a right fork", philo->link);
-	pthread_mutex_lock(&philo->link->fork_mutex[philo->l_fork_id]);
-	print(philo->id, PURPLE"has taken a left fork", philo->link);
-	print(philo->id, GREEN"is eating", philo->link);
+	print(philo->id, "is eating", philo->link);
+	pthread_mutex_lock(&philo->link->last_eat_mutex);
 	philo->last_eat = gettime();
-	pass_the_time(philo->link->time_to_eat, philo->link);
+	pthread_mutex_unlock(&philo->link->last_eat_mutex);
+	pass_the_time(philo->link->time_to_eat);
+	pthread_mutex_lock(&philo->link->eat_cnt_mutex);
+	philo->count_eat++;
+	pthread_mutex_unlock(&philo->link->eat_cnt_mutex);
 	pthread_mutex_unlock(&philo->link->fork_mutex[philo->r_fork_id]);
 	pthread_mutex_unlock(&philo->link->fork_mutex[philo->l_fork_id]);
-	philo->count_eat++;
+}
+
+int	get_fork(t_phi *philo){
+	if (philo->link->number_of == 1)
+	{
+		pthread_mutex_lock(&philo->link->fork_mutex[philo->r_fork_id]);
+		print(philo->id, "has taken a right fork", philo->link);
+		pthread_mutex_unlock(&philo->link->fork_mutex[philo->r_fork_id]);
+		return (1);
+	}
+	pthread_mutex_lock(&philo->link->fork_mutex[philo->r_fork_id]);
+	print(philo->id, "has taken a right fork", philo->link);
+	pthread_mutex_lock(&philo->link->fork_mutex[philo->l_fork_id]);
+	print(philo->id, "has taken a left fork", philo->link);
+	return (0);
+}
+
+int	check_status(t_phi *phi)
+{
+	int	st;
+
+	pthread_mutex_lock(&phi->link->died_mutex);
+	st = phi->link->died;
+	pthread_mutex_unlock(&phi->link->died_mutex);
+	if (st == 1)
+		return (1);
+	return (0);
 }
 
 void	*start(void *data)
@@ -33,41 +60,60 @@ void	*start(void *data)
 	philo = (t_phi *)data;
 	if (philo->id % 2)
 		usleep(100);
-	while (philo->link->died == 0)
+	while (check_status(philo) == 0)
 	{
-		if (philo->link->died == 1)
+		if (get_fork(philo) == 1)
+			break ;
+		if (check_status(philo) == 1)
 			break ;
 		meal_time(philo);
+		if (check_status(philo) == 1)
+			break ;
+		print(philo->id, "is sleeping", philo->link);
+		if (check_status(philo) == 1)
+			break ;
+		pthread_mutex_lock(&philo->link->eat_cnt_mutex);
 		if (philo->link->must_eat != -1
 			&& philo->link->must_eat <= philo->count_eat)
 		{
 			philo->link->satisfy_count = 1;
 			break ;
 		}
-		if (philo->link->died == 1)
+		pthread_mutex_unlock(&philo->link->eat_cnt_mutex);
+		if (check_status(philo) == 1)
 			break ;
-		print(philo->id, BLUE"is sleeping", philo->link);
-		pass_the_time(philo->link->time_to_sleep, philo->link);
-		if (philo->link->died == 1)
+		pass_the_time(philo->link->time_to_sleep);
+		if (check_status(philo) == 1)
 			break ;
-		print(philo->id, YELLOW"is thinking", philo->link);
+		print(philo->id, "is thinking", philo->link);
 	}
 	return (NULL);
 }
 
-int	create(t_state *info, int i, int j)
+void	destory(t_state *info, int i)
+{
+	while (++i < info->number_of)
+		pthread_join(info->phi[i].th_id, NULL);
+	i = -1;
+	while (++i < info->number_of)
+		pthread_mutex_destroy(&info->fork_mutex[i]);
+	pthread_mutex_destroy(&info->print_mutex);
+	pthread_mutex_destroy(&info->eat_cnt_mutex);
+	pthread_mutex_destroy(&info->died_mutex);
+	pthread_mutex_destroy(&info->last_eat_mutex);
+}
+
+int	create(t_state *info, int i)
 {
 	while (++i < info->number_of)
 	{
 		pthread_create(&info->phi[i].th_id, NULL, start, &info->phi[i]);
 	}
-	if (die(info, 0, -1) == 1)
+	if (die(info, 0) == 1)
+	{
+		destory(info, -1);
 		return (1);
-	while (++j < info->number_of)
-		pthread_join(info->phi[j].th_id, NULL);
-	j = -1;
-	while (++j < info->number_of)
-		pthread_mutex_destroy(&info->fork_mutex[j]);
-	pthread_mutex_destroy(&info->print_mutex);
+	}
+	destory(info, -1);
 	return (0);
 }

@@ -19,14 +19,6 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define PURPLE "\033[0;95m"
-# define RED "\033[0;91m"
-# define GREEN "\033[0;92m"
-# define YELLOW "\033[0;93m"
-# define BLUE "\033[0;94m"
-# define WHITE "\033[0;97m"
-# define SKY "\033[0;96m"
-
 struct	s_state;
 
 typedef struct s_phi
@@ -43,27 +35,31 @@ typedef struct s_phi
 typedef struct s_state
 {
 	int				number_of;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
+	uint64_t 		time_to_die;
+	uint64_t 		time_to_eat;
+	uint64_t 		time_to_sleep;
 	int				must_eat;	
 	int				died;
 	int				satisfy_count;
 	pthread_mutex_t	*fork_mutex;
 	pthread_mutex_t	print_mutex;
+	pthread_mutex_t eat_cnt_mutex;
+	pthread_mutex_t died_mutex;
+	pthread_mutex_t last_eat_mutex;
 	t_phi			*phi;
 	uint64_t		start_time;
 }t_state;
 
 int			check(t_state *info);
-int			ft_atoi(const char *str);
+uint64_t	ft_atoi(char *s);
 int			ph_init(t_state *info, int ac, char **av, int begin);
 int			ind_init(t_state *info);
 int			ft_error(char *s);
 uint64_t	gettime(void);
-int			create(t_state *info, int i, int j);
+int			create(t_state *info, int i);
 void		print(int id, char *s, t_state *info);
-int			die(t_state *info, int i, int j);
-void		pass_the_time(int time, t_state *info);
+int			die(t_state *info, int i);
+void		pass_the_time(uint64_t time);
+void		destory(t_state *info, int i);
 
 #endif

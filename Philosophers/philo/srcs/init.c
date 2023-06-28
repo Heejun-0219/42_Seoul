@@ -48,12 +48,14 @@ int	ind_init(t_state *info)
 
 int	ph_init(t_state *info, int ac, char **av, int begin)
 {
-	info->number_of = ft_atoi(av[1]);
+	info->number_of = (int) ft_atoi(av[1]);
 	info->time_to_die = ft_atoi(av[2]);
 	info->time_to_eat = ft_atoi(av[3]);
 	info->time_to_sleep = ft_atoi(av[4]);
 	if (ac == 6)
-		info->must_eat = ft_atoi(av[5]);
+		info->must_eat = (int) ft_atoi(av[5]);
+		if (info->must_eat == -1)
+			return (1);
 	else
 		info->must_eat = -1;
 	if (check(info) == 1)
@@ -63,6 +65,9 @@ int	ph_init(t_state *info, int ac, char **av, int begin)
 	info->died = 0;
 	info->satisfy_count = 0;
 	pthread_mutex_init(&info->print_mutex, NULL);
+	pthread_mutex_init(&info->eat_cnt_mutex, NULL);
+	pthread_mutex_init(&info->died_mutex, NULL);
+	pthread_mutex_init(&info->last_eat_mutex, NULL);	
 	info->fork_mutex = malloc(sizeof(pthread_mutex_t) * info->number_of);
 	if (!info->fork_mutex)
 		return (1);

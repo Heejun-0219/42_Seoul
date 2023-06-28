@@ -13,7 +13,7 @@
 NAME 		=	philo
 
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra -f_sanitize=thread -pthread -g
+CFLAGS		=	-Wall -Werror -Wextra -fsanitize=thread -g
 
 INCLUDES	=	includes/
 SRC			=	srcs/create.c 		\
@@ -26,12 +26,12 @@ SRC			=	srcs/create.c 		\
 OBJS		= 	$(SRC:.c=.o)
 
 %.o		: %.c
-			$(CC) $(CFLAG) -I$(INCLUDES) -c $< -o $@
+			$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
 
 .PHONY	: all
 all		: $(NAME)
-$(NAME)	: $(OBJS)
-			@$(CC) $(CFLAG) -I$(INCLUDES) $(OBJS) -o $(NAME)
+$(NAME)	: $(OBJS) $(INCLUDES)
+			$(CC) $(CFLAGS) -I$(INCLUDES) $(OBJS) -o $(NAME)
 
 .PHONY	: clean
 clean	:

@@ -12,52 +12,53 @@
 
 #include "../includes/phi.h"
 
-int	ft_error(char *s)
+int ft_error(char *s)
 {
 	printf("%s", s);
 	return (1);
 }
 
-void	print(int id, char *s, t_state *info)
+void print(int id, char *s, t_state *info)
 {
-	if (info->died == 0)
+	int st;
+
+	pthread_mutex_lock(&info->died_mutex);
+	st = info->died;
+	pthread_mutex_unlock(&info->died_mutex);
+	if (st == 0)
 	{
 		pthread_mutex_lock(&info->print_mutex);
-		printf(WHITE"%llu ~ ",
-			gettime() - info->start_time);
-		printf(SKY"Num: %d philosopher %s\n", id, s);
+		printf("%llu ~ Num: %d philosopher %s\n", \
+			gettime() - info->start_time, id, s);
 		pthread_mutex_unlock(&info->print_mutex);
 	}
 }
 
-static int	check_max_or_min(long num, const char c, int minus)
+uint64_t ft_atoi(char *s)
 {
-	if (num > 9223372036854775807L / 10 || (num == 9223372036854775807L / 10 && c - '0' > 7))
-	{
-		if (minus == 1)
+	uint64_t res;
+	uint64_t sing;
+	int i;
+	int j;
+
+	res = 0;
+	sing = 1;
+	i = 0;
+	j = -1;
+	while (s[++j])
+		if (s[j] < '0' || s[j] > '9'){
+			ft_error("Error: Invalid argument\n");
 			return (-1);
-		return (0);
-	}
-	return (1);
-}
-
-int	ft_atoi(const char *str)
-{
-	long	num;
-	int		minus;
-
-	num = 0;
-	minus = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (*(str) == '-' || *(str) == '+')
-		if (*(str++) == '-')
-			minus *= -1;
-	while (*str >= '0' && *str <= '9')
+		}
+	while (s[i] <= 32)
+		i++;
+	if (s[i] == '-' || s[i] == '+')
 	{
-		if (check_max_or_min(num, *str, minus) != 1)
-			return (check_max_or_min(num, *str, minus));
-		num = num * 10 + (*str++ - '0');
+		if (s[i] == '-')
+			sing = -1;
+		i++;
 	}
-	return (num * minus);
+	while (s[i] >= '0' && s[i] <= '9')
+		res = res * 10 + (s[i++] - 48);
+	return (res * sing);
 }

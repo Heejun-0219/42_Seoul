@@ -1,0 +1,493 @@
+0 ~ Num: 0 philosopher has taken a right fork
+0 ~ Num: 0 philosopher has taken a left fork
+0 ~ Num: 0 philosopher is eating
+60 ~ Num: 0 philosopher is sleeping
+60 ~ Num: 1 philosopher has taken a right fork
+60 ~ Num: 1 philosopher has taken a left fork
+60 ~ Num: 1 philosopher is eating
+120 ~ Num: 0 philosopher is thinking
+120 ~ Num: 0 philosopher has taken a right fork
+120 ~ Num: 1 philosopher is sleeping
+120 ~ Num: 0 philosopher has taken a left fork
+120 ~ Num: 0 philosopher is eating
+180 ~ Num: 1 philosopher is thinking
+180 ~ Num: 0 philosopher is sleeping
+180 ~ Num: 1 philosopher has taken a right fork
+180 ~ Num: 1 philosopher has taken a left fork
+180 ~ Num: 1 philosopher is eating
+240 ~ Num: 0 philosopher is thinking
+240 ~ Num: 0 philosopher has taken a right fork
+240 ~ Num: 0 philosopher has taken a left fork
+240 ~ Num: 0 philosopher is eating
+240 ~ Num: 1 philosopher is sleeping
+300 ~ Num: 1 philosopher is thinking
+300 ~ Num: 0 philosopher is sleeping
+300 ~ Num: 1 philosopher has taken a right fork
+300 ~ Num: 1 philosopher has taken a left fork
+300 ~ Num: 1 philosopher is eating
+360 ~ Num: 0 philosopher is thinking
+360 ~ Num: 1 philosopher is sleeping
+360 ~ Num: 0 philosopher has taken a right fork
+360 ~ Num: 0 philosopher has taken a left fork
+360 ~ Num: 0 philosopher is eating
+420 ~ Num: 1 philosopher is thinking
+420 ~ Num: 0 philosopher is sleeping
+420 ~ Num: 1 philosopher has taken a right fork
+420 ~ Num: 1 philosopher has taken a left fork
+420 ~ Num: 1 philosopher is eating
+480 ~ Num: 0 philosopher is thinking
+480 ~ Num: 1 philosopher is sleeping
+480 ~ Num: 0 philosopher has taken a right fork
+480 ~ Num: 0 philosopher has taken a left fork
+480 ~ Num: 0 philosopher is eating
+540 ~ Num: 1 philosopher is thinking
+540 ~ Num: 1 philosopher has taken a right fork
+540 ~ Num: 1 philosopher has taken a left fork
+540 ~ Num: 1 philosopher is eating
+540 ~ Num: 0 philosopher is sleeping
+600 ~ Num: 0 philosopher is thinking
+600 ~ Num: 1 philosopher is sleeping
+600 ~ Num: 0 philosopher has taken a right fork
+600 ~ Num: 0 philosopher has taken a left fork
+600 ~ Num: 0 philosopher is eating
+660 ~ Num: 1 philosopher is thinking
+660 ~ Num: 0 philosopher is sleeping
+660 ~ Num: 1 philosopher has taken a right fork
+660 ~ Num: 1 philosopher has taken a left fork
+660 ~ Num: 1 philosopher is eating
+720 ~ Num: 1 philosopher is sleeping
+720 ~ Num: 0 philosopher is thinking
+720 ~ Num: 0 philosopher has taken a right fork
+720 ~ Num: 0 philosopher has taken a left fork
+720 ~ Num: 0 philosopher is eating
+780 ~ Num: 1 philosopher is thinking
+780 ~ Num: 1 philosopher has taken a right fork
+780 ~ Num: 1 philosopher has taken a left fork
+780 ~ Num: 1 philosopher is eating
+780 ~ Num: 0 philosopher is sleeping
+840 ~ Num: 0 philosopher is thinking
+840 ~ Num: 1 philosopher is sleeping
+840 ~ Num: 0 philosopher has taken a right fork
+840 ~ Num: 0 philosopher has taken a left fork
+840 ~ Num: 0 philosopher is eating
+900 ~ Num: 1 philosopher is thinking
+900 ~ Num: 0 philosopher is sleeping
+900 ~ Num: 1 philosopher has taken a right fork
+900 ~ Num: 1 philosopher has taken a left fork
+900 ~ Num: 1 philosopher is eating
+960 ~ Num: 0 philosopher is thinking
+960 ~ Num: 0 philosopher has taken a right fork
+960 ~ Num: 0 philosopher has taken a left fork
+960 ~ Num: 0 philosopher is eating
+960 ~ Num: 1 philosopher is sleeping
+1020 ~ Num: 1 philosopher is thinking
+1020 ~ Num: 1 philosopher has taken a right fork
+1020 ~ Num: 1 philosopher has taken a left fork
+1020 ~ Num: 1 philosopher is eating
+1020 ~ Num: 0 philosopher is sleeping
+1080 ~ Num: 0 philosopher is thinking
+1080 ~ Num: 0 philosopher has taken a right fork
+1080 ~ Num: 0 philosopher has taken a left fork
+1080 ~ Num: 0 philosopher is eating
+1080 ~ Num: 1 philosopher is sleeping
+1140 ~ Num: 1 philosopher is thinking
+1140 ~ Num: 0 philosopher is sleeping
+1140 ~ Num: 1 philosopher has taken a right fork
+1140 ~ Num: 1 philosopher has taken a left fork
+1140 ~ Num: 1 philosopher is eating
+1200 ~ Num: 0 philosopher is thinking
+1200 ~ Num: 1 philosopher is sleeping
+1200 ~ Num: 0 philosopher has taken a right fork
+1200 ~ Num: 0 philosopher has taken a left fork
+1200 ~ Num: 0 philosopher is eating
+1260 ~ Num: 1 philosopher is thinking
+1260 ~ Num: 1 philosopher has taken a right fork
+1260 ~ Num: 1 philosopher has taken a left fork
+1260 ~ Num: 1 philosopher is eating
+1260 ~ Num: 0 philosopher is sleeping
+1320 ~ Num: 0 philosopher is thinking
+1320 ~ Num: 0 philosopher has taken a right fork
+1320 ~ Num: 0 philosopher has taken a left fork
+1320 ~ Num: 0 philosopher is eating
+1320 ~ Num: 1 philosopher is sleeping
+1380 ~ Num: 0 philosopher is sleeping
+1380 ~ Num: 1 philosopher is thinking
+1380 ~ Num: 1 philosopher has taken a right fork
+1380 ~ Num: 1 philosopher has taken a left fork
+1380 ~ Num: 1 philosopher is eating
+1440 ~ Num: 1 philosopher is sleeping
+1440 ~ Num: 0 philosopher is thinking
+1440 ~ Num: 0 philosopher has taken a right fork
+1440 ~ Num: 0 philosopher has taken a left fork
+1440 ~ Num: 0 philosopher is eating
+1500 ~ Num: 1 philosopher is thinking
+1500 ~ Num: 0 philosopher is sleeping
+1500 ~ Num: 1 philosopher has taken a right fork
+1500 ~ Num: 1 philosopher has taken a left fork
+1500 ~ Num: 1 philosopher is eating
+1560 ~ Num: 0 philosopher is thinking
+1560 ~ Num: 1 philosopher is sleeping
+1560 ~ Num: 0 philosopher has taken a right fork
+1560 ~ Num: 0 philosopher has taken a left fork
+1560 ~ Num: 0 philosopher is eating
+1620 ~ Num: 1 philosopher is thinking
+1620 ~ Num: 1 philosopher has taken a right fork
+1620 ~ Num: 1 philosopher has taken a left fork
+1620 ~ Num: 1 philosopher is eating
+1620 ~ Num: 0 philosopher is sleeping
+1680 ~ Num: 1 philosopher is sleeping
+1680 ~ Num: 0 philosopher is thinking
+1680 ~ Num: 0 philosopher has taken a right fork
+1680 ~ Num: 0 philosopher has taken a left fork
+1680 ~ Num: 0 philosopher is eating
+1740 ~ Num: 1 philosopher is thinking
+1740 ~ Num: 1 philosopher has taken a right fork
+1740 ~ Num: 1 philosopher has taken a left fork
+1740 ~ Num: 1 philosopher is eating
+1740 ~ Num: 0 philosopher is sleeping
+1800 ~ Num: 1 philosopher is sleeping
+1800 ~ Num: 0 philosopher is thinking
+1800 ~ Num: 0 philosopher has taken a right fork
+1800 ~ Num: 0 philosopher has taken a left fork
+1800 ~ Num: 0 philosopher is eating
+1860 ~ Num: 0 philosopher is sleeping
+1860 ~ Num: 1 philosopher is thinking
+1860 ~ Num: 1 philosopher has taken a right fork
+1860 ~ Num: 1 philosopher has taken a left fork
+1860 ~ Num: 1 philosopher is eating
+1920 ~ Num: 0 philosopher is thinking
+1920 ~ Num: 0 philosopher has taken a right fork
+1920 ~ Num: 0 philosopher has taken a left fork
+1920 ~ Num: 0 philosopher is eating
+1920 ~ Num: 1 philosopher is sleeping
+1980 ~ Num: 1 philosopher is thinking
+1980 ~ Num: 0 philosopher is sleeping
+1980 ~ Num: 1 philosopher has taken a right fork
+1980 ~ Num: 1 philosopher has taken a left fork
+1980 ~ Num: 1 philosopher is eating
+2040 ~ Num: 1 philosopher is sleeping
+2040 ~ Num: 0 philosopher is thinking
+2040 ~ Num: 0 philosopher has taken a right fork
+2040 ~ Num: 0 philosopher has taken a left fork
+2040 ~ Num: 0 philosopher is eating
+2100 ~ Num: 1 philosopher is thinking
+2100 ~ Num: 1 philosopher has taken a right fork
+2100 ~ Num: 1 philosopher has taken a left fork
+2100 ~ Num: 1 philosopher is eating
+2100 ~ Num: 0 philosopher is sleeping
+2160 ~ Num: 0 philosopher is thinking
+2160 ~ Num: 0 philosopher has taken a right fork
+2160 ~ Num: 0 philosopher has taken a left fork
+2160 ~ Num: 0 philosopher is eating
+2160 ~ Num: 1 philosopher is sleeping
+2228 ~ Num: 1 philosopher is thinking
+2228 ~ Num: 1 philosopher has taken a right fork
+2228 ~ Num: 1 philosopher has taken a left fork
+2228 ~ Num: 1 philosopher is eating
+2228 ~ Num: 0 philosopher is sleeping
+2288 ~ Num: 0 philosopher is thinking
+2288 ~ Num: 1 philosopher is sleeping
+2288 ~ Num: 0 philosopher has taken a right fork
+2288 ~ Num: 0 philosopher has taken a left fork
+2288 ~ Num: 0 philosopher is eating
+2348 ~ Num: 0 philosopher is sleeping
+2348 ~ Num: 1 philosopher is thinking
+2348 ~ Num: 1 philosopher has taken a right fork
+2348 ~ Num: 1 philosopher has taken a left fork
+2348 ~ Num: 1 philosopher is eating
+2408 ~ Num: 1 philosopher is sleeping
+2408 ~ Num: 0 philosopher is thinking
+2408 ~ Num: 0 philosopher has taken a right fork
+2408 ~ Num: 0 philosopher has taken a left fork
+2408 ~ Num: 0 philosopher is eating
+2468 ~ Num: 0 philosopher is sleeping
+2468 ~ Num: 1 philosopher is thinking
+2468 ~ Num: 1 philosopher has taken a right fork
+2468 ~ Num: 1 philosopher has taken a left fork
+2468 ~ Num: 1 philosopher is eating
+2528 ~ Num: 0 philosopher is thinking
+2528 ~ Num: 0 philosopher has taken a right fork
+2528 ~ Num: 0 philosopher has taken a left fork
+2528 ~ Num: 0 philosopher is eating
+2528 ~ Num: 1 philosopher is sleeping
+2588 ~ Num: 1 philosopher is thinking
+2588 ~ Num: 0 philosopher is sleeping
+2588 ~ Num: 1 philosopher has taken a right fork
+2588 ~ Num: 1 philosopher has taken a left fork
+2588 ~ Num: 1 philosopher is eating
+2648 ~ Num: 0 philosopher is thinking
+2648 ~ Num: 1 philosopher is sleeping
+2648 ~ Num: 0 philosopher has taken a right fork
+2648 ~ Num: 0 philosopher has taken a left fork
+2648 ~ Num: 0 philosopher is eating
+2708 ~ Num: 1 philosopher is thinking
+2708 ~ Num: 0 philosopher is sleeping
+2708 ~ Num: 1 philosopher has taken a right fork
+2708 ~ Num: 1 philosopher has taken a left fork
+2708 ~ Num: 1 philosopher is eating
+2768 ~ Num: 1 philosopher is sleeping
+2768 ~ Num: 0 philosopher is thinking
+2768 ~ Num: 0 philosopher has taken a right fork
+2768 ~ Num: 0 philosopher has taken a left fork
+2768 ~ Num: 0 philosopher is eating
+2828 ~ Num: 1 philosopher is thinking
+2828 ~ Num: 1 philosopher has taken a right fork
+2828 ~ Num: 0 philosopher is sleeping
+2828 ~ Num: 1 philosopher has taken a left fork
+2828 ~ Num: 1 philosopher is eating
+2888 ~ Num: 0 philosopher is thinking
+2888 ~ Num: 1 philosopher is sleeping
+2888 ~ Num: 0 philosopher has taken a right fork
+2888 ~ Num: 0 philosopher has taken a left fork
+2888 ~ Num: 0 philosopher is eating
+2948 ~ Num: 0 philosopher is sleeping
+2948 ~ Num: 1 philosopher is thinking
+2948 ~ Num: 1 philosopher has taken a right fork
+2948 ~ Num: 1 philosopher has taken a left fork
+2948 ~ Num: 1 philosopher is eating
+3008 ~ Num: 1 philosopher is sleeping
+3008 ~ Num: 0 philosopher is thinking
+3008 ~ Num: 0 philosopher has taken a right fork
+3008 ~ Num: 0 philosopher has taken a left fork
+3008 ~ Num: 0 philosopher is eating
+3068 ~ Num: 0 philosopher is sleeping
+3068 ~ Num: 1 philosopher is thinking
+3068 ~ Num: 1 philosopher has taken a right fork
+3068 ~ Num: 1 philosopher has taken a left fork
+3068 ~ Num: 1 philosopher is eating
+3128 ~ Num: 0 philosopher is thinking
+3128 ~ Num: 0 philosopher has taken a right fork
+3128 ~ Num: 1 philosopher is sleeping
+3128 ~ Num: 0 philosopher has taken a left fork
+3128 ~ Num: 0 philosopher is eating
+3188 ~ Num: 1 philosopher is thinking
+3188 ~ Num: 0 philosopher is sleeping
+3188 ~ Num: 1 philosopher has taken a right fork
+3188 ~ Num: 1 philosopher has taken a left fork
+3188 ~ Num: 1 philosopher is eating
+3248 ~ Num: 0 philosopher is thinking
+3248 ~ Num: 1 philosopher is sleeping
+3248 ~ Num: 0 philosopher has taken a right fork
+3248 ~ Num: 0 philosopher has taken a left fork
+3248 ~ Num: 0 philosopher is eating
+3308 ~ Num: 1 philosopher is thinking
+3308 ~ Num: 1 philosopher has taken a right fork
+3308 ~ Num: 1 philosopher has taken a left fork
+3308 ~ Num: 1 philosopher is eating
+3308 ~ Num: 0 philosopher is sleeping
+3368 ~ Num: 1 philosopher is sleeping
+3368 ~ Num: 0 philosopher is thinking
+3368 ~ Num: 0 philosopher has taken a right fork
+3368 ~ Num: 0 philosopher has taken a left fork
+3368 ~ Num: 0 philosopher is eating
+3428 ~ Num: 1 philosopher is thinking
+3428 ~ Num: 0 philosopher is sleeping
+3428 ~ Num: 1 philosopher has taken a right fork
+3428 ~ Num: 1 philosopher has taken a left fork
+3428 ~ Num: 1 philosopher is eating
+3488 ~ Num: 0 philosopher is thinking
+3488 ~ Num: 0 philosopher has taken a right fork
+3488 ~ Num: 0 philosopher has taken a left fork
+3488 ~ Num: 0 philosopher is eating
+3488 ~ Num: 1 philosopher is sleeping
+3548 ~ Num: 1 philosopher is thinking
+3548 ~ Num: 1 philosopher has taken a right fork
+3548 ~ Num: 0 philosopher is sleeping
+3548 ~ Num: 1 philosopher has taken a left fork
+3548 ~ Num: 1 philosopher is eating
+3608 ~ Num: 0 philosopher is thinking
+3608 ~ Num: 0 philosopher has taken a right fork
+3608 ~ Num: 0 philosopher has taken a left fork
+3608 ~ Num: 0 philosopher is eating
+3608 ~ Num: 1 philosopher is sleeping
+3668 ~ Num: 0 philosopher is sleeping
+3668 ~ Num: 1 philosopher is thinking
+3668 ~ Num: 1 philosopher has taken a right fork
+3668 ~ Num: 1 philosopher has taken a left fork
+3668 ~ Num: 1 philosopher is eating
+3728 ~ Num: 0 philosopher is thinking
+3728 ~ Num: 0 philosopher has taken a right fork
+3728 ~ Num: 0 philosopher has taken a left fork
+3728 ~ Num: 0 philosopher is eating
+3728 ~ Num: 1 philosopher is sleeping
+3788 ~ Num: 0 philosopher is sleeping
+3788 ~ Num: 1 philosopher is thinking
+3788 ~ Num: 1 philosopher has taken a right fork
+3788 ~ Num: 1 philosopher has taken a left fork
+3788 ~ Num: 1 philosopher is eating
+3848 ~ Num: 0 philosopher is thinking
+3848 ~ Num: 1 philosopher is sleeping
+3848 ~ Num: 0 philosopher has taken a right fork
+3848 ~ Num: 0 philosopher has taken a left fork
+3848 ~ Num: 0 philosopher is eating
+3908 ~ Num: 0 philosopher is sleeping
+3908 ~ Num: 1 philosopher is thinking
+3908 ~ Num: 1 philosopher has taken a right fork
+3908 ~ Num: 1 philosopher has taken a left fork
+3908 ~ Num: 1 philosopher is eating
+3968 ~ Num: 1 philosopher is sleeping
+3968 ~ Num: 0 philosopher is thinking
+3968 ~ Num: 0 philosopher has taken a right fork
+3968 ~ Num: 0 philosopher has taken a left fork
+3968 ~ Num: 0 philosopher is eating
+4028 ~ Num: 1 philosopher is thinking
+4028 ~ Num: 0 philosopher is sleeping
+4028 ~ Num: 1 philosopher has taken a right fork
+4028 ~ Num: 1 philosopher has taken a left fork
+4028 ~ Num: 1 philosopher is eating
+4088 ~ Num: 0 philosopher is thinking
+4088 ~ Num: 0 philosopher has taken a right fork
+4088 ~ Num: 0 philosopher has taken a left fork
+4088 ~ Num: 0 philosopher is eating
+4088 ~ Num: 1 philosopher is sleeping
+4148 ~ Num: 1 philosopher is thinking
+4148 ~ Num: 1 philosopher has taken a right fork
+4148 ~ Num: 0 philosopher is sleeping
+4148 ~ Num: 1 philosopher has taken a left fork
+4148 ~ Num: 1 philosopher is eating
+4208 ~ Num: 0 philosopher is thinking
+4208 ~ Num: 0 philosopher has taken a right fork
+4208 ~ Num: 0 philosopher has taken a left fork
+4208 ~ Num: 0 philosopher is eating
+4208 ~ Num: 1 philosopher is sleeping
+4268 ~ Num: 1 philosopher is thinking
+4268 ~ Num: 1 philosopher has taken a right fork
+4268 ~ Num: 1 philosopher has taken a left fork
+4268 ~ Num: 1 philosopher is eating
+4268 ~ Num: 0 philosopher is sleeping
+4328 ~ Num: 0 philosopher is thinking
+4328 ~ Num: 1 philosopher is sleeping
+4328 ~ Num: 0 philosopher has taken a right fork
+4328 ~ Num: 0 philosopher has taken a left fork
+4328 ~ Num: 0 philosopher is eating
+4388 ~ Num: 1 philosopher is thinking
+4388 ~ Num: 0 philosopher is sleeping
+4388 ~ Num: 1 philosopher has taken a right fork
+4388 ~ Num: 1 philosopher has taken a left fork
+4388 ~ Num: 1 philosopher is eating
+4451 ~ Num: 0 philosopher is thinking
+4451 ~ Num: 1 philosopher is sleeping
+4451 ~ Num: 0 philosopher has taken a right fork
+4451 ~ Num: 0 philosopher has taken a left fork
+4451 ~ Num: 0 philosopher is eating
+4511 ~ Num: 0 philosopher is sleeping
+4511 ~ Num: 1 philosopher is thinking
+4511 ~ Num: 1 philosopher has taken a right fork
+4511 ~ Num: 1 philosopher has taken a left fork
+4511 ~ Num: 1 philosopher is eating
+4571 ~ Num: 1 philosopher is sleeping
+4571 ~ Num: 0 philosopher is thinking
+4571 ~ Num: 0 philosopher has taken a right fork
+4571 ~ Num: 0 philosopher has taken a left fork
+4571 ~ Num: 0 philosopher is eating
+4631 ~ Num: 1 philosopher is thinking
+4631 ~ Num: 1 philosopher has taken a right fork
+4631 ~ Num: 0 philosopher is sleeping
+4631 ~ Num: 1 philosopher has taken a left fork
+4631 ~ Num: 1 philosopher is eating
+4691 ~ Num: 1 philosopher is sleeping
+4691 ~ Num: 0 philosopher is thinking
+4691 ~ Num: 0 philosopher has taken a right fork
+4691 ~ Num: 0 philosopher has taken a left fork
+4691 ~ Num: 0 philosopher is eating
+4751 ~ Num: 0 philosopher is sleeping
+4751 ~ Num: 1 philosopher is thinking
+4751 ~ Num: 1 philosopher has taken a right fork
+4751 ~ Num: 1 philosopher has taken a left fork
+4751 ~ Num: 1 philosopher is eating
+4811 ~ Num: 0 philosopher is thinking
+4811 ~ Num: 0 philosopher has taken a right fork
+4811 ~ Num: 0 philosopher has taken a left fork
+4811 ~ Num: 0 philosopher is eating
+4811 ~ Num: 1 philosopher is sleeping
+4871 ~ Num: 1 philosopher is thinking
+4871 ~ Num: 1 philosopher has taken a right fork
+4871 ~ Num: 0 philosopher is sleeping
+4871 ~ Num: 1 philosopher has taken a left fork
+4871 ~ Num: 1 philosopher is eating
+4931 ~ Num: 1 philosopher is sleeping
+4931 ~ Num: 0 philosopher is thinking
+4931 ~ Num: 0 philosopher has taken a right fork
+4931 ~ Num: 0 philosopher has taken a left fork
+4931 ~ Num: 0 philosopher is eating
+4991 ~ Num: 1 philosopher is thinking
+4991 ~ Num: 1 philosopher has taken a right fork
+4991 ~ Num: 1 philosopher has taken a left fork
+4991 ~ Num: 1 philosopher is eating
+4991 ~ Num: 0 philosopher is sleeping
+5051 ~ Num: 0 philosopher is thinking
+5051 ~ Num: 1 philosopher is sleeping
+5051 ~ Num: 0 philosopher has taken a right fork
+5051 ~ Num: 0 philosopher has taken a left fork
+5051 ~ Num: 0 philosopher is eating
+5111 ~ Num: 1 philosopher is thinking
+5111 ~ Num: 1 philosopher has taken a right fork
+5111 ~ Num: 1 philosopher has taken a left fork
+5111 ~ Num: 1 philosopher is eating
+5111 ~ Num: 0 philosopher is sleeping
+5179 ~ Num: 0 philosopher is thinking
+5179 ~ Num: 0 philosopher has taken a right fork
+5179 ~ Num: 0 philosopher has taken a left fork
+5179 ~ Num: 0 philosopher is eating
+5179 ~ Num: 1 philosopher is sleeping
+5239 ~ Num: 1 philosopher is thinking
+5239 ~ Num: 1 philosopher has taken a right fork
+5239 ~ Num: 0 philosopher is sleeping
+5239 ~ Num: 1 philosopher has taken a left fork
+5239 ~ Num: 1 philosopher is eating
+5299 ~ Num: 1 philosopher is sleeping
+5299 ~ Num: 0 philosopher is thinking
+5299 ~ Num: 0 philosopher has taken a right fork
+5299 ~ Num: 0 philosopher has taken a left fork
+5299 ~ Num: 0 philosopher is eating
+5359 ~ Num: 1 philosopher is thinking
+5359 ~ Num: 1 philosopher has taken a right fork
+5359 ~ Num: 1 philosopher has taken a left fork
+5359 ~ Num: 1 philosopher is eating
+5359 ~ Num: 0 philosopher is sleeping
+5419 ~ Num: 0 philosopher is thinking
+5419 ~ Num: 1 philosopher is sleeping
+5419 ~ Num: 0 philosopher has taken a right fork
+5419 ~ Num: 0 philosopher has taken a left fork
+5419 ~ Num: 0 philosopher is eating
+5479 ~ Num: 1 philosopher is thinking
+5479 ~ Num: 1 philosopher has taken a right fork
+5479 ~ Num: 1 philosopher has taken a left fork
+5479 ~ Num: 1 philosopher is eating
+5479 ~ Num: 0 philosopher is sleeping
+5539 ~ Num: 0 philosopher is thinking
+5539 ~ Num: 0 philosopher has taken a right fork
+5539 ~ Num: 0 philosopher has taken a left fork
+5539 ~ Num: 0 philosopher is eating
+5539 ~ Num: 1 philosopher is sleeping
+5599 ~ Num: 1 philosopher is thinking
+5599 ~ Num: 1 philosopher has taken a right fork
+5599 ~ Num: 1 philosopher has taken a left fork
+5599 ~ Num: 0 philosopher is sleeping
+5599 ~ Num: 1 philosopher is eating
+5659 ~ Num: 0 philosopher is thinking
+5659 ~ Num: 0 philosopher has taken a right fork
+5659 ~ Num: 1 philosopher is sleeping
+5659 ~ Num: 0 philosopher has taken a left fork
+5659 ~ Num: 0 philosopher is eating
+5719 ~ Num: 1 philosopher is thinking
+5719 ~ Num: 0 philosopher is sleeping
+5719 ~ Num: 1 philosopher has taken a right fork
+5719 ~ Num: 1 philosopher has taken a left fork
+5719 ~ Num: 1 philosopher is eating
+5779 ~ Num: 0 philosopher is thinking
+5779 ~ Num: 0 philosopher has taken a right fork
+5779 ~ Num: 0 philosopher has taken a left fork
+5779 ~ Num: 0 philosopher is eating
+5779 ~ Num: 1 philosopher is sleeping
+5839 ~ Num: 1 philosopher is thinking
+5839 ~ Num: 1 philosopher has taken a right fork
+5839 ~ Num: 1 philosopher has taken a left fork
+5839 ~ Num: 0 philosopher is sleeping
+5839 ~ Num: 1 philosopher is eating
+5912 ~ Num: 0 philosopher is thinking
+5912 ~ Num: 0 philosopher has taken a right fork
+5912 ~ Num: 0 philosopher has taken a left fork
+5912 ~ Num: 0 philosopher is eating
+5912 ~ Num: 0 philosopher died
+5912 ~ Num: 1 philosopher is sleeping

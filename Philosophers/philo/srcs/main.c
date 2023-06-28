@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	}
 	if (ph_init(info, ac, av, 0) == 1)
 		return (1);
-	if (create(info, -1, -1) == 1)
+	if (create(info, -1) == 1)
 		return (1);
 	return (0);
 }

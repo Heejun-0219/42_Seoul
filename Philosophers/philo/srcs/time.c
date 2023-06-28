@@ -20,15 +20,11 @@ uint64_t	gettime(void)
 	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
 }
 
-void	pass_the_time(int time, t_state *info)
+void	pass_the_time(uint64_t time)
 {
 	uint64_t	start;
 
 	start = gettime();
-	while (info->died == 0)
-	{
-		if (gettime() - start >= time)
-			break ;
-		usleep(10);
-	}
+	while (start + (time * 1) > gettime())
+		usleep(100);
 }
