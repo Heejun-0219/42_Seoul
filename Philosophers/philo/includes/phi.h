@@ -27,7 +27,7 @@ typedef struct s_phi
 	int				r_fork_id;
 	int				l_fork_id;
 	int				count_eat;
-	long		last_eat;
+	long			last_eat;
 	pthread_t		th_id;
 	struct s_state	*link;
 }t_phi;

@@ -62,6 +62,8 @@ void	*start(void *data)
 		usleep(100);
 	while (check_status(philo) == 0)
 	{
+		if (check_status(philo) == 1)
+			break ;
 		if (get_fork(philo) == 1)
 			break ;
 		if (check_status(philo) == 1)
@@ -73,8 +75,8 @@ void	*start(void *data)
 		if (check_status(philo) == 1)
 			break ;
 		pthread_mutex_lock(&philo->link->eat_cnt_mutex);
-		if (philo->link->must_eat != -1
-			&& philo->link->must_eat <= philo->count_eat)
+		if (philo->link->must_eat <= philo->count_eat
+			&& philo->link->must_eat != -1)
 		{
 			pthread_mutex_lock(&philo->link->eat_satisft_mutex);
 			philo->link->satisfy_count = 1;
@@ -94,11 +96,16 @@ void	*start(void *data)
 
 void	destory(t_state *info, int i)
 {
-	while (++i < info->number_of)
+	printf("destory\n");
+	while (++i < info->number_of){
+		printf("destory%d\n", i);
 		pthread_join(info->phi[i].th_id, NULL);
+	}
+	printf("destory1\n");
 	i = -1;
 	while (++i < info->number_of)
 		pthread_mutex_destroy(&info->fork_mutex[i]);
+	printf("destory2\n");
 	pthread_mutex_destroy(&info->print_mutex);
 	pthread_mutex_destroy(&info->eat_cnt_mutex);
 	pthread_mutex_destroy(&info->eat_satisft_mutex);
@@ -114,7 +121,6 @@ int	create(t_state *info, int i)
 	}
 	if (die(info, 0) == 1)
 	{
-		destory(info, -1);
 		return (1);
 	}
 	destory(info, -1);

@@ -28,7 +28,7 @@ void print(int id, char *s, t_state *info)
 	if (st == 0)
 	{
 		pthread_mutex_lock(&info->print_mutex);
-		printf("%llu ~ Num: %d philosopher %s\n", \
+		printf("%lu ~ Num: %d philosopher %s\n", \
 			gettime() - info->start_time, id, s);
 		pthread_mutex_unlock(&info->print_mutex);
 	}

@@ -32,6 +32,7 @@ int	die(t_state *info, int i)
 				pthread_mutex_lock(&info->died_mutex);
 				info->died = 1;
 				pthread_mutex_unlock(&info->died_mutex);
+				destory(info, -1);
 				return (1);
 			}
 			i++;
