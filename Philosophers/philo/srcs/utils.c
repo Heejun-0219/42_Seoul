@@ -34,10 +34,10 @@ void print(int id, char *s, t_state *info)
 	}
 }
 
-uint64_t ft_atoi(char *s)
+int ft_atoi(char *s)
 {
-	uint64_t res;
-	uint64_t sing;
+	int res;
+	int sing;
 	int i;
 	int j;
 

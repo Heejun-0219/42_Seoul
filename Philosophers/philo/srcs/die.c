@@ -14,28 +14,31 @@
 
 int	die(t_state *info, int i)
 {
-	uint64_t	time;
+	long time;
 
+	pthread_mutex_lock(&info->eat_satisft_mutex);
 	while (info->satisfy_count == 0)
 	{
+		pthread_mutex_unlock(&info->eat_satisft_mutex);
 		i = 0;
 		while (i < info->number_of)
 		{	
 			pthread_mutex_lock(&info->last_eat_mutex);
 			time = gettime() - info->phi[i].last_eat;
-			pthread_mutex_unlock(&info->last_eat_mutex);
+			pthread_mutex_unlock(&info->last_eat_mutex);	
 			if (time > info->time_to_die)
 			{
 				print(info->phi[i].id, "died", info);
-				pthread_mutex_lock(&info->print_mutex);
 				pthread_mutex_lock(&info->died_mutex);
 				info->died = 1;
 				pthread_mutex_unlock(&info->died_mutex);
-				pthread_mutex_unlock(&info->print_mutex);
 				return (1);
 			}
 			i++;
+			usleep(100);
 		}
+		usleep(100);
+		pthread_mutex_lock(&info->eat_satisft_mutex);
 	}
 	return (0);
 }

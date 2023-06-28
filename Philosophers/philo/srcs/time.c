@@ -12,17 +12,17 @@
 
 #include "../includes/phi.h"
 
-uint64_t	gettime(void)
+long	gettime(void)
 {
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
+	return ((tv.tv_sec * (long)1000) + (tv.tv_usec / 1000));
 }
 
-void	pass_the_time(uint64_t time)
+void	pass_the_time(long time)
 {
-	uint64_t	start;
+	long	start;
 
 	start = gettime();
 	while (start + (time * 1) > gettime())

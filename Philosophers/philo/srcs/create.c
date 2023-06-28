@@ -43,13 +43,13 @@ int	get_fork(t_phi *philo){
 
 int	check_status(t_phi *phi)
 {
-	int	st;
-
 	pthread_mutex_lock(&phi->link->died_mutex);
-	st = phi->link->died;
-	pthread_mutex_unlock(&phi->link->died_mutex);
-	if (st == 1)
+	if (phi->link->died == 1)
+	{
+		pthread_mutex_unlock(&phi->link->died_mutex);
 		return (1);
+	}
+	pthread_mutex_unlock(&phi->link->died_mutex);	
 	return (0);
 }
 
@@ -76,7 +76,9 @@ void	*start(void *data)
 		if (philo->link->must_eat != -1
 			&& philo->link->must_eat <= philo->count_eat)
 		{
+			pthread_mutex_lock(&philo->link->eat_satisft_mutex);
 			philo->link->satisfy_count = 1;
+			pthread_mutex_unlock(&philo->link->eat_satisft_mutex);
 			break ;
 		}
 		pthread_mutex_unlock(&philo->link->eat_cnt_mutex);
@@ -99,6 +101,7 @@ void	destory(t_state *info, int i)
 		pthread_mutex_destroy(&info->fork_mutex[i]);
 	pthread_mutex_destroy(&info->print_mutex);
 	pthread_mutex_destroy(&info->eat_cnt_mutex);
+	pthread_mutex_destroy(&info->eat_satisft_mutex);
 	pthread_mutex_destroy(&info->died_mutex);
 	pthread_mutex_destroy(&info->last_eat_mutex);
 }
