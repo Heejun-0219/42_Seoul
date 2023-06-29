@@ -43,3 +43,24 @@ int	die(t_state *info, int i)
 	}
 	return (0);
 }
+
+void	destory(t_state *info, int i)
+{
+	pthread_mutex_unlock(&info->print_mutex);
+	pthread_mutex_unlock(&info->eat_cnt_mutex);
+	pthread_mutex_unlock(&info->eat_satisft_mutex);
+	pthread_mutex_unlock(&info->died_mutex);
+	pthread_mutex_unlock(&info->last_eat_mutex);
+	while (++i < info->number_of){
+		pthread_mutex_unlock(&info->fork_mutex[i]);
+		pthread_join(info->phi[i].th_id, NULL);
+	}
+	i = -1;
+	while (++i < info->number_of)
+		pthread_mutex_destroy(&info->fork_mutex[i]);
+	pthread_mutex_destroy(&info->print_mutex);
+	pthread_mutex_destroy(&info->eat_cnt_mutex);
+	pthread_mutex_destroy(&info->eat_satisft_mutex);
+	pthread_mutex_destroy(&info->died_mutex);
+	pthread_mutex_destroy(&info->last_eat_mutex);
+}

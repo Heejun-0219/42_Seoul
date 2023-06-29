@@ -62,5 +62,6 @@ void		print(int id, char *s, t_state *info);
 int			die(t_state *info, int i);
 void		pass_the_time(long time);
 void		destory(t_state *info, int i);
+int			get_fork(t_phi *philo);
 
 #endif
