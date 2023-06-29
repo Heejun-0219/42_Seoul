@@ -25,6 +25,6 @@ void	pass_the_time(long time)
 	long	start;
 
 	start = gettime();
-	while (start + (time * 1) > gettime())
-		usleep(100);
+	while (start + time > gettime())
+		usleep(1000);
 }

@@ -54,8 +54,6 @@ int	ph_init(t_state *info, int ac, char **av, int begin)
 	info->time_to_sleep = ft_atoi(av[4]);
 	if (ac == 6)
 		info->must_eat = ft_atoi(av[5]);
-		// if (info->must_eat == -1)
-		// 	return (1);
 	else
 		info->must_eat = -1;
 	if (check(info) == 1)

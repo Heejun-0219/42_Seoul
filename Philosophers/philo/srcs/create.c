@@ -74,7 +74,6 @@ void	*start(void *data)
 		print(philo->id, "is sleeping", philo->link);
 		if (check_status(philo) == 1)
 			break ;
-		pthread_mutex_lock(&philo->link->eat_cnt_mutex);
 		if (philo->link->must_eat <= philo->count_eat
 			&& philo->link->must_eat != -1)
 		{
@@ -83,7 +82,6 @@ void	*start(void *data)
 			pthread_mutex_unlock(&philo->link->eat_satisft_mutex);
 			break ;
 		}
-		pthread_mutex_unlock(&philo->link->eat_cnt_mutex);
 		if (check_status(philo) == 1)
 			break ;
 		pass_the_time(philo->link->time_to_sleep);
@@ -96,16 +94,18 @@ void	*start(void *data)
 
 void	destory(t_state *info, int i)
 {
-	printf("destory\n");
+	pthread_mutex_unlock(&info->print_mutex);
+	pthread_mutex_unlock(&info->eat_cnt_mutex);
+	pthread_mutex_unlock(&info->eat_satisft_mutex);
+	pthread_mutex_unlock(&info->died_mutex);
+	pthread_mutex_unlock(&info->last_eat_mutex);
 	while (++i < info->number_of){
-		printf("destory%d\n", i);
+		pthread_mutex_unlock(&info->fork_mutex[i]);
 		pthread_join(info->phi[i].th_id, NULL);
 	}
-	printf("destory1\n");
 	i = -1;
 	while (++i < info->number_of)
 		pthread_mutex_destroy(&info->fork_mutex[i]);
-	printf("destory2\n");
 	pthread_mutex_destroy(&info->print_mutex);
 	pthread_mutex_destroy(&info->eat_cnt_mutex);
 	pthread_mutex_destroy(&info->eat_satisft_mutex);

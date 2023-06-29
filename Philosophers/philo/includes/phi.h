@@ -56,7 +56,7 @@ int			ft_atoi(char *s);
 int			ph_init(t_state *info, int ac, char **av, int begin);
 int			ind_init(t_state *info);
 int			ft_error(char *s);
-long	gettime(void);
+long		gettime(void);
 int			create(t_state *info, int i);
 void		print(int id, char *s, t_state *info);
 int			die(t_state *info, int i);

@@ -20,7 +20,7 @@ int ft_error(char *s)
 
 void print(int id, char *s, t_state *info)
 {
-	int st;
+	int	st;
 
 	pthread_mutex_lock(&info->died_mutex);
 	st = info->died;
