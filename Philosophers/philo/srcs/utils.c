@@ -6,19 +6,19 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:50 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/26 22:43:47 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:22:45 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/phi.h"
 
-int ft_error(char *s)
+int	ft_error(char *s)
 {
 	printf("%s", s);
 	return (1);
 }
 
-void print(int id, char *s, t_state *info)
+void	print(int id, char *s, t_state *info)
 {
 	int	st;
 
@@ -34,22 +34,20 @@ void print(int id, char *s, t_state *info)
 	}
 }
 
-int ft_atoi(char *s)
+int	ft_atoi(char *s)
 {
-	int res;
-	int sing;
-	int i;
-	int j;
+	int	res;
+	int	sing;
+	int	i;
+	int	j;
 
 	res = 0;
 	sing = 1;
 	i = 0;
 	j = -1;
 	while (s[++j])
-		if (s[j] < '0' || s[j] > '9'){
-			ft_error("Error: Invalid argument\n");
+		if (s[j] < '0' || s[j] > '9')
 			return (-1);
-		}
 	while (s[i] <= 32)
 		i++;
 	if (s[i] == '-' || s[i] == '+')

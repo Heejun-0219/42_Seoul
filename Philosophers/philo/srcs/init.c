@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:15 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/27 20:34:39 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:23:12 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,17 @@ int	ind_init(t_state *info)
 	return (0);
 }
 
+void	th_init(t_state *info, int begin)
+{
+	pthread_mutex_init(&info->print_mutex, NULL);
+	pthread_mutex_init(&info->eat_cnt_mutex, NULL);
+	pthread_mutex_init(&info->eat_satisft_mutex, NULL);
+	pthread_mutex_init(&info->died_mutex, NULL);
+	pthread_mutex_init(&info->last_eat_mutex, NULL);
+	while (begin < info->number_of)
+		pthread_mutex_init(&info->fork_mutex[begin++], NULL);
+}
+
 int	ph_init(t_state *info, int ac, char **av, int begin)
 {
 	info->number_of = ft_atoi(av[1]);
@@ -62,16 +73,10 @@ int	ph_init(t_state *info, int ac, char **av, int begin)
 	info->start_time = gettime();
 	info->died = 0;
 	info->satisfy_count = 0;
-	pthread_mutex_init(&info->print_mutex, NULL);
-	pthread_mutex_init(&info->eat_cnt_mutex, NULL);
-	pthread_mutex_init(&info->eat_satisft_mutex, NULL);
-	pthread_mutex_init(&info->died_mutex, NULL);
-	pthread_mutex_init(&info->last_eat_mutex, NULL);
 	info->fork_mutex = malloc(sizeof(pthread_mutex_t) * info->number_of);
 	if (!info->fork_mutex)
 		return (1);
-	while (begin < info->number_of)
-		pthread_mutex_init(&info->fork_mutex[begin++], NULL);
+	th_init(info, begin);
 	if (ind_init(info) == 1)
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:02 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/26 22:43:51 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:20:26 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	meal_time(t_phi *philo)
 	pthread_mutex_unlock(&philo->link->fork_mutex[philo->l_fork_id]);
 }
 
-int	get_fork(t_phi *philo){
+int	get_fork(t_phi *philo)
+{
 	if (philo->link->number_of == 1)
 	{
 		pthread_mutex_lock(&philo->link->fork_mutex[philo->r_fork_id]);
@@ -49,7 +50,7 @@ int	check_status(t_phi *phi)
 		pthread_mutex_unlock(&phi->link->died_mutex);
 		return (1);
 	}
-	pthread_mutex_unlock(&phi->link->died_mutex);	
+	pthread_mutex_unlock(&phi->link->died_mutex);
 	return (0);
 }
 

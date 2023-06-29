@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:08 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/26 22:43:47 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:20:44 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	die(t_state *info, int i)
 {
-	long time;
+	long	time;
 
 	pthread_mutex_lock(&info->eat_satisft_mutex);
 	while (info->satisfy_count == 0)
@@ -25,7 +25,7 @@ int	die(t_state *info, int i)
 		{	
 			pthread_mutex_lock(&info->last_eat_mutex);
 			time = gettime() - info->phi[i].last_eat;
-			pthread_mutex_unlock(&info->last_eat_mutex);	
+			pthread_mutex_unlock(&info->last_eat_mutex);
 			if (time > info->time_to_die)
 			{
 				print(info->phi[i].id, "died", info);
@@ -51,7 +51,8 @@ void	destory(t_state *info, int i)
 	pthread_mutex_unlock(&info->eat_satisft_mutex);
 	pthread_mutex_unlock(&info->died_mutex);
 	pthread_mutex_unlock(&info->last_eat_mutex);
-	while (++i < info->number_of){
+	while (++i < info->number_of)
+	{
 		pthread_mutex_unlock(&info->fork_mutex[i]);
 		pthread_join(info->phi[i].th_id, NULL);
 	}
