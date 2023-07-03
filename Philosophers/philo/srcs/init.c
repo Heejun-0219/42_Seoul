@@ -14,9 +14,7 @@
 
 int	check(t_state *info)
 {
-	if (info->time_to_die < 60 || info->number_of < 1
-		|| info->time_to_die < 60 || info->time_to_sleep < 60
-		|| info->number_of > 200 || info->must_eat < -1
+	if (info->number_of < 1 || info->must_eat < -1
 		|| info->must_eat == 0)
 	{
 		ft_error("Error: Invalid argument value");
@@ -51,6 +49,9 @@ void	th_init(t_state *info)
 	int	begin;
 
 	begin = 0;
+	info->start_time = gettime();
+	info->died = 0;
+	info->satisfy_count = 0;
 	pthread_mutex_init(&info->print_mutex, NULL);
 	pthread_mutex_init(&info->eat_cnt_mutex, NULL);
 	pthread_mutex_init(&info->eat_satisft_mutex, NULL);
@@ -70,14 +71,15 @@ int	ph_init(t_state *info, int ac, char **av)
 	info->time_to_eat = ft_atoi(av[3]);
 	info->time_to_sleep = ft_atoi(av[4]);
 	if (ac == 6)
+	{
 		info->must_eat = ft_atoi(av[5]);
+		if (info->must_eat == -1)
+			return (1);
+	}
 	else
 		info->must_eat = -1;
 	if (check(info) == 1)
 		return (1);
-	info->start_time = gettime();
-	info->died = 0;
-	info->satisfy_count = 0;
 	info->fork_mutex = malloc(sizeof(pthread_mutex_t) * info->number_of);
 	if (!info->fork_mutex)
 		return (1);
