@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:33 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 15:56:12 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/03 20:18:16 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_state
 	int				died;
 	int				satisfy_count;
 	pthread_mutex_t	*fork_mutex;
+	pthread_mutex_t	*eat_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	eat_cnt_mutex;
 	pthread_mutex_t	eat_satisft_mutex;
@@ -53,16 +54,16 @@ typedef struct s_state
 
 int			check(t_state *info);
 int			ft_atoi(char *s);
-int			ph_init(t_state *info, int ac, char **av, int begin);
+int			ph_init(t_state *info, int ac, char **av);
 int			ind_init(t_state *info);
-void		th_init(t_state *intfo, int begin);
+void		th_init(t_state *intfo);
 int			ft_error(char *s);
 long		gettime(void);
-int			create(t_state *info, int i);
+int			create(t_state *info);
 int			print(int id, char *s, t_state *info);
-int			die(t_state *info, int i);
+int			die(t_state *info);
 int			pass_the_time(long time, t_phi *philo);
-void		destory(t_state *info, int i);
+void		destory(t_state *info);
 int			get_fork(t_phi *philo);
 int			check_status(t_phi *phi);
 int			ft_fork_unlock(t_phi *phi);

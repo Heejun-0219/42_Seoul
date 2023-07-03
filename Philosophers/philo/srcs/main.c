@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:24 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 16:04:03 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/03 20:16:45 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ int	main(int ac, char **av)
 		return (0);
 	if (ac != 5 && ac != 6)
 	{
-		ft_error("Error: Invalid argument");
-		return (1);
+		return (ft_error("Error: Invalid argument"));
 	}
-	if (ph_init(info, ac, av, 0) == 1)
+	if (ph_init(info, ac, av) == 1)
 		return (1);
-	if (create(info, -1) == 1)
+	if (create(info) == 1)
 		return (1);
 	return (0);
 }
