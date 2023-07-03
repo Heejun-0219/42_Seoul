@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:33 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/29 15:23:19 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/03 15:56:12 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ void		th_init(t_state *intfo, int begin);
 int			ft_error(char *s);
 long		gettime(void);
 int			create(t_state *info, int i);
-void		print(int id, char *s, t_state *info);
+int			print(int id, char *s, t_state *info);
 int			die(t_state *info, int i);
-void		pass_the_time(long time);
+int			pass_the_time(long time, t_phi *philo);
 void		destory(t_state *info, int i);
 int			get_fork(t_phi *philo);
+int			check_status(t_phi *phi);
+int			ft_fork_unlock(t_phi *phi);
 
 #endif

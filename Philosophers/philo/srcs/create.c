@@ -6,24 +6,29 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:02 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/29 15:20:26 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/03 15:56:26 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/phi.h"
 
-void	meal_time(t_phi *philo)
+int	meal_time(t_phi *philo)
 {
-	print(philo->id, "is eating", philo->link);
+	if (print(philo->id, "is eating", philo->link) == 1)
+		return (1);
 	pthread_mutex_lock(&philo->link->last_eat_mutex);
 	philo->last_eat = gettime();
 	pthread_mutex_unlock(&philo->link->last_eat_mutex);
-	pass_the_time(philo->link->time_to_eat);
+	if (pass_the_time(philo->link->time_to_eat, philo) == 1)
+		return (1);
 	pthread_mutex_lock(&philo->link->eat_cnt_mutex);
 	philo->count_eat++;
 	pthread_mutex_unlock(&philo->link->eat_cnt_mutex);
 	pthread_mutex_unlock(&philo->link->fork_mutex[philo->r_fork_id]);
 	pthread_mutex_unlock(&philo->link->fork_mutex[philo->l_fork_id]);
+	if (check_status(philo) == 1)
+		return (1);
+	return (0);
 }
 
 int	get_fork(t_phi *philo)
@@ -36,22 +41,24 @@ int	get_fork(t_phi *philo)
 		return (1);
 	}
 	pthread_mutex_lock(&philo->link->fork_mutex[philo->r_fork_id]);
-	print(philo->id, "has taken a right fork", philo->link);
+	if (print(philo->id, "has taken a right fork", philo->link) == 1)
+		return (1);
 	pthread_mutex_lock(&philo->link->fork_mutex[philo->l_fork_id]);
-	print(philo->id, "has taken a left fork", philo->link);
+	if (print(philo->id, "has taken a left fork", philo->link) == 1)
+		return (1);
 	return (0);
 }
 
-int	check_status(t_phi *phi)
+int	set_satisfy(t_state *info, t_phi *philo)
 {
-	pthread_mutex_lock(&phi->link->died_mutex);
-	if (phi->link->died == 1)
-	{
-		pthread_mutex_unlock(&phi->link->died_mutex);
+	if (check_status(philo) == 1)
 		return (1);
-	}
-	pthread_mutex_unlock(&phi->link->died_mutex);
-	return (0);
+	pthread_mutex_lock(&info->eat_satisft_mutex);
+	info->satisfy_count = 1;
+	pthread_mutex_unlock(&info->eat_satisft_mutex);
+	if (check_status(philo) == 1)
+		return (1);
+	return (1);
 }
 
 void	*start(void *data)
@@ -60,35 +67,25 @@ void	*start(void *data)
 
 	philo = (t_phi *)data;
 	if (philo->id % 2)
-		usleep(100);
+		usleep(1000);
 	while (check_status(philo) == 0)
 	{
-		if (check_status(philo) == 1)
-			break ;
 		if (get_fork(philo) == 1)
-			break ;
-		if (check_status(philo) == 1)
-			break ;
-		meal_time(philo);
-		if (check_status(philo) == 1)
-			break ;
-		print(philo->id, "is sleeping", philo->link);
-		if (check_status(philo) == 1)
+			if (ft_fork_unlock(philo) == 0)
+				break ;
+		if (meal_time(philo) == 1)
+			if (ft_fork_unlock(philo) == 0)
+				break ;
+		if (print(philo->id, "is sleeping", philo->link) == 1)
 			break ;
 		if (philo->link->must_eat <= philo->count_eat
 			&& philo->link->must_eat != -1)
-		{
-			pthread_mutex_lock(&philo->link->eat_satisft_mutex);
-			philo->link->satisfy_count = 1;
-			pthread_mutex_unlock(&philo->link->eat_satisft_mutex);
+			if (set_satisfy(philo->link, philo) == 1)
+				break ;
+		if (pass_the_time(philo->link->time_to_sleep, philo) == 1)
 			break ;
-		}
-		if (check_status(philo) == 1)
+		if (print(philo->id, "is thinking", philo->link) == 1)
 			break ;
-		pass_the_time(philo->link->time_to_sleep);
-		if (check_status(philo) == 1)
-			break ;
-		print(philo->id, "is thinking", philo->link);
 	}
 	return (NULL);
 }

@@ -6,11 +6,23 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:50 by heejunki          #+#    #+#             */
-/*   Updated: 2023/06/29 15:22:45 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/03 15:56:02 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/phi.h"
+
+int	check_status(t_phi *phi)
+{
+	pthread_mutex_lock(&phi->link->died_mutex);
+	if (phi->link->died == 1)
+	{
+		pthread_mutex_unlock(&phi->link->died_mutex);
+		return (1);
+	}
+	pthread_mutex_unlock(&phi->link->died_mutex);
+	return (0);
+}
 
 int	ft_error(char *s)
 {
@@ -18,7 +30,14 @@ int	ft_error(char *s)
 	return (1);
 }
 
-void	print(int id, char *s, t_state *info)
+int	ft_fork_unlock(t_phi *phi)
+{
+	pthread_mutex_unlock(&phi->link->fork_mutex[phi->l_fork_id]);
+	pthread_mutex_unlock(&phi->link->fork_mutex[phi->r_fork_id]);
+	return (0);
+}
+
+int	print(int id, char *s, t_state *info)
 {
 	int	st;
 
@@ -31,7 +50,9 @@ void	print(int id, char *s, t_state *info)
 		printf("%lu ~ Num: %d philosopher %s\n", \
 			gettime() - info->start_time, id, s);
 		pthread_mutex_unlock(&info->print_mutex);
+		return (0);
 	}
+	return (1);
 }
 
 int	ft_atoi(char *s)

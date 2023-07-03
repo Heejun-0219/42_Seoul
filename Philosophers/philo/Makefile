@@ -6,14 +6,14 @@
 #    By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 16:17:47 by heejunki          #+#    #+#              #
-#    Updated: 2023/06/27 14:36:04 by heejunki         ###   ########.fr        #
+#    Updated: 2023/07/03 16:03:31 by heejunki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		=	philo
 
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra -fsanitize=thread -g
+CFLAGS		=	-Wall -Werror -Wextra
 
 INCLUDES	=	includes/
 SRC			=	srcs/create.c 		\
