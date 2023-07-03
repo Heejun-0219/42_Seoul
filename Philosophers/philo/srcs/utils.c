@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 20:05:50 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 21:59:03 by heejunki         ###   ########.fr       */
+/*   Created: 2023/06/29 20:05:50 by heejunki          #+#    #+#             */
+/*   Updated: 2023/07/03 23:23:46 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,26 @@ int	ft_error(char *s)
 
 int	ft_fork_unlock(t_phi *phi)
 {
-	pthread_mutex_unlock(&phi->link->eat_mutex[phi->r_fork_id]);
-	pthread_mutex_unlock(&phi->link->fork_mutex[phi->r_fork_id]);
-	pthread_mutex_unlock(&phi->link->eat_mutex[phi->l_fork_id]);
 	pthread_mutex_unlock(&phi->link->fork_mutex[phi->l_fork_id]);
+	pthread_mutex_unlock(&phi->link->fork_mutex[phi->r_fork_id]);
 	return (0);
 }
 
 int	print(int id, char *s, t_state *info)
 {
-	pthread_mutex_lock(&info->print_mutex);
+	int	st;
+
 	pthread_mutex_lock(&info->died_mutex);
-	if (info->died == 0)
+	st = info->died;
+	pthread_mutex_unlock(&info->died_mutex);
+	if (st == 0)
 	{
-		pthread_mutex_unlock(&info->died_mutex);
+		pthread_mutex_lock(&info->print_mutex);
 		printf("%lu %d %s\n", \
 			gettime() - info->start_time, id + 1, s);
 		pthread_mutex_unlock(&info->print_mutex);
 		return (0);
 	}
-	pthread_mutex_unlock(&info->died_mutex);
-	pthread_mutex_unlock(&info->print_mutex);
 	return (1);
 }
 
@@ -61,14 +60,15 @@ int	ft_atoi(char *s)
 	int	res;
 	int	sing;
 	int	i;
+	int	j;
 
 	res = 0;
 	sing = 1;
-	i = -1;
-	while (s[++i])
-		if (!((s[i] >= '0' && s[i] <= '9') || s[i] == '+' || s[i] == '-'))
-			return (-1);
 	i = 0;
+	j = -1;
+	while (s[++j])
+		if (!((s[j] >= '0' && s[j] <= '9') || s[j] == '-' || s[j] == '+'))
+			return (-1);
 	if (s[i] == '-' || s[i] == '+')
 	{
 		if (s[i] == '-')

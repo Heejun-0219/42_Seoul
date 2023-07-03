@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 20:05:02 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 20:22:49 by heejunki         ###   ########.fr       */
+/*   Created: 2023/06/29 20:05:02 by heejunki          #+#    #+#             */
+/*   Updated: 2023/07/03 23:24:47 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int	meal_time(t_phi *philo)
 	pthread_mutex_lock(&philo->link->eat_cnt_mutex);
 	philo->count_eat++;
 	pthread_mutex_unlock(&philo->link->eat_cnt_mutex);
-	pthread_mutex_unlock(&philo->link->eat_mutex[philo->r_fork_id]);
 	pthread_mutex_unlock(&philo->link->fork_mutex[philo->r_fork_id]);
-	pthread_mutex_unlock(&philo->link->eat_mutex[philo->l_fork_id]);
 	pthread_mutex_unlock(&philo->link->fork_mutex[philo->l_fork_id]);
 	if (check_status(philo) == 1)
 		return (1);
@@ -38,18 +36,14 @@ int	get_fork(t_phi *philo)
 	if (philo->link->number_of == 1)
 	{
 		pthread_mutex_lock(&philo->link->fork_mutex[philo->r_fork_id]);
-		pthread_mutex_lock(&philo->link->eat_mutex[philo->r_fork_id]);
 		print(philo->id, "has taken a fork", philo->link);
-		pthread_mutex_unlock(&philo->link->eat_mutex[philo->r_fork_id]);
 		pthread_mutex_unlock(&philo->link->fork_mutex[philo->r_fork_id]);
 		return (1);
 	}
 	pthread_mutex_lock(&philo->link->fork_mutex[philo->r_fork_id]);
-	pthread_mutex_lock(&philo->link->eat_mutex[philo->r_fork_id]);
 	if (print(philo->id, "has taken a fork", philo->link) == 1)
 		return (1);
 	pthread_mutex_lock(&philo->link->fork_mutex[philo->l_fork_id]);
-	pthread_mutex_lock(&philo->link->eat_mutex[philo->l_fork_id]);
 	if (print(philo->id, "has taken a fork", philo->link) == 1)
 		return (1);
 	return (0);

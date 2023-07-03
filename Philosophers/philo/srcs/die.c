@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 20:05:08 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 21:56:59 by heejunki         ###   ########.fr       */
+/*   Created: 2023/06/29 20:05:08 by heejunki          #+#    #+#             */
+/*   Updated: 2023/07/03 23:22:27 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static int	die_print(t_state *info, int i)
 
 int	die(t_state *info)
 {
-	int		i;
 	long	time;
+	int		i;
 
 	pthread_mutex_lock(&info->eat_satisft_mutex);
 	while (info->satisfy_count == 0)
@@ -60,15 +60,11 @@ void	destory(t_state *info)
 		pthread_mutex_unlock(&info->died_mutex);
 		pthread_mutex_unlock(&info->last_eat_mutex);
 		pthread_mutex_unlock(&info->fork_mutex[i]);
-		pthread_mutex_unlock(&info->eat_mutex[i]);
 		pthread_join(info->phi[i].th_id, NULL);
 	}
 	i = -1;
 	while (++i < info->number_of)
-	{
 		pthread_mutex_destroy(&info->fork_mutex[i]);
-		pthread_mutex_destroy(&info->eat_mutex[i]);
-	}
 	pthread_mutex_destroy(&info->print_mutex);
 	pthread_mutex_destroy(&info->eat_cnt_mutex);
 	pthread_mutex_destroy(&info->eat_satisft_mutex);

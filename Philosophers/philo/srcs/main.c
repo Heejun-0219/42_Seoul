@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 20:05:24 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 20:16:45 by heejunki         ###   ########.fr       */
+/*   Created: 2023/06/29 20:05:24 by heejunki          #+#    #+#             */
+/*   Updated: 2023/07/03 23:21:12 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main(int ac, char **av)
 		return (0);
 	if (ac != 5 && ac != 6)
 	{
-		return (ft_error("Error: Invalid argument"));
+		ft_error("Error: Invalid argument");
+		return (1);
 	}
 	if (ph_init(info, ac, av) == 1)
 		return (1);

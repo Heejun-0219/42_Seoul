@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 20:05:33 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 20:18:16 by heejunki         ###   ########.fr       */
+/*   Created: 2023/06/29 20:05:33 by heejunki          #+#    #+#             */
+/*   Updated: 2023/07/03 23:21:33 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_state
 	int				died;
 	int				satisfy_count;
 	pthread_mutex_t	*fork_mutex;
-	pthread_mutex_t	*eat_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	eat_cnt_mutex;
 	pthread_mutex_t	eat_satisft_mutex;
