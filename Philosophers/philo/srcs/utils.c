@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 20:05:50 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 20:24:35 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/03 21:59:03 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,18 @@ int	ft_fork_unlock(t_phi *phi)
 
 int	print(int id, char *s, t_state *info)
 {
-	int	st;
-
+	pthread_mutex_lock(&info->print_mutex);
 	pthread_mutex_lock(&info->died_mutex);
-	st = info->died;
-	pthread_mutex_unlock(&info->died_mutex);
-	if (st == 0)
+	if (info->died == 0)
 	{
-		pthread_mutex_lock(&info->print_mutex);
+		pthread_mutex_unlock(&info->died_mutex);
 		printf("%lu %d %s\n", \
 			gettime() - info->start_time, id + 1, s);
 		pthread_mutex_unlock(&info->print_mutex);
 		return (0);
 	}
+	pthread_mutex_unlock(&info->died_mutex);
+	pthread_mutex_unlock(&info->print_mutex);
 	return (1);
 }
 
