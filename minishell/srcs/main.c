@@ -38,10 +38,14 @@ int main(int ac, char **av, char **env)
         line = readline(PROMPT);
         if (line == NULL)
         {
-            // ft_lstclear(&info.env_list);
-            // ft_putstr_fd("exit\n", STDOUT);
-            printf("exit\n");
+            ft_lstclear(&info.env_list);
+            printf("\x1b[1A\033[11Cexit\n");
             break ;
+        }
+        if (line[0] == '\0')
+        {
+            free(line);
+            continue ;
         }
         add_history(line);
         free(line);

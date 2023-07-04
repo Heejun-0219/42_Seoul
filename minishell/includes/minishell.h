@@ -55,6 +55,7 @@ typedef struct s_info
 void	ft_lstclear(t_list *lst);
 int	    ft_lstdel_node(t_list *list, t_node *node);
 int     ft_lstpush_back(t_list *list, void *content);
+t_list  ft_lst_init(void);
 
 int	    ft_error(char *m, int error);
 
