@@ -43,15 +43,16 @@ int	print(int id, char *s, t_state *info)
 
 	pthread_mutex_lock(&info->died_mutex);
 	st = info->died;
-	pthread_mutex_unlock(&info->died_mutex);
 	if (st == 0)
 	{
 		pthread_mutex_lock(&info->print_mutex);
 		printf("%lu %d %s\n", \
 			gettime() - info->start_time, id + 1, s);
 		pthread_mutex_unlock(&info->print_mutex);
+		pthread_mutex_unlock(&info->died_mutex);
 		return (0);
 	}
+	pthread_mutex_unlock(&info->died_mutex);
 	return (1);
 }
 

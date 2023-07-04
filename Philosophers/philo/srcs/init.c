@@ -68,7 +68,7 @@ int	ph_init(t_state *info, int ac, char **av)
 	{
 		info->must_eat = ft_atoi(av[5]);
 		if (info->must_eat == -1)
-			return (1);
+			return (ft_error("Error: Invalid argument value"));
 	}
 	else
 		info->must_eat = -1;

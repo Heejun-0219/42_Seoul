@@ -76,12 +76,12 @@ void	*start(void *data)
 		if (meal_time(philo) == 1)
 			if (ft_fork_unlock(philo) == 0)
 				break ;
-		if (print(philo->id, "is sleeping", philo->link) == 1)
-			break ;
 		if (philo->link->must_eat <= philo->count_eat
 			&& philo->link->must_eat != -1)
 			if (set_satisfy(philo->link, philo) == 1)
 				break ;
+		if (print(philo->id, "is sleeping", philo->link) == 1)
+			break ;
 		if (pass_the_time(philo->link->time_to_sleep, philo) == 1)
 			break ;
 		if (print(philo->id, "is thinking", philo->link) == 1)
