@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 20:05:08 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 23:22:27 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:27:16 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 static int	die_print(t_state *info, int i)
 {
 	pthread_mutex_lock(&info->died_mutex);
-	info->died = 1;
-	// print(info->phi[i].id, "died", info);
+	info->died = DEAD;
 	printf("%lu %d died\n", gettime() - info->start_time, info->phi[i].id + 1);
 	pthread_mutex_unlock(&info->died_mutex);
 	destory(info);
-	return (1);
+	return (DEAD);
 }
 
 int	die(t_state *info)
@@ -29,7 +28,7 @@ int	die(t_state *info)
 	int		i;
 
 	pthread_mutex_lock(&info->eat_satisft_mutex);
-	while (info->satisfy_count == 0)
+	while (info->satisfy_count == ALIVE)
 	{
 		pthread_mutex_unlock(&info->eat_satisft_mutex);
 		i = 0;
@@ -45,7 +44,7 @@ int	die(t_state *info)
 		usleep(1000);
 		pthread_mutex_lock(&info->eat_satisft_mutex);
 	}
-	return (0);
+	return (ALIVE);
 }
 
 void	destory(t_state *info)

@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 20:05:15 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 23:23:25 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:30:49 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	check(t_state *info)
 		|| info->must_eat == 0)
 	{
 		ft_error("Error: Invalid argument value");
-		return (1);
+		return (FAILURE);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	ind_init(t_state *info)
@@ -30,7 +30,7 @@ int	ind_init(t_state *info)
 	i = 0;
 	info->phi = malloc(sizeof(t_phi) * info->number_of);
 	if (!info->phi)
-		return (1);
+		return (FAILURE);
 	while (i < info->number_of)
 	{
 		info->phi[i].id = i;
@@ -41,7 +41,7 @@ int	ind_init(t_state *info)
 		info->phi[i].last_eat = gettime();
 		i++;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 void	th_init(t_state *info)
@@ -72,16 +72,16 @@ int	ph_init(t_state *info, int ac, char **av)
 	}
 	else
 		info->must_eat = -1;
-	if (check(info) == 1)
-		return (1);
+	if (check(info) == FAILURE)
+		return (FAILURE);
 	info->start_time = gettime();
 	info->died = 0;
 	info->satisfy_count = 0;
 	info->fork_mutex = malloc(sizeof(pthread_mutex_t) * info->number_of);
 	if (!info->fork_mutex)
-		return (1);
+		return (FAILURE);
 	th_init(info);
-	if (ind_init(info) == 1)
-		return (1);
-	return (0);
+	if (ind_init(info) == FAILURE)
+		return (FAILURE);
+	return (SUCCESS);
 }

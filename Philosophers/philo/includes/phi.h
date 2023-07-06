@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 20:05:33 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 23:21:33 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:25:45 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-struct	s_state;
+# define SUCCESS 0
+# define FAILURE 1
+# define ALIVE 0
+# define DEAD 1
+# define FINISH 1
 
 typedef struct s_phi
 {

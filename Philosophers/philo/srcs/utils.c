@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 20:05:50 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/03 23:23:46 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:30:08 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ int	check_status(t_phi *phi)
 	if (phi->link->died == 1)
 	{
 		pthread_mutex_unlock(&phi->link->died_mutex);
-		return (1);
+		return (DEAD);
 	}
 	pthread_mutex_unlock(&phi->link->died_mutex);
-	return (0);
+	return (ALIVE);
 }
 
 int	ft_error(char *s)
 {
 	printf("%s", s);
-	return (1);
+	return (FAILURE);
 }
 
 int	ft_fork_unlock(t_phi *phi)
 {
 	pthread_mutex_unlock(&phi->link->fork_mutex[phi->l_fork_id]);
 	pthread_mutex_unlock(&phi->link->fork_mutex[phi->r_fork_id]);
-	return (0);
+	return (SUCCESS);
 }
 
 int	print(int id, char *s, t_state *info)
@@ -43,17 +43,17 @@ int	print(int id, char *s, t_state *info)
 
 	pthread_mutex_lock(&info->died_mutex);
 	st = info->died;
-	if (st == 0)
+	if (st == ALIVE)
 	{
 		pthread_mutex_lock(&info->print_mutex);
 		printf("%lu %d %s\n", \
 			gettime() - info->start_time, id + 1, s);
 		pthread_mutex_unlock(&info->print_mutex);
 		pthread_mutex_unlock(&info->died_mutex);
-		return (0);
+		return (ALIVE);
 	}
 	pthread_mutex_unlock(&info->died_mutex);
-	return (1);
+	return (DEAD);
 }
 
 int	ft_atoi(char *s)
