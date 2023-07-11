@@ -39,7 +39,10 @@ int	main(int ac, char **av)
 	if (!info)
 		return (FAILURE);
 	if (ph_init(info, ac, av) == FAILURE)
+	{
+		free_all(info);
 		return (FAILURE);
+	}
 	if (create(info) == FAILURE)
 		return (FAILURE);
 	free_all(info);

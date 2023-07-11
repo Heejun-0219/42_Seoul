@@ -72,8 +72,6 @@ int	ph_init(t_state *info, int ac, char **av)
 	}
 	else
 		info->must_eat = -1;
-	if (check(info) == FAILURE)
-		return (FAILURE);
 	info->start_time = gettime();
 	info->died = 0;
 	info->satisfy_count = 0;
@@ -81,6 +79,8 @@ int	ph_init(t_state *info, int ac, char **av)
 	if (!info->fork_mutex)
 		return (FAILURE);
 	th_init(info);
+	if (check(info) == FAILURE)
+		return (FAILURE);
 	if (ind_init(info) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
