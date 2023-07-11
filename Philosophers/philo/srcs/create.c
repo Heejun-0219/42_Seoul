@@ -101,6 +101,7 @@ int	create(t_state *info)
 	}
 	if (die(info) == DEAD)
 	{
+		free_all(info);
 		return (DEAD);
 	}
 	destory(info);

@@ -71,4 +71,6 @@ int			get_fork(t_phi *philo);
 int			check_status(t_phi *phi);
 int			ft_fork_unlock(t_phi *phi);
 
+void free_all(t_state *info);
+
 #endif
