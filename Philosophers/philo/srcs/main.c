@@ -6,19 +6,13 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 20:05:24 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/06 13:28:53 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:16:23 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/phi.h"
 
-void ft_exit(void)
-{
-	// free
-	system("leaks philo");
-}
-
-void free_all(t_state *info)
+void	free_all(t_state *info)
 {
 	free(info->phi);
 	free(info->fork_mutex);
@@ -27,7 +21,6 @@ void free_all(t_state *info)
 
 int	main(int ac, char **av)
 {
-	atexit(ft_exit);
 	t_state	*info;
 
 	if (ac != 5 && ac != 6)

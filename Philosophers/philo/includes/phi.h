@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 20:05:33 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/06 13:25:45 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/07/11 19:54:46 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ int			get_fork(t_phi *philo);
 int			check_status(t_phi *phi);
 int			ft_fork_unlock(t_phi *phi);
 
-void free_all(t_state *info);
+void		free_all(t_state *info);
 
 #endif
