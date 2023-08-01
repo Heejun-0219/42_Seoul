@@ -6,7 +6,7 @@
 /*   By: heejunki <heejunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 20:05:15 by heejunki          #+#    #+#             */
-/*   Updated: 2023/07/06 13:30:49 by heejunki         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:47:06 by heejunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	check(t_state *info)
 {
 	if (info->number_of < 1 || info->must_eat < -1 \
-		|| info->must_eat == 0)
+		|| info->time_to_die < 0 || info->time_to_eat < 0 \
+		|| info->time_to_sleep < 0 || info->must_eat == 0)
 	{
 		ft_error("Error: Invalid argument value");
 		return (FAILURE);
@@ -69,7 +70,7 @@ int	ph_init(t_state *info, int ac, char **av)
 	info->satisfy_count = 0;
 	info->fork_mutex = malloc(sizeof(pthread_mutex_t) * info->number_of);
 	if (!info->fork_mutex)
-		return (FAILURE);
+		return (ft_error("Error: Invalid argument value"));
 	th_init(info);
 	if (ind_init(info) == FAILURE)
 		return (FAILURE);
